@@ -1,0 +1,381 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A10000010000000000000001 /* YiCiQianJinApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000020000000000000001 /* YiCiQianJinApp.swift */; };
+		A10000010000000000000002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000020000000000000002 /* ContentView.swift */; };
+		A10000010000000000000003 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A10000020000000000000003 /* Assets.xcassets */; };
+		A10000010000000000000004 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000020000000000000004 /* Word.swift */; };
+		A10000010000000000000005 /* WordBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000020000000000000005 /* WordBook.swift */; };
+		A10000010000000000000006 /* StudyRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000020000000000000006 /* StudyRecord.swift */; };
+		A10000010000000000000007 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000020000000000000007 /* AppState.swift */; };
+		A10000010000000000000008 /* WordData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000020000000000000008 /* WordData.swift */; };
+		A10000010000000000000009 /* StudyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000020000000000000009 /* StudyViewModel.swift */; };
+		A10000010000000000000010 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000020000000000000010 /* HomeView.swift */; };
+		A10000010000000000000011 /* BookSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000020000000000000011 /* BookSelectView.swift */; };
+		A10000010000000000000012 /* StudyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000020000000000000012 /* StudyView.swift */; };
+		A10000010000000000000013 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000020000000000000013 /* QuizView.swift */; };
+		A10000010000000000000014 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000020000000000000014 /* CalendarView.swift */; };
+		A10000010000000000000015 /* PremiumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000020000000000000015 /* PremiumView.swift */; };
+		A10000010000000000000016 /* CheckInSuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000020000000000000016 /* CheckInSuccessView.swift */; };
+		A10000010000000000000017 /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000020000000000000017 /* StoreManager.swift */; };
+		A10000010000000000000018 /* Products.storekit in Resources */ = {isa = PBXBuildFile; fileRef = A10000020000000000000018 /* Products.storekit */; };
+		A10000010000000000000019 /* primary.json in Resources */ = {isa = PBXBuildFile; fileRef = A10000020000000000000019 /* primary.json */; };
+		A10000010000000000000020 /* middle.json in Resources */ = {isa = PBXBuildFile; fileRef = A10000020000000000000020 /* middle.json */; };
+		A10000010000000000000021 /* gaokao.json in Resources */ = {isa = PBXBuildFile; fileRef = A10000020000000000000021 /* gaokao.json */; };
+		A10000010000000000000022 /* cet4.json in Resources */ = {isa = PBXBuildFile; fileRef = A10000020000000000000022 /* cet4.json */; };
+		A10000010000000000000023 /* cet6.json in Resources */ = {isa = PBXBuildFile; fileRef = A10000020000000000000023 /* cet6.json */; };
+		A10000010000000000000024 /* ielts.json in Resources */ = {isa = PBXBuildFile; fileRef = A10000020000000000000024 /* ielts.json */; };
+		A10000010000000000000025 /* toefl.json in Resources */ = {isa = PBXBuildFile; fileRef = A10000020000000000000025 /* toefl.json */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A10000020000000000000001 /* YiCiQianJinApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YiCiQianJinApp.swift; sourceTree = "<group>"; };
+		A10000020000000000000002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A10000020000000000000003 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A10000020000000000000004 /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
+		A10000020000000000000005 /* WordBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordBook.swift; sourceTree = "<group>"; };
+		A10000020000000000000006 /* StudyRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRecord.swift; sourceTree = "<group>"; };
+		A10000020000000000000007 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		A10000020000000000000008 /* WordData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordData.swift; sourceTree = "<group>"; };
+		A10000020000000000000009 /* StudyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyViewModel.swift; sourceTree = "<group>"; };
+		A10000020000000000000010 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		A10000020000000000000011 /* BookSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSelectView.swift; sourceTree = "<group>"; };
+		A10000020000000000000012 /* StudyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyView.swift; sourceTree = "<group>"; };
+		A10000020000000000000013 /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
+		A10000020000000000000014 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		A10000020000000000000015 /* PremiumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumView.swift; sourceTree = "<group>"; };
+		A10000020000000000000016 /* CheckInSuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInSuccessView.swift; sourceTree = "<group>"; };
+		A10000020000000000000017 /* StoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
+		A10000020000000000000018 /* Products.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Products.storekit; sourceTree = "<group>"; };
+		A10000020000000000000019 /* primary.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = primary.json; sourceTree = "<group>"; };
+		A10000020000000000000020 /* middle.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = middle.json; sourceTree = "<group>"; };
+		A10000020000000000000021 /* gaokao.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = gaokao.json; sourceTree = "<group>"; };
+		A10000020000000000000022 /* cet4.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = cet4.json; sourceTree = "<group>"; };
+		A10000020000000000000023 /* cet6.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = cet6.json; sourceTree = "<group>"; };
+		A10000020000000000000024 /* ielts.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ielts.json; sourceTree = "<group>"; };
+		A10000020000000000000025 /* toefl.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = toefl.json; sourceTree = "<group>"; };
+		A10000030000000000000001 /* YiCiQianJin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YiCiQianJin.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A10000040000000000000001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A10000050000000000000001 = {
+			isa = PBXGroup;
+			children = (
+				A10000050000000000000002 /* YiCiQianJin */,
+				A10000050000000000000003 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A10000050000000000000002 /* YiCiQianJin */ = {
+			isa = PBXGroup;
+			children = (
+				A10000020000000000000001 /* YiCiQianJinApp.swift */,
+				A10000020000000000000002 /* ContentView.swift */,
+				A10000020000000000000003 /* Assets.xcassets */,
+				A10000020000000000000018 /* Products.storekit */,
+				A10000050000000000000004 /* Models */,
+				A10000050000000000000005 /* Data */,
+				A10000050000000000000006 /* ViewModels */,
+				A10000050000000000000007 /* Views */,
+			);
+			path = YiCiQianJin;
+			sourceTree = "<group>";
+		};
+		A10000050000000000000003 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A10000030000000000000001 /* YiCiQianJin.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A10000050000000000000004 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A10000020000000000000004 /* Word.swift */,
+				A10000020000000000000005 /* WordBook.swift */,
+				A10000020000000000000006 /* StudyRecord.swift */,
+				A10000020000000000000007 /* AppState.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A10000050000000000000005 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				A10000020000000000000008 /* WordData.swift */,
+				A10000020000000000000019 /* primary.json */,
+				A10000020000000000000020 /* middle.json */,
+				A10000020000000000000021 /* gaokao.json */,
+				A10000020000000000000022 /* cet4.json */,
+				A10000020000000000000023 /* cet6.json */,
+				A10000020000000000000024 /* ielts.json */,
+				A10000020000000000000025 /* toefl.json */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		A10000050000000000000006 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				A10000020000000000000009 /* StudyViewModel.swift */,
+				A10000020000000000000017 /* StoreManager.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		A10000050000000000000007 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A10000020000000000000010 /* HomeView.swift */,
+				A10000020000000000000011 /* BookSelectView.swift */,
+				A10000020000000000000012 /* StudyView.swift */,
+				A10000020000000000000013 /* QuizView.swift */,
+				A10000020000000000000014 /* CalendarView.swift */,
+				A10000020000000000000015 /* PremiumView.swift */,
+				A10000020000000000000016 /* CheckInSuccessView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A10000060000000000000001 /* YiCiQianJin */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A10000080000000000000001 /* Build configuration list for PBXNativeTarget "YiCiQianJin" */;
+			buildPhases = (
+				A10000070000000000000001 /* Sources */,
+				A10000040000000000000001 /* Frameworks */,
+				A10000070000000000000002 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = YiCiQianJin;
+			productName = YiCiQianJin;
+			productReference = A10000030000000000000001 /* YiCiQianJin.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A10000090000000000000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					A10000060000000000000001 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = A10000080000000000000002 /* Build configuration list for PBXProject "YiCiQianJin" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = "zh-Hans";
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				"zh-Hans",
+				Base,
+			);
+			mainGroup = A10000050000000000000001;
+			productRefGroup = A10000050000000000000003 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A10000060000000000000001 /* YiCiQianJin */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A10000070000000000000002 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A10000010000000000000003 /* Assets.xcassets in Resources */,
+				A10000010000000000000018 /* Products.storekit in Resources */,
+				A10000010000000000000019 /* primary.json in Resources */,
+				A10000010000000000000020 /* middle.json in Resources */,
+				A10000010000000000000021 /* gaokao.json in Resources */,
+				A10000010000000000000022 /* cet4.json in Resources */,
+				A10000010000000000000023 /* cet6.json in Resources */,
+				A10000010000000000000024 /* ielts.json in Resources */,
+				A10000010000000000000025 /* toefl.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A10000070000000000000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A10000010000000000000001 /* YiCiQianJinApp.swift in Sources */,
+				A10000010000000000000002 /* ContentView.swift in Sources */,
+				A10000010000000000000004 /* Word.swift in Sources */,
+				A10000010000000000000005 /* WordBook.swift in Sources */,
+				A10000010000000000000006 /* StudyRecord.swift in Sources */,
+				A10000010000000000000007 /* AppState.swift in Sources */,
+				A10000010000000000000008 /* WordData.swift in Sources */,
+				A10000010000000000000009 /* StudyViewModel.swift in Sources */,
+				A10000010000000000000010 /* HomeView.swift in Sources */,
+				A10000010000000000000011 /* BookSelectView.swift in Sources */,
+				A10000010000000000000012 /* StudyView.swift in Sources */,
+				A10000010000000000000013 /* QuizView.swift in Sources */,
+				A10000010000000000000014 /* CalendarView.swift in Sources */,
+				A10000010000000000000015 /* PremiumView.swift in Sources */,
+				A10000010000000000000016 /* CheckInSuccessView.swift in Sources */,
+				A10000010000000000000017 /* StoreManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		A1000000A000000000000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A1000000A000000000000002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A1000000A000000000000003 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = F6D6G6X5SK;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "一词千金";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yiciqianjin.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A1000000A000000000000004 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = F6D6G6X5SK;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "一词千金";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yiciqianjin.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A10000080000000000000001 /* Build configuration list for PBXNativeTarget "YiCiQianJin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1000000A000000000000003 /* Debug */,
+				A1000000A000000000000004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A10000080000000000000002 /* Build configuration list for PBXProject "YiCiQianJin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1000000A000000000000001 /* Debug */,
+				A1000000A000000000000002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A10000090000000000000001 /* Project object */;
+}

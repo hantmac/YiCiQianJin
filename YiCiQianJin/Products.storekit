@@ -1,0 +1,83 @@
+{
+  "identifier" : "8A3F4B2C-1D5E-4A6B-9C7D-0E8F1A2B3C4D",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "0.99",
+      "familyShareable" : false,
+      "internalID" : "F1E2D3C4-B5A6-4789-0123-456789ABCDEF",
+      "localizations" : [
+        {
+          "description" : "解锁无限背单词，不再受每日一词的限制",
+          "displayName" : "一词千金 Pro",
+          "locale" : "zh_CN"
+        }
+      ],
+      "productID" : "com.yiciqianjin.app.pro",
+      "referenceName" : "一词千金 Pro 永久解锁",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_applicationInternalID" : "1234567890",
+    "_developerTeamID" : "F6D6G6X5SK",
+    "_failTransactionsEnabled" : false,
+    "_lastSynchronizedDate" : "2026-03-11T10:00:00Z",
+    "_storeKitErrors" : [
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Load Products"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Purchase"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Verification"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Store Sync"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Subscription Status"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Transaction"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Manage Subscriptions Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Refund Request Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Offer Code Redeem Sheet"
+      }
+    ]
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 4,
+    "minor" : 0
+  }
+}

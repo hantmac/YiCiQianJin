@@ -1,0 +1,4097 @@
+[
+  {
+    "word": "ruler",
+    "meaning": "尺子",
+    "phonetic": "/'rulɚ/"
+  },
+  {
+    "word": "pencil",
+    "meaning": "铅笔",
+    "phonetic": "/'pɛnsl/"
+  },
+  {
+    "word": "eraser",
+    "meaning": "橡皮",
+    "phonetic": "/ɪ'resɚ/"
+  },
+  {
+    "word": "crayon",
+    "meaning": "蜡笔",
+    "phonetic": "/kreən/"
+  },
+  {
+    "word": "bag",
+    "meaning": "包",
+    "phonetic": "/bæɡ/"
+  },
+  {
+    "word": "pen",
+    "meaning": "钢笔",
+    "phonetic": "/pɛn/"
+  },
+  {
+    "word": "pencil box",
+    "meaning": "铅笔盒",
+    "phonetic": "/'pɛnsl bɑks/"
+  },
+  {
+    "word": "book",
+    "meaning": "书",
+    "phonetic": "/bʊk/"
+  },
+  {
+    "word": "no",
+    "meaning": "不",
+    "phonetic": "/no/"
+  },
+  {
+    "word": "your",
+    "meaning": "你（们）的",
+    "phonetic": "/jʊər; jʊr/"
+  },
+  {
+    "word": "red",
+    "meaning": "红色；红色的",
+    "phonetic": "/rɛd/"
+  },
+  {
+    "word": "green",
+    "meaning": "绿色；绿色的",
+    "phonetic": "/ɡrin/"
+  },
+  {
+    "word": "yellow",
+    "meaning": "黄色；黄色的",
+    "phonetic": "/ˈjɛlo/"
+  },
+  {
+    "word": "blue",
+    "meaning": "蓝色；蓝色的",
+    "phonetic": "/blu/"
+  },
+  {
+    "word": "black",
+    "meaning": "黑色；黑色的",
+    "phonetic": "/blæk/"
+  },
+  {
+    "word": "brown",
+    "meaning": "棕色；棕色的",
+    "phonetic": "/braʊn/"
+  },
+  {
+    "word": "white",
+    "meaning": "白色；白色的",
+    "phonetic": "/hwaɪt/"
+  },
+  {
+    "word": "orange",
+    "meaning": "橙色；橙色的",
+    "phonetic": "/'ɔrɪndʒ/"
+  },
+  {
+    "word": "OK",
+    "meaning": "好；行",
+    "phonetic": ""
+  },
+  {
+    "word": "mum",
+    "meaning": "妈妈",
+    "phonetic": "/mʌm/"
+  },
+  {
+    "word": "face",
+    "meaning": "脸",
+    "phonetic": "/fes/"
+  },
+  {
+    "word": "ear",
+    "meaning": "耳朵",
+    "phonetic": "/ɪr/"
+  },
+  {
+    "word": "eye",
+    "meaning": "眼睛",
+    "phonetic": "/aɪ/"
+  },
+  {
+    "word": "nose",
+    "meaning": "鼻子",
+    "phonetic": "/noz/"
+  },
+  {
+    "word": "mouth",
+    "meaning": "嘴",
+    "phonetic": "/maʊθ/"
+  },
+  {
+    "word": "arm",
+    "meaning": "胳膊",
+    "phonetic": "/ɑrm/"
+  },
+  {
+    "word": "hand",
+    "meaning": "手",
+    "phonetic": "/hænd/"
+  },
+  {
+    "word": "head",
+    "meaning": "头",
+    "phonetic": "/hɛd/"
+  },
+  {
+    "word": "body",
+    "meaning": "身体",
+    "phonetic": "/'bɑdi/"
+  },
+  {
+    "word": "leg",
+    "meaning": "腿",
+    "phonetic": "/lɛɡ/"
+  },
+  {
+    "word": "foot",
+    "meaning": "脚",
+    "phonetic": "/fʊt/"
+  },
+  {
+    "word": "school",
+    "meaning": "学校",
+    "phonetic": "/skul/"
+  },
+  {
+    "word": "duck",
+    "meaning": "鸭子",
+    "phonetic": "/dʌk/"
+  },
+  {
+    "word": "pig",
+    "meaning": "猪",
+    "phonetic": "/pɪɡ/"
+  },
+  {
+    "word": "cat",
+    "meaning": "猫",
+    "phonetic": "/kæt/"
+  },
+  {
+    "word": "bear",
+    "meaning": "熊",
+    "phonetic": "/bɛr/"
+  },
+  {
+    "word": "dog",
+    "meaning": "狗",
+    "phonetic": "/dɔɡ/"
+  },
+  {
+    "word": "elephant",
+    "meaning": "大象",
+    "phonetic": "/ˈɛləfənt/"
+  },
+  {
+    "word": "monkey",
+    "meaning": "猴子",
+    "phonetic": "/'mʌŋki/"
+  },
+  {
+    "word": "bird",
+    "meaning": "鸟",
+    "phonetic": "/bɝd/"
+  },
+  {
+    "word": "tiger",
+    "meaning": "老虎",
+    "phonetic": "/'taɪɡɚ/"
+  },
+  {
+    "word": "panda",
+    "meaning": "大熊猫",
+    "phonetic": "/'pændə/"
+  },
+  {
+    "word": "zoo",
+    "meaning": "动物园",
+    "phonetic": "/zu/"
+  },
+  {
+    "word": "funny",
+    "meaning": "滑稽的；好笑的",
+    "phonetic": "/'fʌni/"
+  },
+  {
+    "word": "bread",
+    "meaning": "面包",
+    "phonetic": "/brɛd/"
+  },
+  {
+    "word": "juice",
+    "meaning": "果汁",
+    "phonetic": "/dʒus/"
+  },
+  {
+    "word": "egg",
+    "meaning": "蛋",
+    "phonetic": "/ɛɡ/"
+  },
+  {
+    "word": "milk",
+    "meaning": "牛奶",
+    "phonetic": "/mɪlk/"
+  },
+  {
+    "word": "water",
+    "meaning": "水",
+    "phonetic": "/ˈwɔtɚ/"
+  },
+  {
+    "word": "cake",
+    "meaning": "蛋糕",
+    "phonetic": "/kek/"
+  },
+  {
+    "word": "fish",
+    "meaning": "鱼",
+    "phonetic": "/fɪʃ/"
+  },
+  {
+    "word": "rice",
+    "meaning": "米饭",
+    "phonetic": "/raɪs/"
+  },
+  {
+    "word": "one",
+    "meaning": "一",
+    "phonetic": "/wʌn/"
+  },
+  {
+    "word": "two",
+    "meaning": "二",
+    "phonetic": "/tu/"
+  },
+  {
+    "word": "three",
+    "meaning": "三",
+    "phonetic": "/θri/"
+  },
+  {
+    "word": "four",
+    "meaning": "四",
+    "phonetic": "/fɔr/"
+  },
+  {
+    "word": "five",
+    "meaning": "五",
+    "phonetic": "/faɪv/"
+  },
+  {
+    "word": "six",
+    "meaning": "六",
+    "phonetic": "/sɪks/"
+  },
+  {
+    "word": "seven",
+    "meaning": "七",
+    "phonetic": "/'sɛvn/"
+  },
+  {
+    "word": "eight",
+    "meaning": "八",
+    "phonetic": "/et/"
+  },
+  {
+    "word": "nine",
+    "meaning": "九",
+    "phonetic": "/naɪn/"
+  },
+  {
+    "word": "ten",
+    "meaning": "十",
+    "phonetic": "/tɛn/"
+  },
+  {
+    "word": "brother",
+    "meaning": "兄；弟",
+    "phonetic": "/'brʌðɚ/"
+  },
+  {
+    "word": "plate",
+    "meaning": "盘子",
+    "phonetic": "/pleɪt/"
+  },
+  {
+    "word": "UK",
+    "meaning": "英国",
+    "phonetic": ""
+  },
+  {
+    "word": "Canada",
+    "meaning": "加拿大",
+    "phonetic": "/'kænədə/"
+  },
+  {
+    "word": "USA",
+    "meaning": "美国",
+    "phonetic": ""
+  },
+  {
+    "word": "China",
+    "meaning": "中国",
+    "phonetic": "/ˈtʃaɪnə/"
+  },
+  {
+    "word": "she",
+    "meaning": "她；（指雌性动物）它",
+    "phonetic": "/ʃi/"
+  },
+  {
+    "word": "student",
+    "meaning": "学生, 学者",
+    "phonetic": "/'studnt/"
+  },
+  {
+    "word": "pupil",
+    "meaning": "小学生",
+    "phonetic": "/pjupl/"
+  },
+  {
+    "word": "he",
+    "meaning": "他；它（指雄性动物）",
+    "phonetic": "/hi/"
+  },
+  {
+    "word": "teacher",
+    "meaning": "教师, 老师, 导师",
+    "phonetic": "/'titʃɚ/"
+  },
+  {
+    "word": "boy",
+    "meaning": "男孩, 儿子, 孩子气的人, 男仆",
+    "phonetic": "/bɔɪ/"
+  },
+  {
+    "word": "and",
+    "meaning": "和",
+    "phonetic": "/ənd, ən,ænd/"
+  },
+  {
+    "word": "girl",
+    "meaning": "女孩, 少女, 女仆, (商店等的)女工作人员",
+    "phonetic": "/ɡɝl/"
+  },
+  {
+    "word": "new",
+    "meaning": "新的，新近的；新来的；不熟悉的",
+    "phonetic": "/nu/"
+  },
+  {
+    "word": "friend",
+    "meaning": "朋友，友人；支持者，同情者",
+    "phonetic": "/frɛnd/"
+  },
+  {
+    "word": "today",
+    "meaning": "今天；现在，目前",
+    "phonetic": "/tə'de/"
+  },
+  {
+    "word": "father",
+    "meaning": "父亲；爸爸",
+    "phonetic": "/'fɑðɚ/"
+  },
+  {
+    "word": "dad",
+    "meaning": "（口语）爸爸；爹爹",
+    "phonetic": "/dæd/"
+  },
+  {
+    "word": "man",
+    "meaning": "男人",
+    "phonetic": "/mæn/"
+  },
+  {
+    "word": "woman",
+    "meaning": "女人",
+    "phonetic": "/'wʊmən/"
+  },
+  {
+    "word": "mother",
+    "meaning": "母亲；妈妈",
+    "phonetic": "/'mʌðɚ/"
+  },
+  {
+    "word": "sister",
+    "meaning": "姐；妹",
+    "phonetic": "/'sɪstɚ/"
+  },
+  {
+    "word": "grandmother",
+    "meaning": "（外）祖母",
+    "phonetic": "/'ɡrænmʌðɚ/"
+  },
+  {
+    "word": "grandma",
+    "meaning": "（口语）（外）祖母",
+    "phonetic": "/ɡrænmɑ/"
+  },
+  {
+    "word": "grandfather",
+    "meaning": "（外）祖父",
+    "phonetic": "/'græn'fɑðɚ/"
+  },
+  {
+    "word": "grandpa",
+    "meaning": "（口语）（外）祖父",
+    "phonetic": "/grandpa/"
+  },
+  {
+    "word": "family",
+    "meaning": "家；家庭",
+    "phonetic": "/ˈfæməlɪ/"
+  },
+  {
+    "word": "thin",
+    "meaning": "瘦的",
+    "phonetic": "/θɪn/"
+  },
+  {
+    "word": "fat",
+    "meaning": "胖的；肥的",
+    "phonetic": "/fæt/"
+  },
+  {
+    "word": "tall",
+    "meaning": "高的",
+    "phonetic": "/tɔl/"
+  },
+  {
+    "word": "short",
+    "meaning": "矮的；短的",
+    "phonetic": "/ʃɔrt/"
+  },
+  {
+    "word": "long",
+    "meaning": "长的",
+    "phonetic": "/lɔŋ/"
+  },
+  {
+    "word": "small",
+    "meaning": "小的",
+    "phonetic": "/smɔl/"
+  },
+  {
+    "word": "big",
+    "meaning": "大的",
+    "phonetic": "/bɪɡ/"
+  },
+  {
+    "word": "giraffe",
+    "meaning": "长颈鹿",
+    "phonetic": "/dʒəˈræf; dʒəˈræf/"
+  },
+  {
+    "word": "so",
+    "meaning": "这么；那么",
+    "phonetic": "/so/"
+  },
+  {
+    "word": "children",
+    "meaning": "儿童",
+    "phonetic": "/'tʃɪldrən/"
+  },
+  {
+    "word": "child",
+    "meaning": "儿童",
+    "phonetic": "/tʃaɪld/"
+  },
+  {
+    "word": "tail",
+    "meaning": "尾巴",
+    "phonetic": "/tel/"
+  },
+  {
+    "word": "on",
+    "meaning": "在⋯⋯上",
+    "phonetic": "/ɑn/"
+  },
+  {
+    "word": "in",
+    "meaning": "在⋯⋯里",
+    "phonetic": "/ɪn/"
+  },
+  {
+    "word": "under",
+    "meaning": "在⋯⋯下面",
+    "phonetic": "/'ʌndɚ/"
+  },
+  {
+    "word": "chair",
+    "meaning": "椅子",
+    "phonetic": "/tʃɛr/"
+  },
+  {
+    "word": "desk",
+    "meaning": "书桌",
+    "phonetic": "/dɛsk/"
+  },
+  {
+    "word": "cap",
+    "meaning": "帽子",
+    "phonetic": "/kæp/"
+  },
+  {
+    "word": "ball",
+    "meaning": "球",
+    "phonetic": "/bɔl/"
+  },
+  {
+    "word": "car",
+    "meaning": "小汽车",
+    "phonetic": "/kɑr/"
+  },
+  {
+    "word": "boat",
+    "meaning": "小船",
+    "phonetic": "/bot/"
+  },
+  {
+    "word": "map",
+    "meaning": "地图",
+    "phonetic": "/mæp/"
+  },
+  {
+    "word": "toy",
+    "meaning": "玩具",
+    "phonetic": "/tɔɪ/"
+  },
+  {
+    "word": "box",
+    "meaning": "盒；箱",
+    "phonetic": "/bɑks/"
+  },
+  {
+    "word": "pear",
+    "meaning": "梨",
+    "phonetic": "/pɛr/"
+  },
+  {
+    "word": "apple",
+    "meaning": "苹果",
+    "phonetic": "/'æpl/"
+  },
+  {
+    "word": "banana",
+    "meaning": "香蕉",
+    "phonetic": "/bə'nænə/"
+  },
+  {
+    "word": "watermelon",
+    "meaning": "西瓜",
+    "phonetic": "/'wɔtɚmɛlən/"
+  },
+  {
+    "word": "strawberry",
+    "meaning": "草莓",
+    "phonetic": "/'strɔbɛri/"
+  },
+  {
+    "word": "grape",
+    "meaning": "葡萄",
+    "phonetic": "/ɡrep/"
+  },
+  {
+    "word": "buy",
+    "meaning": "买",
+    "phonetic": "/baɪ/"
+  },
+  {
+    "word": "fruit",
+    "meaning": "水果",
+    "phonetic": "/frut/"
+  },
+  {
+    "word": "eleven",
+    "meaning": "十一",
+    "phonetic": "/ɪ'lɛvn/"
+  },
+  {
+    "word": "twelve",
+    "meaning": "十二",
+    "phonetic": "/twɛlv/"
+  },
+  {
+    "word": "thirteen",
+    "meaning": "十三",
+    "phonetic": "/'θɝ'tin/"
+  },
+  {
+    "word": "fourteen",
+    "meaning": "十四",
+    "phonetic": "/,fɔr'tin/"
+  },
+  {
+    "word": "fifteen",
+    "meaning": "十五",
+    "phonetic": "/,fɪf'tin/"
+  },
+  {
+    "word": "sixteen",
+    "meaning": "十六",
+    "phonetic": "/,sɪks'tin/"
+  },
+  {
+    "word": "seventeen",
+    "meaning": "十七",
+    "phonetic": "/,sɛvn'tin/"
+  },
+  {
+    "word": "eighteen",
+    "meaning": "十八",
+    "phonetic": "/,e'tin/"
+  },
+  {
+    "word": "nineteen",
+    "meaning": "十九",
+    "phonetic": "/,naɪn'tin/"
+  },
+  {
+    "word": "twenty",
+    "meaning": "二十",
+    "phonetic": "/'twɛnti/"
+  },
+  {
+    "word": "kite",
+    "meaning": "风筝",
+    "phonetic": "/kaɪt/"
+  },
+  {
+    "word": "beautiful",
+    "meaning": "美丽的",
+    "phonetic": "/'bjʊtəfəl/"
+  },
+  {
+    "word": "classroom",
+    "meaning": "教室",
+    "phonetic": "/'klæsrʊm/"
+  },
+  {
+    "word": "window",
+    "meaning": "窗户",
+    "phonetic": "/'wɪndo/"
+  },
+  {
+    "word": "blackboard",
+    "meaning": "黑板",
+    "phonetic": "/'blækbɔrd/"
+  },
+  {
+    "word": "light",
+    "meaning": "电灯",
+    "phonetic": "/laɪt/"
+  },
+  {
+    "word": "picture",
+    "meaning": "图画",
+    "phonetic": "/'pɪktʃɚ/"
+  },
+  {
+    "word": "door",
+    "meaning": "门",
+    "phonetic": "/dɔr/"
+  },
+  {
+    "word": "teacher's desk",
+    "meaning": "讲台",
+    "phonetic": ""
+  },
+  {
+    "word": "computer",
+    "meaning": "计算机",
+    "phonetic": "/kəm'pjutɚ/"
+  },
+  {
+    "word": "fan",
+    "meaning": "风扇",
+    "phonetic": "/fæn/"
+  },
+  {
+    "word": "wall",
+    "meaning": "墙壁",
+    "phonetic": "/wɔl/"
+  },
+  {
+    "word": "floor",
+    "meaning": "地板",
+    "phonetic": "/flɔr/"
+  },
+  {
+    "word": "really",
+    "meaning": "真的",
+    "phonetic": "/ˈriəˌli, ˈrili/"
+  },
+  {
+    "word": "near",
+    "meaning": "距离近",
+    "phonetic": "/nɪr/"
+  },
+  {
+    "word": "TV",
+    "meaning": "电视",
+    "phonetic": "/ˌti vi/"
+  },
+  {
+    "word": "clean",
+    "meaning": "打扫",
+    "phonetic": "/klin/"
+  },
+  {
+    "word": "help",
+    "meaning": "帮助",
+    "phonetic": "/hɛlp/"
+  },
+  {
+    "word": "schoolbag",
+    "meaning": "书包",
+    "phonetic": "/ˈskulˌbæɡ/"
+  },
+  {
+    "word": "maths book",
+    "meaning": "数学书",
+    "phonetic": ""
+  },
+  {
+    "word": "English book",
+    "meaning": "英语书",
+    "phonetic": ""
+  },
+  {
+    "word": "Chinese book",
+    "meaning": "语文书",
+    "phonetic": ""
+  },
+  {
+    "word": "storybook",
+    "meaning": "故事书",
+    "phonetic": "/'stɔrɪ'bʊk/"
+  },
+  {
+    "word": "candy",
+    "meaning": "糖果",
+    "phonetic": "/ˈkændɪ/"
+  },
+  {
+    "word": "notebook",
+    "meaning": "笔记本",
+    "phonetic": "/'notbʊk/"
+  },
+  {
+    "word": "key",
+    "meaning": "钥匙",
+    "phonetic": "/kiː/"
+  },
+  {
+    "word": "wow",
+    "meaning": "呀",
+    "phonetic": "/wou/"
+  },
+  {
+    "word": "lost",
+    "meaning": "丢失",
+    "phonetic": "/lɔst/"
+  },
+  {
+    "word": "so much",
+    "meaning": "非常地",
+    "phonetic": ""
+  },
+  {
+    "word": "cute",
+    "meaning": "可爱的",
+    "phonetic": "/kjʊt/"
+  },
+  {
+    "word": "strong",
+    "meaning": "强壮的",
+    "phonetic": "/strɔŋ/"
+  },
+  {
+    "word": "friendly",
+    "meaning": "友好的",
+    "phonetic": "/ˈfrɛndlɪ/"
+  },
+  {
+    "word": "quiet",
+    "meaning": "安静的",
+    "phonetic": "/'kwaɪət/"
+  },
+  {
+    "word": "hair",
+    "meaning": "头发",
+    "phonetic": "/hɛr/"
+  },
+  {
+    "word": "shoe",
+    "meaning": "鞋",
+    "phonetic": "/ʃu/"
+  },
+  {
+    "word": "glasses",
+    "meaning": "眼镜",
+    "phonetic": "/'glæsɪz/"
+  },
+  {
+    "word": "his",
+    "meaning": "他的",
+    "phonetic": "/hɪz/"
+  },
+  {
+    "word": "or",
+    "meaning": "或者",
+    "phonetic": "/ɔr/"
+  },
+  {
+    "word": "right",
+    "meaning": "对的",
+    "phonetic": "/raɪt/"
+  },
+  {
+    "word": "hat",
+    "meaning": "帽子",
+    "phonetic": "/hæt/"
+  },
+  {
+    "word": "her",
+    "meaning": "她的",
+    "phonetic": "/hɚ/"
+  },
+  {
+    "word": "bedroom",
+    "meaning": "卧室",
+    "phonetic": "/'bɛdrum/"
+  },
+  {
+    "word": "living room",
+    "meaning": "客厅",
+    "phonetic": "/'lɪvɪŋ rum/"
+  },
+  {
+    "word": "study",
+    "meaning": "书房",
+    "phonetic": "/'stʌdi/"
+  },
+  {
+    "word": "kitchen",
+    "meaning": "厨房",
+    "phonetic": "/'kɪtʃɪn/"
+  },
+  {
+    "word": "bathroom",
+    "meaning": "浴室",
+    "phonetic": "/'bæθrum/"
+  },
+  {
+    "word": "bed",
+    "meaning": "床",
+    "phonetic": "/bɛd/"
+  },
+  {
+    "word": "phone",
+    "meaning": "电话",
+    "phonetic": "/fon/"
+  },
+  {
+    "word": "table",
+    "meaning": "桌子",
+    "phonetic": "/'tebl/"
+  },
+  {
+    "word": "sofa",
+    "meaning": "长沙发",
+    "phonetic": "/'sofə/"
+  },
+  {
+    "word": "fridge",
+    "meaning": "冰箱",
+    "phonetic": "/frɪdʒ/"
+  },
+  {
+    "word": "find",
+    "meaning": "找到",
+    "phonetic": "/faɪnd/"
+  },
+  {
+    "word": "them",
+    "meaning": "他们",
+    "phonetic": "/ðɛm; ðəm/"
+  },
+  {
+    "word": "beef",
+    "meaning": "牛肉",
+    "phonetic": "/bif/"
+  },
+  {
+    "word": "chicken",
+    "meaning": "鸡肉",
+    "phonetic": "/ˈtʃɪkɪn/"
+  },
+  {
+    "word": "noodles",
+    "meaning": "面条",
+    "phonetic": "/ˈnudlz/"
+  },
+  {
+    "word": "soup",
+    "meaning": "汤",
+    "phonetic": "/sup/"
+  },
+  {
+    "word": "vegetable",
+    "meaning": "蔬菜",
+    "phonetic": "/ˈvɛdʒtəbl/"
+  },
+  {
+    "word": "chopsticks",
+    "meaning": "筷子",
+    "phonetic": "/'tʃɑp,stɪks/"
+  },
+  {
+    "word": "bowl",
+    "meaning": "碗",
+    "phonetic": "/bol/"
+  },
+  {
+    "word": "fork",
+    "meaning": "餐叉",
+    "phonetic": "/fɔrk/"
+  },
+  {
+    "word": "knife",
+    "meaning": "刀",
+    "phonetic": "/naɪf/"
+  },
+  {
+    "word": "spoon",
+    "meaning": "匙,勺子",
+    "phonetic": "/spun/"
+  },
+  {
+    "word": "dinner",
+    "meaning": "正餐",
+    "phonetic": "/'dɪnɚ/"
+  },
+  {
+    "word": "ready",
+    "meaning": "准备好",
+    "phonetic": "/'rɛdi/"
+  },
+  {
+    "word": "help yourself",
+    "meaning": "为（自己）取用",
+    "phonetic": ""
+  },
+  {
+    "word": "pass",
+    "meaning": "给",
+    "phonetic": "/pæs/"
+  },
+  {
+    "word": "try",
+    "meaning": "试",
+    "phonetic": "/traɪ/"
+  },
+  {
+    "word": "parents",
+    "meaning": "父母",
+    "phonetic": "/'pɛrənts/"
+  },
+  {
+    "word": "cousin",
+    "meaning": "同辈表亲",
+    "phonetic": "/'kʌzn/"
+  },
+  {
+    "word": "uncle",
+    "meaning": "叔叔",
+    "phonetic": "/'ʌŋkl/"
+  },
+  {
+    "word": "aunt",
+    "meaning": "阿姨",
+    "phonetic": "/ænt/"
+  },
+  {
+    "word": "baby brother",
+    "meaning": "小弟弟",
+    "phonetic": ""
+  },
+  {
+    "word": "doctor",
+    "meaning": "医生",
+    "phonetic": "/'dɑktɚ/"
+  },
+  {
+    "word": "cook",
+    "meaning": "厨师",
+    "phonetic": "/kʊk/"
+  },
+  {
+    "word": "driver",
+    "meaning": "司机",
+    "phonetic": "/'draɪvɚ/"
+  },
+  {
+    "word": "farmer",
+    "meaning": "农民",
+    "phonetic": "/'fɑmɚ/"
+  },
+  {
+    "word": "nurse",
+    "meaning": "护士",
+    "phonetic": "/nɝs/"
+  },
+  {
+    "word": "people",
+    "meaning": "人们",
+    "phonetic": "/'pipl/"
+  },
+  {
+    "word": "but",
+    "meaning": "但是",
+    "phonetic": "/bʌt/"
+  },
+  {
+    "word": "little",
+    "meaning": "小的",
+    "phonetic": "/'lɪtl/"
+  },
+  {
+    "word": "puppy",
+    "meaning": "小狗",
+    "phonetic": "/'pʌpi/"
+  },
+  {
+    "word": "football player",
+    "meaning": "足球运动员",
+    "phonetic": ""
+  },
+  {
+    "word": "job",
+    "meaning": "工作",
+    "phonetic": "/dʒɒb/"
+  },
+  {
+    "word": "basketball",
+    "meaning": "篮球",
+    "phonetic": "/'bæskɪtbɔl/"
+  },
+  {
+    "word": "first floor",
+    "meaning": "一楼（美）；二楼（英）",
+    "phonetic": ""
+  },
+  {
+    "word": "second floor",
+    "meaning": "二楼",
+    "phonetic": ""
+  },
+  {
+    "word": "teacher's office",
+    "meaning": "教师办公室",
+    "phonetic": ""
+  },
+  {
+    "word": "library",
+    "meaning": "图书馆",
+    "phonetic": "/laɪˌbrɛrɪ/"
+  },
+  {
+    "word": "playground",
+    "meaning": "操场",
+    "phonetic": "/'ple'graʊnd/"
+  },
+  {
+    "word": "computer room",
+    "meaning": "计算机房",
+    "phonetic": ""
+  },
+  {
+    "word": "art room",
+    "meaning": "美术教室",
+    "phonetic": ""
+  },
+  {
+    "word": "music room",
+    "meaning": "音乐教室",
+    "phonetic": ""
+  },
+  {
+    "word": "next to",
+    "meaning": "紧邻",
+    "phonetic": ""
+  },
+  {
+    "word": "homework",
+    "meaning": "作业",
+    "phonetic": "/'hom'wɝk/"
+  },
+  {
+    "word": "class",
+    "meaning": "班级",
+    "phonetic": "/klæs/"
+  },
+  {
+    "word": "forty",
+    "meaning": "四十",
+    "phonetic": "/'fɔrti/"
+  },
+  {
+    "word": "way",
+    "meaning": "方向",
+    "phonetic": "/we/"
+  },
+  {
+    "word": "breakfast",
+    "meaning": "早餐",
+    "phonetic": "/'brɛkfəst/"
+  },
+  {
+    "word": "English class",
+    "meaning": "英语课",
+    "phonetic": ""
+  },
+  {
+    "word": "lunch",
+    "meaning": "午饭",
+    "phonetic": "/lʌntʃ/"
+  },
+  {
+    "word": "music class",
+    "meaning": "音乐课",
+    "phonetic": ""
+  },
+  {
+    "word": "PE class",
+    "meaning": "体育课",
+    "phonetic": ""
+  },
+  {
+    "word": "get up",
+    "meaning": "起床",
+    "phonetic": ""
+  },
+  {
+    "word": "go to school",
+    "meaning": "上学",
+    "phonetic": ""
+  },
+  {
+    "word": "go home",
+    "meaning": "回家",
+    "phonetic": ""
+  },
+  {
+    "word": "go to bed",
+    "meaning": "去睡觉",
+    "phonetic": ""
+  },
+  {
+    "word": "over",
+    "meaning": "结束",
+    "phonetic": "/'ovɚ/"
+  },
+  {
+    "word": "now",
+    "meaning": "现在",
+    "phonetic": "/naʊ/"
+  },
+  {
+    "word": "o'clock",
+    "meaning": "⋯⋯点钟",
+    "phonetic": "/ə'klɑk/"
+  },
+  {
+    "word": "kid",
+    "meaning": "小孩",
+    "phonetic": "/kɪd/"
+  },
+  {
+    "word": "thirty",
+    "meaning": "三十",
+    "phonetic": "/'θɝti/"
+  },
+  {
+    "word": "hurry up",
+    "meaning": "快点",
+    "phonetic": "/'hɝrɪ ʌp/"
+  },
+  {
+    "word": "come on",
+    "meaning": "加油",
+    "phonetic": ""
+  },
+  {
+    "word": "just a minute",
+    "meaning": "稍等一会儿",
+    "phonetic": ""
+  },
+  {
+    "word": "cold",
+    "meaning": "冷的",
+    "phonetic": "/kold/"
+  },
+  {
+    "word": "cool",
+    "meaning": "凉的",
+    "phonetic": "/kul/"
+  },
+  {
+    "word": "warm",
+    "meaning": "温暖的",
+    "phonetic": "/wɔrm/"
+  },
+  {
+    "word": "hot",
+    "meaning": "热的",
+    "phonetic": "/hɑt/"
+  },
+  {
+    "word": "sunny",
+    "meaning": "阳光充足的",
+    "phonetic": "/'sʌni/"
+  },
+  {
+    "word": "windy",
+    "meaning": "多风的",
+    "phonetic": "/'wɪndi/"
+  },
+  {
+    "word": "cloudy",
+    "meaning": "多云的",
+    "phonetic": "/'klaʊdi/"
+  },
+  {
+    "word": "snowy",
+    "meaning": "下雪的",
+    "phonetic": "/'snoɪ/"
+  },
+  {
+    "word": "rainy",
+    "meaning": "阴雨的",
+    "phonetic": "/'reni/"
+  },
+  {
+    "word": "outside",
+    "meaning": "在户外",
+    "phonetic": "/,aʊt'saɪd/"
+  },
+  {
+    "word": "be careful",
+    "meaning": "小心",
+    "phonetic": ""
+  },
+  {
+    "word": "weather",
+    "meaning": "天气",
+    "phonetic": "/'wɛðɚ/"
+  },
+  {
+    "word": "New York",
+    "meaning": "纽约",
+    "phonetic": ""
+  },
+  {
+    "word": "how about...",
+    "meaning": "怎么样？",
+    "phonetic": ""
+  },
+  {
+    "word": "degree",
+    "meaning": "度",
+    "phonetic": "/dɪ'ɡri/"
+  },
+  {
+    "word": "world",
+    "meaning": "世界",
+    "phonetic": "/wɝld/"
+  },
+  {
+    "word": "London",
+    "meaning": "伦敦",
+    "phonetic": "/ˈlʌndən/"
+  },
+  {
+    "word": "Moscow",
+    "meaning": "莫斯科",
+    "phonetic": "/ˈmɑsˌkaʊ/"
+  },
+  {
+    "word": "Singapore",
+    "meaning": "新加坡城",
+    "phonetic": "/ˌsɪŋgə'pɔ:/"
+  },
+  {
+    "word": "Sydney",
+    "meaning": "悉尼",
+    "phonetic": "/'sɪdnɪ/"
+  },
+  {
+    "word": "fly",
+    "meaning": "放（风筝）",
+    "phonetic": "/flaɪ/"
+  },
+  {
+    "word": "love",
+    "meaning": "爱你的",
+    "phonetic": "/lʌv/"
+  },
+  {
+    "word": "tomato",
+    "meaning": "西红柿",
+    "phonetic": "/tə'meto/"
+  },
+  {
+    "word": "potato",
+    "meaning": "马铃薯",
+    "phonetic": "/pə'teto/"
+  },
+  {
+    "word": "green beans",
+    "meaning": "豆角",
+    "phonetic": ""
+  },
+  {
+    "word": "carrot",
+    "meaning": "胡萝卜",
+    "phonetic": "/'kærət/"
+  },
+  {
+    "word": "horse",
+    "meaning": "马",
+    "phonetic": "/hɔrs/"
+  },
+  {
+    "word": "cow",
+    "meaning": "牛",
+    "phonetic": "/kaʊ/"
+  },
+  {
+    "word": "sheep",
+    "meaning": "绵羊",
+    "phonetic": "/ʃip/"
+  },
+  {
+    "word": "hen",
+    "meaning": "母鸡",
+    "phonetic": "/hɛn/"
+  },
+  {
+    "word": "these",
+    "meaning": "这些",
+    "phonetic": "/ðiz/"
+  },
+  {
+    "word": "yum",
+    "meaning": "味道好",
+    "phonetic": "/jʌm/"
+  },
+  {
+    "word": "animal",
+    "meaning": "动物",
+    "phonetic": "/'ænɪml/"
+  },
+  {
+    "word": "those",
+    "meaning": "那些",
+    "phonetic": "/ðoz/"
+  },
+  {
+    "word": "garden",
+    "meaning": "花园",
+    "phonetic": "/'ɡɑrdn/"
+  },
+  {
+    "word": "farm",
+    "meaning": "农场",
+    "phonetic": "/fɑrm/"
+  },
+  {
+    "word": "goat",
+    "meaning": "山羊",
+    "phonetic": "/ɡot/"
+  },
+  {
+    "word": "eat",
+    "meaning": "吃",
+    "phonetic": "/it/"
+  },
+  {
+    "word": "clothes",
+    "meaning": "服装",
+    "phonetic": "/kloz/"
+  },
+  {
+    "word": "pants",
+    "meaning": "裤子",
+    "phonetic": "/pænts/"
+  },
+  {
+    "word": "dress",
+    "meaning": "连衣裙",
+    "phonetic": "/drɛs/"
+  },
+  {
+    "word": "skirt",
+    "meaning": "女裙",
+    "phonetic": "/skɝt/"
+  },
+  {
+    "word": "coat",
+    "meaning": "大衣",
+    "phonetic": "/kot/"
+  },
+  {
+    "word": "sweater",
+    "meaning": "毛衣",
+    "phonetic": "/'swɛtɚ/"
+  },
+  {
+    "word": "sock",
+    "meaning": "短袜",
+    "phonetic": "/sɑk/"
+  },
+  {
+    "word": "shorts",
+    "meaning": "短裤",
+    "phonetic": "/ʃɔrts/"
+  },
+  {
+    "word": "jacket",
+    "meaning": "夹克衫",
+    "phonetic": "/'dʒækɪt/"
+  },
+  {
+    "word": "shirt",
+    "meaning": "衬衫",
+    "phonetic": "/ʃɝt/"
+  },
+  {
+    "word": "yours",
+    "meaning": "你的",
+    "phonetic": "/jʊrz/"
+  },
+  {
+    "word": "whose",
+    "meaning": "谁的",
+    "phonetic": "/huz/"
+  },
+  {
+    "word": "mine",
+    "meaning": "我的",
+    "phonetic": "/maɪn/"
+  },
+  {
+    "word": "pack",
+    "meaning": "收拾",
+    "phonetic": "/pæk/"
+  },
+  {
+    "word": "wait",
+    "meaning": "等待",
+    "phonetic": "/wet/"
+  },
+  {
+    "word": "glove",
+    "meaning": "手套",
+    "phonetic": "/ɡlʌv/"
+  },
+  {
+    "word": "scarf",
+    "meaning": "围巾",
+    "phonetic": "/skɑrf/"
+  },
+  {
+    "word": "umbrella",
+    "meaning": "伞",
+    "phonetic": "/ʌm'brɛlə/"
+  },
+  {
+    "word": "sunglasses",
+    "meaning": "太阳镜",
+    "phonetic": "/'sʌnɡlæsɪz/"
+  },
+  {
+    "word": "pretty",
+    "meaning": "美丽的",
+    "phonetic": "/ˈprɪtɪ/"
+  },
+  {
+    "word": "expensive",
+    "meaning": "贵的",
+    "phonetic": "/ɪk'spɛnsɪv/"
+  },
+  {
+    "word": "cheap",
+    "meaning": "便宜的",
+    "phonetic": "/tʃip/"
+  },
+  {
+    "word": "nice",
+    "meaning": "好的",
+    "phonetic": "/naɪs/"
+  },
+  {
+    "word": "try on",
+    "meaning": "试穿",
+    "phonetic": ""
+  },
+  {
+    "word": "size",
+    "meaning": "尺码",
+    "phonetic": "/saɪz/"
+  },
+  {
+    "word": "of course",
+    "meaning": "当然",
+    "phonetic": ""
+  },
+  {
+    "word": "too",
+    "meaning": "太",
+    "phonetic": "/tu/"
+  },
+  {
+    "word": "just",
+    "meaning": "正好",
+    "phonetic": "/dʒʌst/"
+  },
+  {
+    "word": "how much",
+    "meaning": "多少钱",
+    "phonetic": "/haʊ mʌtʃ/"
+  },
+  {
+    "word": "eighty",
+    "meaning": "八十",
+    "phonetic": "/ˈeti/"
+  },
+  {
+    "word": "dollar",
+    "meaning": "元",
+    "phonetic": "/'dɑlɚ/"
+  },
+  {
+    "word": "sale",
+    "meaning": "特价销售",
+    "phonetic": "/sel/"
+  },
+  {
+    "word": "more",
+    "meaning": "更多的",
+    "phonetic": "/mɔr/"
+  },
+  {
+    "word": "us",
+    "meaning": "我们",
+    "phonetic": "/əs; ʌs/"
+  },
+  {
+    "word": "old",
+    "meaning": "老的",
+    "phonetic": "/old/"
+  },
+  {
+    "word": "young",
+    "meaning": "年轻的",
+    "phonetic": "/jʌŋ/"
+  },
+  {
+    "word": "kind",
+    "meaning": "体贴的",
+    "phonetic": "/kaɪnd/"
+  },
+  {
+    "word": "strict",
+    "meaning": "严厉的",
+    "phonetic": "/strɪkt/"
+  },
+  {
+    "word": "polite",
+    "meaning": "有礼貌的",
+    "phonetic": "/pə'laɪt/"
+  },
+  {
+    "word": "hard-working",
+    "meaning": "努力的",
+    "phonetic": "/ˈhɑːdˈwɜːkɪŋ/"
+  },
+  {
+    "word": "helpful",
+    "meaning": "有用的",
+    "phonetic": "/'hɛlpfl/"
+  },
+  {
+    "word": "clever",
+    "meaning": "聪明的",
+    "phonetic": "/'klɛvɚ/"
+  },
+  {
+    "word": "shy",
+    "meaning": "羞怯的",
+    "phonetic": "/ʃaɪ/"
+  },
+  {
+    "word": "know",
+    "meaning": "知道",
+    "phonetic": "/no/"
+  },
+  {
+    "word": "our",
+    "meaning": "我们的",
+    "phonetic": "/aʊr/"
+  },
+  {
+    "word": "Ms",
+    "meaning": "女士",
+    "phonetic": ""
+  },
+  {
+    "word": "will",
+    "meaning": "将要",
+    "phonetic": "/wɪl/"
+  },
+  {
+    "word": "sometimes",
+    "meaning": "有时",
+    "phonetic": "/'sʌmtaɪmz/"
+  },
+  {
+    "word": "robot",
+    "meaning": "机器人",
+    "phonetic": "/'robɑt/"
+  },
+  {
+    "word": "him",
+    "meaning": "他",
+    "phonetic": "/hɪm/"
+  },
+  {
+    "word": "speak",
+    "meaning": "会说",
+    "phonetic": "/spik/"
+  },
+  {
+    "word": "finish",
+    "meaning": "完成",
+    "phonetic": "/'fɪnɪʃ/"
+  },
+  {
+    "word": "Monday",
+    "meaning": "星期一",
+    "phonetic": "/ˈmʌnde; ˈmʌndɪ/"
+  },
+  {
+    "word": "Tuesday",
+    "meaning": "星期二",
+    "phonetic": "/ˈtuzdɪ;-de/"
+  },
+  {
+    "word": "Wednesday",
+    "meaning": "星期三",
+    "phonetic": "/ˈwɛnzdɪ/"
+  },
+  {
+    "word": "Thursday",
+    "meaning": "星期四",
+    "phonetic": "/ˈθɝzde; ˈθɝzdɪ/"
+  },
+  {
+    "word": "Friday",
+    "meaning": "星期五",
+    "phonetic": "/ˈfraɪdeɪ/"
+  },
+  {
+    "word": "Saturday",
+    "meaning": "星期六",
+    "phonetic": "/sætɚdɪ; -de/"
+  },
+  {
+    "word": "Sunday",
+    "meaning": "星期日",
+    "phonetic": "/ˈsʌnde; ˈsʌndi/"
+  },
+  {
+    "word": "weekend",
+    "meaning": "周末",
+    "phonetic": "/ˈwikend/"
+  },
+  {
+    "word": "wash",
+    "meaning": "洗",
+    "phonetic": "/wɔʃ/"
+  },
+  {
+    "word": "wash my clothes",
+    "meaning": "洗我的衣服",
+    "phonetic": ""
+  },
+  {
+    "word": "watch",
+    "meaning": "看",
+    "phonetic": "/wɑtʃ/"
+  },
+  {
+    "word": "watch TV",
+    "meaning": "看电视",
+    "phonetic": ""
+  },
+  {
+    "word": "do",
+    "meaning": "做",
+    "phonetic": "/du/"
+  },
+  {
+    "word": "do homework",
+    "meaning": "做作业",
+    "phonetic": ""
+  },
+  {
+    "word": "read",
+    "meaning": "看",
+    "phonetic": "/rid; rɛd/"
+  },
+  {
+    "word": "read books",
+    "meaning": "看书",
+    "phonetic": ""
+  },
+  {
+    "word": "play",
+    "meaning": "玩",
+    "phonetic": "/ple/"
+  },
+  {
+    "word": "play football",
+    "meaning": "踢足球",
+    "phonetic": ""
+  },
+  {
+    "word": "cooking",
+    "meaning": "烹饪",
+    "phonetic": "/'kʊkɪŋ/"
+  },
+  {
+    "word": "often",
+    "meaning": "时常",
+    "phonetic": "/ˈɔ:fn; ɔfən/"
+  },
+  {
+    "word": "park",
+    "meaning": "公园",
+    "phonetic": "/pɑrk/"
+  },
+  {
+    "word": "tired",
+    "meaning": "疲倦的",
+    "phonetic": "/ˈtaɪrd/"
+  },
+  {
+    "word": "sport",
+    "meaning": "体育运动",
+    "phonetic": "/spɔrt/"
+  },
+  {
+    "word": "play sports",
+    "meaning": "做体育运动",
+    "phonetic": ""
+  },
+  {
+    "word": "should",
+    "meaning": "应该",
+    "phonetic": "/ʃəd; strong form ʃʊd/"
+  },
+  {
+    "word": "every",
+    "meaning": "每一个",
+    "phonetic": "/'ɛvri/"
+  },
+  {
+    "word": "day",
+    "meaning": "一天",
+    "phonetic": "/de/"
+  },
+  {
+    "word": "schedule",
+    "meaning": "工作计划",
+    "phonetic": "/ˈskedʒʊl; skɛdʒʊl/"
+  },
+  {
+    "word": "sandwich",
+    "meaning": "三明治",
+    "phonetic": "/'sænwɪtʃ/"
+  },
+  {
+    "word": "salad",
+    "meaning": "沙拉",
+    "phonetic": "/'sæləd/"
+  },
+  {
+    "word": "hamburger",
+    "meaning": "汉堡包",
+    "phonetic": "/hæmbɝ​ɡɚ/"
+  },
+  {
+    "word": "ice cream",
+    "meaning": "冰淇淋",
+    "phonetic": "/aɪs krim/"
+  },
+  {
+    "word": "tea",
+    "meaning": "茶",
+    "phonetic": "/ti/"
+  },
+  {
+    "word": "fresh",
+    "meaning": "新鲜的",
+    "phonetic": "/frɛʃ/"
+  },
+  {
+    "word": "healthy",
+    "meaning": "健康的",
+    "phonetic": "/'hɛlθi/"
+  },
+  {
+    "word": "delicious",
+    "meaning": "美味的",
+    "phonetic": "/dɪ'lɪʃəs/"
+  },
+  {
+    "word": "sweet",
+    "meaning": "甜的",
+    "phonetic": "/swit/"
+  },
+  {
+    "word": "drink",
+    "meaning": "喝",
+    "phonetic": "/drɪŋk/"
+  },
+  {
+    "word": "thirsty",
+    "meaning": "渴的",
+    "phonetic": "/'θɝsti/"
+  },
+  {
+    "word": "favourite",
+    "meaning": "特别喜欢的",
+    "phonetic": "/'fevərɪt/"
+  },
+  {
+    "word": "food",
+    "meaning": "食物",
+    "phonetic": "/fud/"
+  },
+  {
+    "word": "Dear",
+    "meaning": "亲爱的",
+    "phonetic": "/dɪr/"
+  },
+  {
+    "word": "onion",
+    "meaning": "洋葱",
+    "phonetic": "/'ʌnjən/"
+  },
+  {
+    "word": "sing",
+    "meaning": "唱",
+    "phonetic": "/sɪŋ/"
+  },
+  {
+    "word": "song",
+    "meaning": "歌曲",
+    "phonetic": "/sɔŋ/"
+  },
+  {
+    "word": "sing English songs",
+    "meaning": "唱英文歌曲",
+    "phonetic": ""
+  },
+  {
+    "word": "play the pipa",
+    "meaning": "弹琵琶",
+    "phonetic": ""
+  },
+  {
+    "word": "kung fu",
+    "meaning": "功夫",
+    "phonetic": "/,kʌŋ'fu/"
+  },
+  {
+    "word": "do kung fu",
+    "meaning": "练武术",
+    "phonetic": ""
+  },
+  {
+    "word": "dance",
+    "meaning": "跳舞",
+    "phonetic": "/dæns/"
+  },
+  {
+    "word": "draw",
+    "meaning": "画",
+    "phonetic": "/drɔ/"
+  },
+  {
+    "word": "cartoon",
+    "meaning": "漫画",
+    "phonetic": "/kɑr'tun/"
+  },
+  {
+    "word": "draw cartoons",
+    "meaning": "画漫画",
+    "phonetic": ""
+  },
+  {
+    "word": "swim",
+    "meaning": "游泳",
+    "phonetic": "/swɪm/"
+  },
+  {
+    "word": "play basketball",
+    "meaning": "打篮球",
+    "phonetic": ""
+  },
+  {
+    "word": "ping-pong",
+    "meaning": "乒乓球",
+    "phonetic": ""
+  },
+  {
+    "word": "play ping-pong",
+    "meaning": "打乒乓球",
+    "phonetic": ""
+  },
+  {
+    "word": "speak English",
+    "meaning": "说英语",
+    "phonetic": ""
+  },
+  {
+    "word": "we'll",
+    "meaning": "我们将……（=we will）",
+    "phonetic": "/wɪl/"
+  },
+  {
+    "word": "party",
+    "meaning": "聚会",
+    "phonetic": "/'pɑrti/"
+  },
+  {
+    "word": "next",
+    "meaning": "下一个的",
+    "phonetic": "/nɛkst/"
+  },
+  {
+    "word": "wonderful",
+    "meaning": "极好的",
+    "phonetic": "/ˈwʌndɚfəl/"
+  },
+  {
+    "word": "learn",
+    "meaning": "学习",
+    "phonetic": "/lɝn/"
+  },
+  {
+    "word": "any",
+    "meaning": "任何的",
+    "phonetic": "/'ɛni/"
+  },
+  {
+    "word": "problem",
+    "meaning": "没问题",
+    "phonetic": "/'prɑbləm/"
+  },
+  {
+    "word": "no problem",
+    "meaning": "没问题",
+    "phonetic": ""
+  },
+  {
+    "word": "want",
+    "meaning": "要",
+    "phonetic": "/wɔ:nt; wɔnt/"
+  },
+  {
+    "word": "send",
+    "meaning": "邮寄",
+    "phonetic": "/sɛnd/"
+  },
+  {
+    "word": "email",
+    "meaning": "电子邮件",
+    "phonetic": "/'imel/"
+  },
+  {
+    "word": "at",
+    "meaning": "（接邮件地址）",
+    "phonetic": "/æt; ət/"
+  },
+  {
+    "word": "clock",
+    "meaning": "时钟",
+    "phonetic": "/klɑk/"
+  },
+  {
+    "word": "plant",
+    "meaning": "植物",
+    "phonetic": "/plænt/"
+  },
+  {
+    "word": "bottle",
+    "meaning": "瓶子",
+    "phonetic": "/'bɑtl/"
+  },
+  {
+    "word": "water bottle",
+    "meaning": "水瓶",
+    "phonetic": ""
+  },
+  {
+    "word": "bike",
+    "meaning": "自行车",
+    "phonetic": "/baɪk/"
+  },
+  {
+    "word": "photo",
+    "meaning": "照片",
+    "phonetic": "/'foto/"
+  },
+  {
+    "word": "front",
+    "meaning": "正面",
+    "phonetic": "/frʌnt/"
+  },
+  {
+    "word": "in front of",
+    "meaning": "在⋯⋯前面",
+    "phonetic": "/ɪn frʌnt ʌv/"
+  },
+  {
+    "word": "between",
+    "meaning": "在⋯⋯中间",
+    "phonetic": "/bəˈtwin/"
+  },
+  {
+    "word": "above",
+    "meaning": "在⋯⋯上面",
+    "phonetic": "/ə'bʌv/"
+  },
+  {
+    "word": "beside",
+    "meaning": "在旁边",
+    "phonetic": "/bɪ'saɪd/"
+  },
+  {
+    "word": "behind",
+    "meaning": "在⋯⋯后面",
+    "phonetic": "/bɪ'haɪnd/"
+  },
+  {
+    "word": "there",
+    "meaning": "（存在或发生）",
+    "phonetic": "/ðɛr/"
+  },
+  {
+    "word": "grandparent",
+    "meaning": "（外）祖父母",
+    "phonetic": "/'græn'pɛrənt/"
+  },
+  {
+    "word": "their",
+    "meaning": "他们的",
+    "phonetic": "/ðɛr/"
+  },
+  {
+    "word": "house",
+    "meaning": "房子",
+    "phonetic": "/haʊs/"
+  },
+  {
+    "word": "lot",
+    "meaning": "大量",
+    "phonetic": "/lɑt/"
+  },
+  {
+    "word": "lots of",
+    "meaning": "大量",
+    "phonetic": ""
+  },
+  {
+    "word": "flower",
+    "meaning": "花",
+    "phonetic": "/'flaʊɚ/"
+  },
+  {
+    "word": "move",
+    "meaning": "搬家",
+    "phonetic": "/muv/"
+  },
+  {
+    "word": "dirty",
+    "meaning": "肮脏的",
+    "phonetic": "/ˈdɝ​tɪ/"
+  },
+  {
+    "word": "everywhere",
+    "meaning": "处处",
+    "phonetic": "/'ɛvrɪwɛr/"
+  },
+  {
+    "word": "mouse",
+    "meaning": "老鼠",
+    "phonetic": "/maʊs/"
+  },
+  {
+    "word": "live",
+    "meaning": "住",
+    "phonetic": "/laɪv；lɪv/"
+  },
+  {
+    "word": "nature",
+    "meaning": "自然界",
+    "phonetic": "/'netʃɚ/"
+  },
+  {
+    "word": "forest",
+    "meaning": "森林",
+    "phonetic": "/'fɔrɪst/"
+  },
+  {
+    "word": "river",
+    "meaning": "河",
+    "phonetic": "/'rɪvɚ/"
+  },
+  {
+    "word": "lake",
+    "meaning": "湖",
+    "phonetic": "/lek/"
+  },
+  {
+    "word": "mountain",
+    "meaning": "山",
+    "phonetic": "/ˈmaʊntn/"
+  },
+  {
+    "word": "hill",
+    "meaning": "小山",
+    "phonetic": "/hɪl/"
+  },
+  {
+    "word": "tree",
+    "meaning": "树",
+    "phonetic": "/tri/"
+  },
+  {
+    "word": "bridge",
+    "meaning": "桥",
+    "phonetic": "/brɪdʒ/"
+  },
+  {
+    "word": "building",
+    "meaning": "建筑",
+    "phonetic": "/'bɪldɪŋ/"
+  },
+  {
+    "word": "village",
+    "meaning": "村庄",
+    "phonetic": "/'vɪlɪdʒ/"
+  },
+  {
+    "word": "house.",
+    "meaning": "房屋",
+    "phonetic": "/haʊs/"
+  },
+  {
+    "word": "boating",
+    "meaning": "划船",
+    "phonetic": "/'bəutiŋ/"
+  },
+  {
+    "word": "go boating",
+    "meaning": "去划船",
+    "phonetic": ""
+  },
+  {
+    "word": "aren't",
+    "meaning": "不是（= are not）",
+    "phonetic": "/ɑrnt/"
+  },
+  {
+    "word": "rabbit",
+    "meaning": "兔",
+    "phonetic": "/'ræbɪt/"
+  },
+  {
+    "word": "high",
+    "meaning": "高的",
+    "phonetic": "/haɪ/"
+  },
+  {
+    "word": "eat breakfast",
+    "meaning": "吃早饭",
+    "phonetic": "/it brɛkfəst/"
+  },
+  {
+    "word": "have...class",
+    "meaning": "上⋯⋯课",
+    "phonetic": ""
+  },
+  {
+    "word": "exercise",
+    "meaning": "练习；运动；运用",
+    "phonetic": "/'ɛksɚsaɪz/"
+  },
+  {
+    "word": "do morning exercise",
+    "meaning": "做早操",
+    "phonetic": ""
+  },
+  {
+    "word": "eat dinner",
+    "meaning": "吃晚饭",
+    "phonetic": ""
+  },
+  {
+    "word": "clean my room",
+    "meaning": "打扫我的房间",
+    "phonetic": ""
+  },
+  {
+    "word": "go for a walk",
+    "meaning": "散步",
+    "phonetic": ""
+  },
+  {
+    "word": "go shopping",
+    "meaning": "购物",
+    "phonetic": ""
+  },
+  {
+    "word": "take",
+    "meaning": "上（课）",
+    "phonetic": "/tek/"
+  },
+  {
+    "word": "dancing",
+    "meaning": "跳舞",
+    "phonetic": "/'dænsɪŋ/"
+  },
+  {
+    "word": "take a dancing class",
+    "meaning": "上舞蹈课",
+    "phonetic": ""
+  },
+  {
+    "word": "when",
+    "meaning": "什么时候",
+    "phonetic": "/hwen; hwɛn/"
+  },
+  {
+    "word": "after",
+    "meaning": "在⋯⋯之后",
+    "phonetic": "/'æftɚ/"
+  },
+  {
+    "word": "start",
+    "meaning": "开始",
+    "phonetic": "/stɑrt/"
+  },
+  {
+    "word": "usually",
+    "meaning": "通常地",
+    "phonetic": "/juʒəlɪ/"
+  },
+  {
+    "word": "Spain",
+    "meaning": "西班牙",
+    "phonetic": "/spen/"
+  },
+  {
+    "word": "late",
+    "meaning": "晚",
+    "phonetic": "/let/"
+  },
+  {
+    "word": "a.m.",
+    "meaning": "上午",
+    "phonetic": ""
+  },
+  {
+    "word": "p.m.",
+    "meaning": "下午",
+    "phonetic": ""
+  },
+  {
+    "word": "why",
+    "meaning": "为什么",
+    "phonetic": "/hwaɪ/"
+  },
+  {
+    "word": "shop",
+    "meaning": "购物",
+    "phonetic": "/ʃɑp/"
+  },
+  {
+    "word": "work",
+    "meaning": "工作",
+    "phonetic": "/wɝk/"
+  },
+  {
+    "word": "last",
+    "meaning": "上一个的",
+    "phonetic": "/læst/"
+  },
+  {
+    "word": "sound",
+    "meaning": "听起来好像",
+    "phonetic": "/saʊnd/"
+  },
+  {
+    "word": "also",
+    "meaning": "还",
+    "phonetic": "/'ɔlso/"
+  },
+  {
+    "word": "busy",
+    "meaning": "忙的",
+    "phonetic": "/ˈbɪzɪ/"
+  },
+  {
+    "word": "need",
+    "meaning": "需要",
+    "phonetic": "/nid/"
+  },
+  {
+    "word": "letter",
+    "meaning": "信",
+    "phonetic": "/'lɛtɚ/"
+  },
+  {
+    "word": "island",
+    "meaning": "岛",
+    "phonetic": "/'aɪlənd/"
+  },
+  {
+    "word": "always",
+    "meaning": "总是",
+    "phonetic": "/'ɔlwez/"
+  },
+  {
+    "word": "cave",
+    "meaning": "山洞",
+    "phonetic": "/kev/"
+  },
+  {
+    "word": "go swimming",
+    "meaning": "去游泳",
+    "phonetic": ""
+  },
+  {
+    "word": "win",
+    "meaning": "获胜",
+    "phonetic": "/wɪn/"
+  },
+  {
+    "word": "spring",
+    "meaning": "春天",
+    "phonetic": "/sprɪŋ/"
+  },
+  {
+    "word": "summer",
+    "meaning": "夏天",
+    "phonetic": "/'sʌmɚ/"
+  },
+  {
+    "word": "autumn",
+    "meaning": "秋天",
+    "phonetic": "/'ɔtəm/"
+  },
+  {
+    "word": "winter",
+    "meaning": "冬天",
+    "phonetic": "/'wɪntɚ/"
+  },
+  {
+    "word": "season",
+    "meaning": "季节",
+    "phonetic": "/'sizn/"
+  },
+  {
+    "word": "picnic",
+    "meaning": "野餐",
+    "phonetic": "/'pɪknɪk/"
+  },
+  {
+    "word": "go on a picnic",
+    "meaning": "去野餐",
+    "phonetic": ""
+  },
+  {
+    "word": "pick",
+    "meaning": "摘",
+    "phonetic": "/pɪk/"
+  },
+  {
+    "word": "pick apples",
+    "meaning": "摘苹果",
+    "phonetic": ""
+  },
+  {
+    "word": "snowman",
+    "meaning": "雪人",
+    "phonetic": "/'snomæn/"
+  },
+  {
+    "word": "make a snowman",
+    "meaning": "堆雪人",
+    "phonetic": ""
+  },
+  {
+    "word": "go swimming.",
+    "meaning": "去游泳",
+    "phonetic": ""
+  },
+  {
+    "word": "which",
+    "meaning": "哪一个",
+    "phonetic": "/wɪtʃ/"
+  },
+  {
+    "word": "best",
+    "meaning": "最",
+    "phonetic": "/bɛst/"
+  },
+  {
+    "word": "snow",
+    "meaning": "雪",
+    "phonetic": "/sno/"
+  },
+  {
+    "word": "good job",
+    "meaning": "做得好",
+    "phonetic": ""
+  },
+  {
+    "word": "because",
+    "meaning": "因为",
+    "phonetic": "/bɪ'kɔz/"
+  },
+  {
+    "word": "vacation",
+    "meaning": "假期",
+    "phonetic": "/veˈkeʃən/"
+  },
+  {
+    "word": "all",
+    "meaning": "完全",
+    "phonetic": "/ɔl/"
+  },
+  {
+    "word": "pink",
+    "meaning": "粉色",
+    "phonetic": "/pɪŋk/"
+  },
+  {
+    "word": "lovely",
+    "meaning": "可爱的",
+    "phonetic": "/'lʌvli/"
+  },
+  {
+    "word": "leaf",
+    "meaning": "叶子",
+    "phonetic": "/lif/"
+  },
+  {
+    "word": "fall",
+    "meaning": "落下",
+    "phonetic": "/fɔl/"
+  },
+  {
+    "word": "paint",
+    "meaning": "绘画",
+    "phonetic": "/pent/"
+  },
+  {
+    "word": "January",
+    "meaning": "一月",
+    "phonetic": "/'dʒænjʊ'ɛri/"
+  },
+  {
+    "word": "February",
+    "meaning": "二月",
+    "phonetic": "/ˈfebrʊerɪ;'fɛbrʊɛrɪ/"
+  },
+  {
+    "word": "March",
+    "meaning": "三月",
+    "phonetic": "/mɑrtʃ/"
+  },
+  {
+    "word": "April",
+    "meaning": "四月",
+    "phonetic": "/'eprəl/"
+  },
+  {
+    "word": "May",
+    "meaning": "五月",
+    "phonetic": "/me/"
+  },
+  {
+    "word": "June",
+    "meaning": "六月",
+    "phonetic": "/dʒun/"
+  },
+  {
+    "word": "July",
+    "meaning": "七月",
+    "phonetic": "/dʒʊˈlaɪ/"
+  },
+  {
+    "word": "August",
+    "meaning": "八月",
+    "phonetic": "/ɔˈɡʌst/"
+  },
+  {
+    "word": "September",
+    "meaning": "九月",
+    "phonetic": "/sɛp'tɛmbɚ/"
+  },
+  {
+    "word": "October",
+    "meaning": "十月",
+    "phonetic": "/ɑk'tobɚ/"
+  },
+  {
+    "word": "November",
+    "meaning": "十一月",
+    "phonetic": "/no'vɛmbɚ/"
+  },
+  {
+    "word": "December",
+    "meaning": "十二月",
+    "phonetic": "/dɪ'sɛmbɚ/"
+  },
+  {
+    "word": "few",
+    "meaning": "不多",
+    "phonetic": "/fju/"
+  },
+  {
+    "word": "a few",
+    "meaning": "一些",
+    "phonetic": ""
+  },
+  {
+    "word": "thing",
+    "meaning": "事情",
+    "phonetic": "/θɪŋ/"
+  },
+  {
+    "word": "meet",
+    "meaning": "集会",
+    "phonetic": "/mit/"
+  },
+  {
+    "word": "sports meet",
+    "meaning": "运动会",
+    "phonetic": ""
+  },
+  {
+    "word": "Easter",
+    "meaning": "复活节",
+    "phonetic": "/istəʳ/"
+  },
+  {
+    "word": "trip",
+    "meaning": "旅行",
+    "phonetic": "/trɪp/"
+  },
+  {
+    "word": "year",
+    "meaning": "年",
+    "phonetic": "/yir/"
+  },
+  {
+    "word": "contest",
+    "meaning": "比赛",
+    "phonetic": "/kən'tɛst/"
+  },
+  {
+    "word": "the Great Wall",
+    "meaning": "长城",
+    "phonetic": ""
+  },
+  {
+    "word": "national",
+    "meaning": "国家的",
+    "phonetic": "/'næʃnəl/"
+  },
+  {
+    "word": "National Day",
+    "meaning": "国庆日",
+    "phonetic": "/ˈnæʃənəl de/"
+  },
+  {
+    "word": "American",
+    "meaning": "美国的",
+    "phonetic": "/əˈmɛrɪkən/"
+  },
+  {
+    "word": "Thanksgiving",
+    "meaning": "感恩节",
+    "phonetic": ""
+  },
+  {
+    "word": "Christmas",
+    "meaning": "圣诞节",
+    "phonetic": "/ˈkrɪsməs/"
+  },
+  {
+    "word": "holiday",
+    "meaning": "节日",
+    "phonetic": "/'hɑləde/"
+  },
+  {
+    "word": "game",
+    "meaning": "游戏",
+    "phonetic": "/ɡem/"
+  },
+  {
+    "word": "roll",
+    "meaning": "滚动",
+    "phonetic": "/rol/"
+  },
+  {
+    "word": "look for",
+    "meaning": "寻找",
+    "phonetic": ""
+  },
+  {
+    "word": "chocolate",
+    "meaning": "巧克力",
+    "phonetic": "/ˈtʃɑkələt/"
+  },
+  {
+    "word": "bunny",
+    "meaning": "兔子",
+    "phonetic": "/'bʌni/"
+  },
+  {
+    "word": "RSVP",
+    "meaning": "请赐复",
+    "phonetic": ""
+  },
+  {
+    "word": "by",
+    "meaning": "在⋯⋯之前",
+    "phonetic": "/baɪ/"
+  },
+  {
+    "word": "first",
+    "meaning": "第一",
+    "phonetic": "/fɝst/"
+  },
+  {
+    "word": "second",
+    "meaning": "第二",
+    "phonetic": "/'sɛkənd/"
+  },
+  {
+    "word": "third",
+    "meaning": "第三",
+    "phonetic": "/θɝd/"
+  },
+  {
+    "word": "fourth",
+    "meaning": "第四",
+    "phonetic": "/fɔrθ/"
+  },
+  {
+    "word": "fifth",
+    "meaning": "第五",
+    "phonetic": "/fɪfθ/"
+  },
+  {
+    "word": "twelfth",
+    "meaning": "第十二",
+    "phonetic": "/twɛlfθ/"
+  },
+  {
+    "word": "twentieth",
+    "meaning": "第二十",
+    "phonetic": "/ˈtwɛntɪɪθ/"
+  },
+  {
+    "word": "twenty-first",
+    "meaning": "第二十一",
+    "phonetic": "/'twenti'fə:st/"
+  },
+  {
+    "word": "twenty-third",
+    "meaning": "第二十三",
+    "phonetic": ""
+  },
+  {
+    "word": "thirtieth",
+    "meaning": "第三十",
+    "phonetic": "/'θɝtɪɪθ/"
+  },
+  {
+    "word": "special",
+    "meaning": "特殊的",
+    "phonetic": "/ˈspɛʃəl/"
+  },
+  {
+    "word": "fool",
+    "meaning": "蠢人",
+    "phonetic": "/ful/"
+  },
+  {
+    "word": "kitten",
+    "meaning": "小猫",
+    "phonetic": "/'kɪtn/"
+  },
+  {
+    "word": "diary",
+    "meaning": "日记",
+    "phonetic": "/'daɪəri/"
+  },
+  {
+    "word": "still",
+    "meaning": "仍然",
+    "phonetic": "/stɪl/"
+  },
+  {
+    "word": "noise",
+    "meaning": "噪音",
+    "phonetic": "/nɔɪz/"
+  },
+  {
+    "word": "fur",
+    "meaning": "动物皮毛",
+    "phonetic": "/fɝ/"
+  },
+  {
+    "word": "open",
+    "meaning": "开着的",
+    "phonetic": "/'opən/"
+  },
+  {
+    "word": "walk",
+    "meaning": "行走",
+    "phonetic": "/wɔk/"
+  },
+  {
+    "word": "hers",
+    "meaning": "她的",
+    "phonetic": "/hɝz/"
+  },
+  {
+    "word": "theirs",
+    "meaning": "他们的",
+    "phonetic": "/ðɛrz/"
+  },
+  {
+    "word": "ours",
+    "meaning": "我们的",
+    "phonetic": "/ɑrz/"
+  },
+  {
+    "word": "climbing",
+    "meaning": "攀登",
+    "phonetic": "/'klaɪmɪŋ/"
+  },
+  {
+    "word": "eating",
+    "meaning": "吃",
+    "phonetic": "/'itɪŋ/"
+  },
+  {
+    "word": "playing",
+    "meaning": "玩",
+    "phonetic": "/'pleɪŋ/"
+  },
+  {
+    "word": "jumping",
+    "meaning": "跳",
+    "phonetic": "/'dʒʌmpɪŋ/"
+  },
+  {
+    "word": "drinking",
+    "meaning": "喝",
+    "phonetic": "/'drɪŋkɪŋ/"
+  },
+  {
+    "word": "sleeping",
+    "meaning": "睡觉",
+    "phonetic": "/'slipɪŋ/"
+  },
+  {
+    "word": "each",
+    "meaning": "每个",
+    "phonetic": "/itʃ/"
+  },
+  {
+    "word": "other",
+    "meaning": "其他",
+    "phonetic": "/'ʌðɚ/"
+  },
+  {
+    "word": "each other",
+    "meaning": "相互",
+    "phonetic": ""
+  },
+  {
+    "word": "excited",
+    "meaning": "兴奋地",
+    "phonetic": "/ɪk'saɪtɪd/"
+  },
+  {
+    "word": "like",
+    "meaning": "像⋯⋯那样",
+    "phonetic": "/laɪk/"
+  },
+  {
+    "word": "doing morning exercises",
+    "meaning": "做早操",
+    "phonetic": ""
+  },
+  {
+    "word": "having...class",
+    "meaning": "上⋯⋯课",
+    "phonetic": ""
+  },
+  {
+    "word": "eating lunch",
+    "meaning": "吃午饭",
+    "phonetic": ""
+  },
+  {
+    "word": "reading a book",
+    "meaning": "看书",
+    "phonetic": ""
+  },
+  {
+    "word": "listening to music",
+    "meaning": "听音乐",
+    "phonetic": ""
+  },
+  {
+    "word": "keep",
+    "meaning": "保持",
+    "phonetic": "/kip/"
+  },
+  {
+    "word": "keep to the right",
+    "meaning": "靠右",
+    "phonetic": ""
+  },
+  {
+    "word": "keep your desk clean",
+    "meaning": "保持课桌干净",
+    "phonetic": ""
+  },
+  {
+    "word": "talk quietly",
+    "meaning": "小声讲话",
+    "phonetic": ""
+  },
+  {
+    "word": "turn",
+    "meaning": "顺序",
+    "phonetic": "/tɝn/"
+  },
+  {
+    "word": "take turns",
+    "meaning": "按顺序来",
+    "phonetic": ""
+  },
+  {
+    "word": "bamboo",
+    "meaning": "竹子",
+    "phonetic": "/,bæm'bu/"
+  },
+  {
+    "word": "its",
+    "meaning": "它的",
+    "phonetic": "/ɪts/"
+  },
+  {
+    "word": "show",
+    "meaning": "指导，引导",
+    "phonetic": "/ʃo/"
+  },
+  {
+    "word": "anything",
+    "meaning": "任何事物",
+    "phonetic": "/'ɛnɪ'θɪŋ/"
+  },
+  {
+    "word": "else",
+    "meaning": "另外",
+    "phonetic": "/ɛls/"
+  },
+  {
+    "word": "exhibition",
+    "meaning": "展览",
+    "phonetic": "/ˌɛksəˈbɪʃən/"
+  },
+  {
+    "word": "say",
+    "meaning": "说；讲",
+    "phonetic": "/se/"
+  },
+  {
+    "word": "have a look",
+    "meaning": "看一看",
+    "phonetic": ""
+  },
+  {
+    "word": "sushi",
+    "meaning": "寿司",
+    "phonetic": "/'sʊʃi/"
+  },
+  {
+    "word": "teach",
+    "meaning": "教",
+    "phonetic": "/titʃ/"
+  },
+  {
+    "word": "sure",
+    "meaning": "当然",
+    "phonetic": "/ʃʊər; ʃʊr/"
+  },
+  {
+    "word": "Canadian",
+    "meaning": "加拿大的",
+    "phonetic": "/kə'nedɪən/"
+  },
+  {
+    "word": "Spanish",
+    "meaning": "西班牙的",
+    "phonetic": "/'spænɪʃ/"
+  },
+  {
+    "word": "science",
+    "meaning": "科学",
+    "phonetic": "/'saɪəns/"
+  },
+  {
+    "word": "museum",
+    "meaning": "博物馆",
+    "phonetic": "/mjuˈzɪəm/"
+  },
+  {
+    "word": "post office",
+    "meaning": "邮局",
+    "phonetic": "/ˈpost ɔfɪs/"
+  },
+  {
+    "word": "bookstore",
+    "meaning": "书店",
+    "phonetic": "/bʊkstɔr/"
+  },
+  {
+    "word": "cinema",
+    "meaning": "电影院",
+    "phonetic": "/'sɪnəmə/"
+  },
+  {
+    "word": "hospital",
+    "meaning": "医院",
+    "phonetic": "/'hɑspɪtl/"
+  },
+  {
+    "word": "crossing",
+    "meaning": "十字路口",
+    "phonetic": "/'krɔsɪŋ/"
+  },
+  {
+    "word": "left",
+    "meaning": "左",
+    "phonetic": "/lɛft/"
+  },
+  {
+    "word": "on foot",
+    "meaning": "步行",
+    "phonetic": ""
+  },
+  {
+    "word": "bus",
+    "meaning": "公共汽车",
+    "phonetic": "/bʌs/"
+  },
+  {
+    "word": "plane",
+    "meaning": "飞机",
+    "phonetic": "/plen/"
+  },
+  {
+    "word": "taxi",
+    "meaning": "出租汽车",
+    "phonetic": "/'tæksi/"
+  },
+  {
+    "word": "ship",
+    "meaning": "船",
+    "phonetic": "/ʃɪp/"
+  },
+  {
+    "word": "subway",
+    "meaning": "地铁",
+    "phonetic": "/'sʌbwe/"
+  },
+  {
+    "word": "train",
+    "meaning": "火车",
+    "phonetic": "/tren/"
+  },
+  {
+    "word": "slow",
+    "meaning": "慢的",
+    "phonetic": "/sloʊ/"
+  },
+  {
+    "word": "down",
+    "meaning": "减少",
+    "phonetic": "/daʊn/"
+  },
+  {
+    "word": "slow down",
+    "meaning": "慢下来",
+    "phonetic": ""
+  },
+  {
+    "word": "stop",
+    "meaning": "停下",
+    "phonetic": "/stɑp/"
+  },
+  {
+    "word": "Mrs",
+    "meaning": "夫人",
+    "phonetic": "/ˈmɪsɪz/"
+  },
+  {
+    "word": "early",
+    "meaning": "早到的",
+    "phonetic": "/'ɝli/"
+  },
+  {
+    "word": "helmet",
+    "meaning": "头盔",
+    "phonetic": "/'hɛlmɪt/"
+  },
+  {
+    "word": "must",
+    "meaning": "必须",
+    "phonetic": "/mʌst/"
+  },
+  {
+    "word": "wear",
+    "meaning": "戴",
+    "phonetic": "/wɛr/"
+  },
+  {
+    "word": "attention",
+    "meaning": "注意",
+    "phonetic": "/ə'tɛnʃən/"
+  },
+  {
+    "word": "pay attention to",
+    "meaning": "注意",
+    "phonetic": ""
+  },
+  {
+    "word": "traffic",
+    "meaning": "交通",
+    "phonetic": "/'træfɪk/"
+  },
+  {
+    "word": "traffic lights",
+    "meaning": "交通信号灯",
+    "phonetic": ""
+  },
+  {
+    "word": "Munich",
+    "meaning": "慕尼黑",
+    "phonetic": "/'mju:nik/"
+  },
+  {
+    "word": "Germany",
+    "meaning": "德国",
+    "phonetic": "/'dʒɝməni/"
+  },
+  {
+    "word": "Alaska",
+    "meaning": "阿拉斯加州",
+    "phonetic": "/ə'læskə/"
+  },
+  {
+    "word": "sled",
+    "meaning": "雪橇",
+    "phonetic": "/slɛd/"
+  },
+  {
+    "word": "fast",
+    "meaning": "快的",
+    "phonetic": "/fæst/"
+  },
+  {
+    "word": "ferry",
+    "meaning": "轮渡",
+    "phonetic": "/'fɛri/"
+  },
+  {
+    "word": "Papa Westray",
+    "meaning": "帕帕韦斯特雷岛",
+    "phonetic": ""
+  },
+  {
+    "word": "Scotland",
+    "meaning": "苏格兰",
+    "phonetic": "/'skɔtlənd/"
+  },
+  {
+    "word": "visit",
+    "meaning": "拜访",
+    "phonetic": "/'vɪzɪt/"
+  },
+  {
+    "word": "film",
+    "meaning": "电影",
+    "phonetic": "/fɪlm/"
+  },
+  {
+    "word": "see a film",
+    "meaning": "看电影",
+    "phonetic": ""
+  },
+  {
+    "word": "take a trip",
+    "meaning": "去旅行",
+    "phonetic": ""
+  },
+  {
+    "word": "supermarket",
+    "meaning": "超市",
+    "phonetic": "/'sʊpɚ'mɑrkɪt/"
+  },
+  {
+    "word": "evening",
+    "meaning": "晚上",
+    "phonetic": "/'ivnɪŋ/"
+  },
+  {
+    "word": "tonight",
+    "meaning": "今晚",
+    "phonetic": "/tə'naɪt/"
+  },
+  {
+    "word": "tomorrow",
+    "meaning": "明天",
+    "phonetic": "/tə'mɔro/"
+  },
+  {
+    "word": "next week",
+    "meaning": "下周",
+    "phonetic": "/nɛkst wik/"
+  },
+  {
+    "word": "dictionary",
+    "meaning": "词典",
+    "phonetic": "/'dɪkʃə'nɛri/"
+  },
+  {
+    "word": "comic",
+    "meaning": "滑稽的",
+    "phonetic": "/'kɑmɪk/"
+  },
+  {
+    "word": "comic book",
+    "meaning": "连环画",
+    "phonetic": ""
+  },
+  {
+    "word": "word",
+    "meaning": "单词",
+    "phonetic": "/wɝd/"
+  },
+  {
+    "word": "word book",
+    "meaning": "单词书",
+    "phonetic": "/'wɝk'bʊk/"
+  },
+  {
+    "word": "post card",
+    "meaning": "明信片",
+    "phonetic": ""
+  },
+  {
+    "word": "lesson",
+    "meaning": "课",
+    "phonetic": "/'lɛsn/"
+  },
+  {
+    "word": "space",
+    "meaning": "太空",
+    "phonetic": "/spes/"
+  },
+  {
+    "word": "travel",
+    "meaning": "旅行",
+    "phonetic": "/'trævl/"
+  },
+  {
+    "word": "half",
+    "meaning": "一半",
+    "phonetic": "/hæf/"
+  },
+  {
+    "word": "price",
+    "meaning": "价格",
+    "phonetic": "/praɪs/"
+  },
+  {
+    "word": "Mid-Autumn Festival",
+    "meaning": "中秋节",
+    "phonetic": ""
+  },
+  {
+    "word": "together",
+    "meaning": "一起",
+    "phonetic": "/tə'ɡɛðɚ/"
+  },
+  {
+    "word": "get together",
+    "meaning": "聚会",
+    "phonetic": ""
+  },
+  {
+    "word": "mooncake",
+    "meaning": "月饼",
+    "phonetic": "/'munkeɪk/"
+  },
+  {
+    "word": "poem",
+    "meaning": "诗",
+    "phonetic": "/'poəm/"
+  },
+  {
+    "word": "moon",
+    "meaning": "月亮",
+    "phonetic": "/mun/"
+  },
+  {
+    "word": "studies",
+    "meaning": "学习",
+    "phonetic": "/'stʌdiz/"
+  },
+  {
+    "word": "puzzle",
+    "meaning": "谜",
+    "phonetic": "/'pʌzl/"
+  },
+  {
+    "word": "hiking",
+    "meaning": "远足",
+    "phonetic": "/'haɪkɪŋ/"
+  },
+  {
+    "word": "pen pal",
+    "meaning": "笔友",
+    "phonetic": ""
+  },
+  {
+    "word": "hobby",
+    "meaning": "业余爱好",
+    "phonetic": "/'hɑbi/"
+  },
+  {
+    "word": "jasmine",
+    "meaning": "茉莉",
+    "phonetic": "/'dʒæzmɪn/"
+  },
+  {
+    "word": "idea",
+    "meaning": "主意",
+    "phonetic": "/aɪ'diə/"
+  },
+  {
+    "word": "Canberra",
+    "meaning": "堪培拉",
+    "phonetic": "/'kænbərə/"
+  },
+  {
+    "word": "amazing",
+    "meaning": "令人惊奇的",
+    "phonetic": "/ə'mezɪŋ/"
+  },
+  {
+    "word": "shall",
+    "meaning": "表示征求意见",
+    "phonetic": "/ʃəl/"
+  },
+  {
+    "word": "goal",
+    "meaning": "射门",
+    "phonetic": "/ɡol/"
+  },
+  {
+    "word": "join",
+    "meaning": "加入",
+    "phonetic": "/dʒɔɪn/"
+  },
+  {
+    "word": "club",
+    "meaning": "俱乐部",
+    "phonetic": "/klʌb/"
+  },
+  {
+    "word": "share",
+    "meaning": "分享",
+    "phonetic": "/ʃɛr/"
+  },
+  {
+    "word": "factory",
+    "meaning": "工厂",
+    "phonetic": "/'fæktri/"
+  },
+  {
+    "word": "worker",
+    "meaning": "工人",
+    "phonetic": "/'wɝkɚ/"
+  },
+  {
+    "word": "postman",
+    "meaning": "邮递员",
+    "phonetic": "/'postmən/"
+  },
+  {
+    "word": "businessman",
+    "meaning": "商人",
+    "phonetic": "/'bɪznəsmæn/"
+  },
+  {
+    "word": "police officer",
+    "meaning": "警察",
+    "phonetic": "/pəˈlis ˈɔfɪsɚ/"
+  },
+  {
+    "word": "fisherman",
+    "meaning": "渔民",
+    "phonetic": "/'fɪʃɚmən/"
+  },
+  {
+    "word": "scientist",
+    "meaning": "科学家",
+    "phonetic": "/'saɪəntɪst/"
+  },
+  {
+    "word": "pilot",
+    "meaning": "飞行员",
+    "phonetic": "/'paɪlət/"
+  },
+  {
+    "word": "coach",
+    "meaning": "教练",
+    "phonetic": "/kotʃ/"
+  },
+  {
+    "word": "country",
+    "meaning": "国家",
+    "phonetic": "/'kʌntri/"
+  },
+  {
+    "word": "head teacher",
+    "meaning": "校长",
+    "phonetic": ""
+  },
+  {
+    "word": "sea",
+    "meaning": "大海",
+    "phonetic": "/si/"
+  },
+  {
+    "word": "stay",
+    "meaning": "保持",
+    "phonetic": "/ste/"
+  },
+  {
+    "word": "university",
+    "meaning": "大学",
+    "phonetic": "/,junɪ'vɝsəti/"
+  },
+  {
+    "word": "gym",
+    "meaning": "体育馆",
+    "phonetic": "/dʒɪm/"
+  },
+  {
+    "word": "if",
+    "meaning": "如果",
+    "phonetic": "/ɪf/"
+  },
+  {
+    "word": "reporter",
+    "meaning": "记者",
+    "phonetic": "/rɪ'pɔrtɚ/"
+  },
+  {
+    "word": "use",
+    "meaning": "使用",
+    "phonetic": "/juz/"
+  },
+  {
+    "word": "type",
+    "meaning": "打字",
+    "phonetic": "/taɪp/"
+  },
+  {
+    "word": "quickly",
+    "meaning": "迅速地",
+    "phonetic": "/'kwɪkli/"
+  },
+  {
+    "word": "secretary",
+    "meaning": "秘书",
+    "phonetic": "/'sɛkrətɛrɪ/"
+  },
+  {
+    "word": "angry",
+    "meaning": "生气的",
+    "phonetic": "/ˈæŋgrɪ/"
+  },
+  {
+    "word": "afraid",
+    "meaning": "害怕",
+    "phonetic": "/ə'fred/"
+  },
+  {
+    "word": "sad",
+    "meaning": "难过的",
+    "phonetic": "/sæd/"
+  },
+  {
+    "word": "worried",
+    "meaning": "担心的",
+    "phonetic": "/'wɝrɪd/"
+  },
+  {
+    "word": "happy",
+    "meaning": "高兴的",
+    "phonetic": "/'hæpɪ/"
+  },
+  {
+    "word": "see a doctor",
+    "meaning": "看病",
+    "phonetic": ""
+  },
+  {
+    "word": "wear.",
+    "meaning": "穿",
+    "phonetic": "/wɛr/"
+  },
+  {
+    "word": "deep",
+    "meaning": "深的",
+    "phonetic": "/dip/"
+  },
+  {
+    "word": "breath",
+    "meaning": "呼吸",
+    "phonetic": "/brɛθ/"
+  },
+  {
+    "word": "take a deep breath",
+    "meaning": "深呼吸",
+    "phonetic": ""
+  },
+  {
+    "word": "count",
+    "meaning": "数数",
+    "phonetic": "/kaʊnt/"
+  },
+  {
+    "word": "count to ten",
+    "meaning": "数到十",
+    "phonetic": ""
+  },
+  {
+    "word": "chase",
+    "meaning": "追赶",
+    "phonetic": "/tʃeis/"
+  },
+  {
+    "word": "mice",
+    "meaning": "老鼠",
+    "phonetic": "/maɪs/"
+  },
+  {
+    "word": "bad",
+    "meaning": "邪恶的",
+    "phonetic": "/bæd/"
+  },
+  {
+    "word": "hurt",
+    "meaning": "受伤",
+    "phonetic": "/hɝ​t/"
+  },
+  {
+    "word": "ill",
+    "meaning": "有病",
+    "phonetic": "/ɪl/"
+  },
+  {
+    "word": "wrong",
+    "meaning": "有毛病",
+    "phonetic": "/rɔŋ/"
+  },
+  {
+    "word": "feel",
+    "meaning": "觉得",
+    "phonetic": "/fil/"
+  },
+  {
+    "word": "well",
+    "meaning": "健康",
+    "phonetic": "/wɛl/"
+  },
+  {
+    "word": "sit",
+    "meaning": "坐",
+    "phonetic": "/sɪt/"
+  },
+  {
+    "word": "grass",
+    "meaning": "草坪",
+    "phonetic": "/ɡræs/"
+  },
+  {
+    "word": "ant",
+    "meaning": "蚂蚁",
+    "phonetic": "/ænt/"
+  },
+  {
+    "word": "worry",
+    "meaning": "担心",
+    "phonetic": "/ˈwʌrɪ/"
+  },
+  {
+    "word": "stuck",
+    "meaning": "陷住",
+    "phonetic": "/stʌk/"
+  },
+  {
+    "word": "mud",
+    "meaning": "泥",
+    "phonetic": "/mʌd/"
+  },
+  {
+    "word": "pull",
+    "meaning": "拉",
+    "phonetic": "/pʊl/"
+  },
+  {
+    "word": "everyone",
+    "meaning": "每人",
+    "phonetic": "/'ɛvrɪwʌn/"
+  },
+  {
+    "word": "younger",
+    "meaning": "更年轻的",
+    "phonetic": "/'jʌŋɡɚ/"
+  },
+  {
+    "word": "older",
+    "meaning": "更年长的",
+    "phonetic": "/oldə/"
+  },
+  {
+    "word": "taller",
+    "meaning": "更高的",
+    "phonetic": "/'tɔlɚ/"
+  },
+  {
+    "word": "shorter",
+    "meaning": "更矮的",
+    "phonetic": ""
+  },
+  {
+    "word": "longer",
+    "meaning": "更长的",
+    "phonetic": "/'lɔŋɡɚ/"
+  },
+  {
+    "word": "thinner",
+    "meaning": "更瘦的",
+    "phonetic": "/'θɪnɚ/"
+  },
+  {
+    "word": "heavier",
+    "meaning": "更重的",
+    "phonetic": "/'hɛvɪɚðən'ɛr/"
+  },
+  {
+    "word": "bigger",
+    "meaning": "更大的",
+    "phonetic": "/bɪgə(r)/"
+  },
+  {
+    "word": "smaller",
+    "meaning": "更小的",
+    "phonetic": "/smɔlər/"
+  },
+  {
+    "word": "stronger",
+    "meaning": "更强壮的",
+    "phonetic": "/strɔ:ŋɡər/"
+  },
+  {
+    "word": "dinosaur",
+    "meaning": "恐龙",
+    "phonetic": "/ˈdaɪnəˌsɔr/"
+  },
+  {
+    "word": "hall",
+    "meaning": "大厅",
+    "phonetic": "/hɔl/"
+  },
+  {
+    "word": "metre",
+    "meaning": "米",
+    "phonetic": "/ˈmitɚ/"
+  },
+  {
+    "word": "meter",
+    "meaning": "米",
+    "phonetic": "/mitɚ/"
+  },
+  {
+    "word": "than",
+    "meaning": "比",
+    "phonetic": "/ðæn/"
+  },
+  {
+    "word": "both",
+    "meaning": "两个都",
+    "phonetic": "/boθ/"
+  },
+  {
+    "word": "kilogram",
+    "meaning": "千克",
+    "phonetic": "/'kɪləɡræm/"
+  },
+  {
+    "word": "countryside",
+    "meaning": "乡村",
+    "phonetic": "/'kʌntrɪsaɪd/"
+  },
+  {
+    "word": "lower",
+    "meaning": "更低地",
+    "phonetic": "/'loɚ/"
+  },
+  {
+    "word": "shadow",
+    "meaning": "影子",
+    "phonetic": "/'ʃædo/"
+  },
+  {
+    "word": "smarter",
+    "meaning": "更聪明的",
+    "phonetic": "/'smɑ:tə/"
+  },
+  {
+    "word": "become",
+    "meaning": "变成",
+    "phonetic": "/bɪ'kʌm/"
+  },
+  {
+    "word": "cleaned",
+    "meaning": "打扫",
+    "phonetic": "/klind/"
+  },
+  {
+    "word": "stayed",
+    "meaning": "待",
+    "phonetic": ""
+  },
+  {
+    "word": "washed",
+    "meaning": "洗",
+    "phonetic": "/wɔʃt/"
+  },
+  {
+    "word": "watched",
+    "meaning": "看",
+    "phonetic": "/wɑtʃ/"
+  },
+  {
+    "word": "had",
+    "meaning": "得病（例如 had a cold 得了感冒）",
+    "phonetic": "/hæd/"
+  },
+  {
+    "word": "had a cold",
+    "meaning": "感冒",
+    "phonetic": ""
+  },
+  {
+    "word": "slept",
+    "meaning": "睡觉",
+    "phonetic": "/slɛpt/"
+  },
+  {
+    "word": "saw",
+    "meaning": "看",
+    "phonetic": "/sɔ/"
+  },
+  {
+    "word": "yesterday",
+    "meaning": "昨天",
+    "phonetic": "/ˈjɛstɚdɪ;-de/"
+  },
+  {
+    "word": "before",
+    "meaning": "在⋯⋯之前",
+    "phonetic": "/bɪ'fɔr/"
+  },
+  {
+    "word": "drank",
+    "meaning": "喝",
+    "phonetic": "/dræŋk/"
+  },
+  {
+    "word": "magazine",
+    "meaning": "杂志",
+    "phonetic": "/'mæɡəzin/"
+  },
+  {
+    "word": "better",
+    "meaning": "更好的",
+    "phonetic": "/'bɛtɚ/"
+  },
+  {
+    "word": "faster",
+    "meaning": "更快的",
+    "phonetic": "/'fastə/"
+  },
+  {
+    "word": "hotel",
+    "meaning": "旅馆",
+    "phonetic": "/ho'tɛl/"
+  },
+  {
+    "word": "fixed",
+    "meaning": "修理",
+    "phonetic": "/fɪkst/"
+  },
+  {
+    "word": "broken",
+    "meaning": "破损的",
+    "phonetic": "/'brokən/"
+  },
+  {
+    "word": "lamp",
+    "meaning": "台灯",
+    "phonetic": "/læmp/"
+  },
+  {
+    "word": "loud",
+    "meaning": "大声的",
+    "phonetic": "/laʊd/"
+  },
+  {
+    "word": "enjoy",
+    "meaning": "享受⋯⋯的乐趣",
+    "phonetic": "/ɪn'dʒɔɪ/"
+  },
+  {
+    "word": "went",
+    "meaning": "去",
+    "phonetic": "/wɛnt/"
+  },
+  {
+    "word": "camp",
+    "meaning": "野营",
+    "phonetic": "/kæmp/"
+  },
+  {
+    "word": "went camping",
+    "meaning": "去野营",
+    "phonetic": ""
+  },
+  {
+    "word": "went fishing",
+    "meaning": "去钓鱼",
+    "phonetic": ""
+  },
+  {
+    "word": "rode",
+    "meaning": "骑",
+    "phonetic": "/rod/"
+  },
+  {
+    "word": "ate",
+    "meaning": "吃",
+    "phonetic": "/ɛt; et/"
+  },
+  {
+    "word": "took",
+    "meaning": "拍照",
+    "phonetic": "/tʊk/"
+  },
+  {
+    "word": "took pictures",
+    "meaning": "照相",
+    "phonetic": ""
+  },
+  {
+    "word": "bought",
+    "meaning": "买",
+    "phonetic": "/bɔt/"
+  },
+  {
+    "word": "gift",
+    "meaning": "礼物",
+    "phonetic": "/ɡɪft/"
+  },
+  {
+    "word": "fell",
+    "meaning": "摔倒",
+    "phonetic": "/fɛl/"
+  },
+  {
+    "word": "off",
+    "meaning": "落下",
+    "phonetic": "/ɔf/"
+  },
+  {
+    "word": "Labour Day",
+    "meaning": "劳动节",
+    "phonetic": ""
+  },
+  {
+    "word": "mule",
+    "meaning": "骡子",
+    "phonetic": "/mjul/"
+  },
+  {
+    "word": "Turpan",
+    "meaning": "吐鲁番",
+    "phonetic": ""
+  },
+  {
+    "word": "could",
+    "meaning": "能",
+    "phonetic": "/kəd; kʊd/"
+  },
+  {
+    "word": "till",
+    "meaning": "直到",
+    "phonetic": "/tɪl/"
+  },
+  {
+    "word": "beach",
+    "meaning": "沙滩",
+    "phonetic": "/bitʃ/"
+  },
+  {
+    "word": "basket",
+    "meaning": "篮子",
+    "phonetic": "/'bæskɪt/"
+  },
+  {
+    "word": "part",
+    "meaning": "角色",
+    "phonetic": "/pɑrt/"
+  },
+  {
+    "word": "licked",
+    "meaning": "舔",
+    "phonetic": "/lɪk/"
+  },
+  {
+    "word": "laughed",
+    "meaning": "笑",
+    "phonetic": ""
+  },
+  {
+    "word": "dining hall",
+    "meaning": "饭厅",
+    "phonetic": ""
+  },
+  {
+    "word": "ago",
+    "meaning": "以前",
+    "phonetic": "/ə'ɡo/"
+  },
+  {
+    "word": "cycling",
+    "meaning": "骑自行车运动",
+    "phonetic": "/'saɪklɪŋ/"
+  },
+  {
+    "word": "go cycling",
+    "meaning": "去骑自行车",
+    "phonetic": ""
+  },
+  {
+    "word": "ice-skate",
+    "meaning": "滑冰",
+    "phonetic": "/'aisskeit/"
+  },
+  {
+    "word": "badminton",
+    "meaning": "羽毛球运动",
+    "phonetic": "/'bædmɪntən/"
+  },
+  {
+    "word": "star",
+    "meaning": "星",
+    "phonetic": "/stɑr/"
+  },
+  {
+    "word": "easy",
+    "meaning": "容易的",
+    "phonetic": "/'izi/"
+  },
+  {
+    "word": "look up",
+    "meaning": "查阅",
+    "phonetic": ""
+  },
+  {
+    "word": "Internet",
+    "meaning": "互联网",
+    "phonetic": "/'ɪntɚnɛt/"
+  },
+  {
+    "word": "different",
+    "meaning": "不同的",
+    "phonetic": "/'dɪfrənt/"
+  },
+  {
+    "word": "active",
+    "meaning": "活跃的",
+    "phonetic": "/'æktɪv/"
+  },
+  {
+    "word": "race",
+    "meaning": "赛跑",
+    "phonetic": "/res/"
+  },
+  {
+    "word": "nothing",
+    "meaning": "没有什么",
+    "phonetic": "/'nʌθɪŋ/"
+  },
+  {
+    "word": "thought",
+    "meaning": "想",
+    "phonetic": "/θɔt/"
+  },
+  {
+    "word": "felt",
+    "meaning": "感觉",
+    "phonetic": "/fɛlt/"
+  },
+  {
+    "word": "cheetah",
+    "meaning": "猎豹",
+    "phonetic": "/'tʃitə/"
+  },
+  {
+    "word": "woke",
+    "meaning": "醒",
+    "phonetic": "/wok/"
+  },
+  {
+    "word": "dream",
+    "meaning": "梦",
+    "phonetic": "/drim/"
+  },
+  {
+    "word": "straight",
+    "meaning": "笔直的",
+    "phonetic": "/stret/"
+  },
+  {
+    "word": "ask",
+    "meaning": "问",
+    "phonetic": "/æsk/"
+  },
+  {
+    "word": "sir",
+    "meaning": "先生",
+    "phonetic": "/sɝ/"
+  },
+  {
+    "word": "interesting",
+    "meaning": "有趣的",
+    "phonetic": "/'ɪntrəstɪŋ/"
+  },
+  {
+    "word": "Italian",
+    "meaning": "意大利的",
+    "phonetic": "/ɪˈtæljən/"
+  },
+  {
+    "word": "restaurant",
+    "meaning": "餐馆",
+    "phonetic": "/ˈrestərənt; rɛstərənt/"
+  },
+  {
+    "word": "pizza",
+    "meaning": "比萨饼",
+    "phonetic": "/'pitsə/"
+  },
+  {
+    "word": "street",
+    "meaning": "大街",
+    "phonetic": "/strit/"
+  },
+  {
+    "word": "get",
+    "meaning": "到达",
+    "phonetic": "/ɡɛt/"
+  },
+  {
+    "word": "GPS",
+    "meaning": "全球（卫星）",
+    "phonetic": ""
+  },
+  {
+    "word": "gave",
+    "meaning": "提供",
+    "phonetic": "/ɡev/"
+  },
+  {
+    "word": "feature",
+    "meaning": "特点",
+    "phonetic": "/'fitʃɚ/"
+  },
+  {
+    "word": "follow",
+    "meaning": "跟着",
+    "phonetic": "/'fɑlo/"
+  },
+  {
+    "word": "far",
+    "meaning": "较远的",
+    "phonetic": "/fɑr/"
+  },
+  {
+    "word": "tell",
+    "meaning": "告诉",
+    "phonetic": "/tel/"
+  }
+]
