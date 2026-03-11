@@ -14,6 +14,7 @@ struct WordData {
         BookMeta(id: "gaokao", name: "高考词汇", icon: "🎓", fileName: "gaokao"),
         BookMeta(id: "cet4", name: "四级词汇", icon: "📘", fileName: "cet4"),
         BookMeta(id: "cet6", name: "六级词汇", icon: "📙", fileName: "cet6"),
+        BookMeta(id: "kaoyan", name: "考研词汇", icon: "🎯", fileName: "kaoyan"),
         BookMeta(id: "ielts", name: "雅思词汇", icon: "🌍", fileName: "ielts"),
         BookMeta(id: "toefl", name: "托福词汇", icon: "🇺🇸", fileName: "toefl"),
     ]
