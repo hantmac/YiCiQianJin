@@ -118,11 +118,15 @@ class StoreManager {
     private func listenForTransactions() -> Task<Void, Error> {
         Task.detached {
             for await result in Transaction.updates {
-                if let transaction = try? self.checkVerified(result),
-                   transaction.productID == Self.productId {
-                    await MainActor.run {
-                        self.isPurchased = transaction.revocationDate == nil
+                switch result {
+                case .verified(let transaction):
+                    if transaction.productID == Self.productId {
+                        await MainActor.run {
+                            self.isPurchased = transaction.revocationDate == nil
+                        }
                     }
+                    await transaction.finish()
+                case .unverified(let transaction, _):
                     await transaction.finish()
                 }
             }
