@@ -33,6 +33,7 @@
 		A10000010000000000000024 /* ielts.json in Resources */ = {isa = PBXBuildFile; fileRef = A10000020000000000000024 /* ielts.json */; };
 		A10000010000000000000025 /* toefl.json in Resources */ = {isa = PBXBuildFile; fileRef = A10000020000000000000025 /* toefl.json */; };
 		A10000010000000000000026 /* kaoyan.json in Resources */ = {isa = PBXBuildFile; fileRef = A10000020000000000000026 /* kaoyan.json */; };
+		A10000010000000000000027 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = A10000020000000000000027 /* PrivacyInfo.xcprivacy */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		A10000020000000000000024 /* ielts.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ielts.json; sourceTree = "<group>"; };
 		A10000020000000000000025 /* toefl.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = toefl.json; sourceTree = "<group>"; };
 		A10000020000000000000026 /* kaoyan.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = kaoyan.json; sourceTree = "<group>"; };
+		A10000020000000000000027 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		A10000030000000000000001 /* YiCiQianJin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YiCiQianJin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -91,6 +93,7 @@
 				A10000020000000000000002 /* ContentView.swift */,
 				A10000020000000000000003 /* Assets.xcassets */,
 				A10000020000000000000018 /* Products.storekit */,
+				A10000020000000000000027 /* PrivacyInfo.xcprivacy */,
 				A10000050000000000000004 /* Models */,
 				A10000050000000000000005 /* Data */,
 				A10000050000000000000006 /* ViewModels */,
@@ -226,6 +229,7 @@
 				A10000010000000000000024 /* ielts.json in Resources */,
 				A10000010000000000000025 /* toefl.json in Resources */,
 				A10000010000000000000026 /* kaoyan.json in Resources */,
+				A10000010000000000000027 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,6 +324,7 @@
 				DEVELOPMENT_TEAM = F6D6G6X5SK;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "一词千金";
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -344,6 +349,7 @@
 				DEVELOPMENT_TEAM = F6D6G6X5SK;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "一词千金";
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
