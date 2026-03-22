@@ -8,9 +8,14 @@ class StoreManager {
     private(set) var product: Product?
     private(set) var isPurchased = false
     private(set) var isLoading = false
+    private(set) var isLoadingProducts = false
     private(set) var errorMessage: String?
 
     private var transactionListener: Task<Void, Error>?
+
+    private enum LoadError: Error {
+        case timeout
+    }
 
     init() {
         transactionListener = listenForTransactions()
@@ -28,12 +33,36 @@ class StoreManager {
 
     @MainActor
     func loadProducts() async {
+        guard !isLoadingProducts else { return }
+        isLoadingProducts = true
+        errorMessage = nil
+
         do {
-            let products = try await Product.products(for: [Self.productId])
+            let products = try await withThrowingTaskGroup(of: [Product].self) { group in
+                group.addTask {
+                    try await Product.products(for: [Self.productId])
+                }
+                group.addTask {
+                    try await Task.sleep(for: .seconds(15))
+                    throw LoadError.timeout
+                }
+                guard let result = try await group.next() else {
+                    throw LoadError.timeout
+                }
+                group.cancelAll()
+                return result
+            }
             product = products.first
+            if product == nil {
+                errorMessage = "未找到商品信息，请稍后重试"
+            }
+        } catch is LoadError {
+            errorMessage = "加载商品信息超时，请检查网络后重试"
         } catch {
             errorMessage = "无法加载商品信息: \(error.localizedDescription)"
         }
+
+        isLoadingProducts = false
     }
 
     // MARK: - Purchase

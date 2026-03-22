@@ -44,6 +44,11 @@ struct PremiumView: View {
 
             Spacer()
         }
+        .task {
+            if store.product == nil && !store.isLoadingProducts {
+                await store.loadProducts()
+            }
+        }
     }
 
     private var featuresCard: some View {
@@ -74,10 +79,22 @@ struct PremiumView: View {
                         .font(.subheadline)
                         .foregroundStyle(.white.opacity(0.6))
                 }
-            } else {
+            } else if store.isLoadingProducts {
                 ProgressView()
                     .tint(.white)
                     .padding(.vertical, 8)
+            } else {
+                Text("商品信息加载失败")
+                    .font(.subheadline)
+                    .foregroundStyle(.white.opacity(0.6))
+                    .padding(.vertical, 4)
+                Button {
+                    Task { await store.loadProducts() }
+                } label: {
+                    Text("点击重试")
+                        .font(.caption)
+                        .foregroundStyle(.yellow)
+                }
             }
             Text("（反人类价格，配反人类APP）")
                 .font(.caption2)
