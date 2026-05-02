@@ -102,15 +102,21 @@ class StudyViewModel {
     }
 
     var streakDays: Int {
-        let dates = Set(state.studyRecords.map { $0.date }).sorted().reversed()
-        var streak = 0
+        let uniqueDates = Set(state.studyRecords.map { $0.date })
         let cal = Calendar.current
+        let f = DateFormatter()
+        f.dateFormat = "yyyy-MM-dd"
         let today = Date()
-        for (i, dateStr) in dates.enumerated() {
-            guard let expected = cal.date(byAdding: .day, value: -i, to: today) else { break }
-            let f = DateFormatter()
-            f.dateFormat = "yyyy-MM-dd"
-            if dateStr == f.string(from: expected) {
+        let todayStr = f.string(from: today)
+
+        // Start counting from today if studied, otherwise from yesterday
+        let startOffset = uniqueDates.contains(todayStr) ? 0 : 1
+        var streak = 0
+
+        for i in startOffset... {
+            guard let checkDate = cal.date(byAdding: .day, value: -i, to: today) else { break }
+            let dateStr = f.string(from: checkDate)
+            if uniqueDates.contains(dateStr) {
                 streak += 1
             } else {
                 break
@@ -140,7 +146,7 @@ class StudyViewModel {
             currentPage = .bookComplete
             return
         }
-        if !yesterdayWords.isEmpty && !state.todayQuizPassed {
+        if !yesterdayWords.isEmpty && !state.todayQuizPassed && !state.isPremium {
             currentPage = .quiz
         } else {
             currentPage = .study

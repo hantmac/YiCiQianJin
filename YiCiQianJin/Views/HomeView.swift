@@ -26,21 +26,40 @@ struct HomeView: View {
 
                 // Current book
                 if let book = vm.currentBook {
-                    HStack {
-                        VStack(alignment: .leading, spacing: 2) {
-                            Text("当前词书")
-                                .font(.caption)
-                                .foregroundStyle(.white.opacity(0.5))
-                            Text(book.name)
-                                .font(.headline)
-                                .foregroundStyle(.white)
+                    VStack(spacing: 10) {
+                        HStack {
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text("当前词书")
+                                    .font(.caption)
+                                    .foregroundStyle(.white.opacity(0.5))
+                                Text(book.name)
+                                    .font(.headline)
+                                    .foregroundStyle(.white)
+                            }
+                            Spacer()
+                            Button("更换") {
+                                vm.currentPage = .bookSelect
+                            }
+                            .font(.subheadline)
+                            .foregroundStyle(.white.opacity(0.6))
                         }
-                        Spacer()
-                        Button("更换") {
-                            vm.currentPage = .bookSelect
+
+                        // Progress
+                        let total = book.words.count
+                        let current = min(vm.state.currentWordIndex, total)
+                        VStack(spacing: 4) {
+                            ProgressView(value: Double(current), total: Double(total))
+                                .tint(.green)
+                            HStack {
+                                Text("已学 \(current)/\(total)")
+                                    .font(.caption2)
+                                    .foregroundStyle(.white.opacity(0.4))
+                                Spacer()
+                                Text("\(Int(Double(current) / Double(max(total, 1)) * 100))%")
+                                    .font(.caption2)
+                                    .foregroundStyle(.white.opacity(0.4))
+                            }
                         }
-                        .font(.subheadline)
-                        .foregroundStyle(.white.opacity(0.6))
                     }
                     .padding()
                     .background(.ultraThinMaterial)
