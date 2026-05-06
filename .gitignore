@@ -63,3 +63,6 @@ fastlane/test_output
 
 # App Store Screenshots
 Screenshots/
+
+# Build output
+build/
