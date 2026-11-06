@@ -30,6 +30,31 @@ struct WordData {
         )
     }
 
+    static func book(_ id: String?) -> WordBook? {
+        books.first { $0.id == id }
+    }
+
+    /// Fast word lookup (phonetic etc.) for records, which only store word + meaning.
+    private static let index: [String: Word] = {
+        var map: [String: Word] = [:]
+        for book in books {
+            for word in book.words {
+                map[WordKey.make(bookId: book.id, word: word.word)] = word
+            }
+        }
+        return map
+    }()
+
+    static func word(for record: StudyRecord) -> Word? {
+        index[record.wordKey]
+    }
+
+    /// Distractor pool for quiz questions about `record`.
+    static func pool(for record: StudyRecord) -> [Word] {
+        let words = book(record.bookId)?.words ?? []
+        return words.isEmpty ? books.flatMap(\.words) : words
+    }
+
     private static func loadWords(from fileName: String) -> [Word] {
         guard let url = Bundle.main.url(forResource: fileName, withExtension: "json"),
               let data = try? Data(contentsOf: url),

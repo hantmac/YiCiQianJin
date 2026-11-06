@@ -2,47 +2,47 @@ import SwiftUI
 
 struct CalendarPageView: View {
     @Bindable var vm: StudyViewModel
-    @State private var displayedMonth: Date = Date()
+    @State private var displayedMonth = Date()
+    @State private var selectedDay: String = DayKey.today()
 
     private let weekDays = ["日", "一", "二", "三", "四", "五", "六"]
     private let columns = Array(repeating: GridItem(.flexible(), spacing: 4), count: 7)
 
     var body: some View {
-        ScrollView {
-            VStack(spacing: 16) {
-                // Header
-                HStack {
-                    Button {
-                        vm.currentPage = .home
-                    } label: {
-                        HStack(spacing: 4) {
-                            Image(systemName: "chevron.left")
-                            Text("返回")
-                        }
-                        .foregroundStyle(.white.opacity(0.6))
-                    }
-                    Spacer()
-                    Text("学习日历")
-                        .font(.headline)
-                        .foregroundStyle(.white)
-                    Spacer()
-                    Text("返回").opacity(0)
+        AdaptiveSplit {
+            ScrollView {
+                VStack(spacing: 16) {
+                    statsRow
+                    calendarSection
                 }
-
-                // Stats
-                HStack(spacing: 12) {
-                    miniStat(value: vm.streakDays, label: "连续打卡", icon: "flame.fill", color: .orange)
-                    miniStat(value: vm.totalWords, label: "已学单词", icon: "book.fill", color: .cyan)
-                    miniStat(value: vm.studyDates.count, label: "学习天数", icon: "calendar", color: .green)
-                }
-
-                // Calendar
-                calendarSection
-
-                // History
-                historySection
+                .padding()
             }
-            .padding()
+            .scrollIndicators(.hidden)
+        } secondary: {
+            ScrollView {
+                dayDetail.padding()
+            }
+            .scrollIndicators(.hidden)
+        } compact: {
+            ScrollView {
+                VStack(spacing: 16) {
+                    statsRow
+                    calendarSection
+                    dayDetail
+                }
+                .padding()
+                .readableWidth()
+            }
+            .scrollIndicators(.hidden)
+        }
+        .pageChrome("学习日历") { vm.go(.home) }
+    }
+
+    private var statsRow: some View {
+        HStack(spacing: 12) {
+            miniStat(value: vm.stats.currentStreak, label: "当前连续", icon: "flame.fill", color: Theme.flame)
+            miniStat(value: vm.stats.longestStreak, label: "最长连续", icon: "trophy.fill", color: Theme.gold)
+            miniStat(value: vm.stats.studyDays, label: "累计天数", icon: "calendar", color: Theme.correct)
         }
     }
 
@@ -51,209 +51,149 @@ struct CalendarPageView: View {
     private var calendarSection: some View {
         let cal = Calendar.current
         let comps = cal.dateComponents([.year, .month], from: displayedMonth)
-        let year = comps.year!
-        let month = comps.month!
-        let firstOfMonth = cal.date(from: DateComponents(year: year, month: month, day: 1))!
+        let firstOfMonth = cal.date(from: comps) ?? Date()
         let firstWeekday = cal.component(.weekday, from: firstOfMonth) - 1
-        let daysInMonth = cal.range(of: .day, in: .month, for: firstOfMonth)!.count
-
-        let todayComps = cal.dateComponents([.year, .month, .day], from: Date())
-        let isCurrentMonthView = (year == todayComps.year! && month == todayComps.month!)
-
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
+        let daysInMonth = cal.range(of: .day, in: .month, for: firstOfMonth)?.count ?? 30
+        let isCurrentMonth = cal.isDate(displayedMonth, equalTo: Date(), toGranularity: .month)
+        let dates = vm.studyDates
+        let keys = (1...daysInMonth).map { d in DayKey.string(from: cal.date(byAdding: .day, value: d - 1, to: firstOfMonth)!) }
+        let studiedThisMonth = keys.filter { dates[$0] != nil }.count
 
         return VStack(spacing: 14) {
-            // Month navigation
             HStack {
-                Button {
-                    withAnimation(.easeInOut(duration: 0.2)) {
-                        displayedMonth = cal.date(byAdding: .month, value: -1, to: displayedMonth)!
-                    }
-                } label: {
-                    Image(systemName: "chevron.left")
-                        .foregroundStyle(.white.opacity(0.6))
-                        .frame(width: 36, height: 36)
-                        .background(.white.opacity(0.08))
-                        .clipShape(Circle())
-                }
-
+                monthButton("chevron.left", label: "上个月", disabled: false) { shiftMonth(-1) }
                 Spacer()
-                Text(monthTitle(year: year, month: month))
-                    .font(.headline)
-                    .foregroundStyle(.white)
-                Spacer()
-
-                Button {
-                    withAnimation(.easeInOut(duration: 0.2)) {
-                        displayedMonth = cal.date(byAdding: .month, value: 1, to: displayedMonth)!
-                    }
-                } label: {
-                    Image(systemName: "chevron.right")
-                        .foregroundStyle(isCurrentMonthView ? .white.opacity(0.15) : .white.opacity(0.6))
-                        .frame(width: 36, height: 36)
-                        .background(.white.opacity(0.08))
-                        .clipShape(Circle())
+                VStack(spacing: 2) {
+                    Text(verbatim: "\(comps.year ?? 0)年\(comps.month ?? 0)月")
+                        .font(.headline)
+                        .foregroundStyle(.white)
+                    Text("本月打卡 \(studiedThisMonth) 天")
+                        .font(.caption)
+                        .foregroundStyle(Theme.textSecondary)
                 }
-                .disabled(isCurrentMonthView)
+                Spacer()
+                monthButton("chevron.right", label: "下个月", disabled: isCurrentMonth) { shiftMonth(1) }
             }
 
-            // Single grid: weekday headers + day cells
-            let cells: [CalendarCell] = {
-                var result: [CalendarCell] = []
-                // Empty cells before first day (use negative IDs to avoid collision)
-                for i in 0..<firstWeekday {
-                    result.append(CalendarCell(id: -(i + 1), day: 0, hasStudy: false, isToday: false, isFuture: false))
-                }
-                // Day cells
-                for d in 1...daysInMonth {
-                    let dateStr = formatter.string(from: cal.date(from: DateComponents(year: year, month: month, day: d))!)
-                    let hasStudy = vm.studyDates[dateStr] != nil
-                    let isToday = isCurrentMonthView && d == todayComps.day!
-                    let isFuture = isFutureDate(year: year, month: month, day: d, todayComps: todayComps)
-                    result.append(CalendarCell(id: d, day: d, hasStudy: hasStudy, isToday: isToday, isFuture: isFuture))
-                }
-                return result
-            }()
-
             LazyVGrid(columns: columns, spacing: 8) {
-                // Weekday headers
                 ForEach(weekDays, id: \.self) { d in
                     Text(d)
                         .font(.caption.weight(.medium))
-                        .foregroundStyle(.white.opacity(0.4))
-                        .frame(height: 30)
+                        .foregroundStyle(Theme.textTertiary)
+                        .frame(height: 24)
                 }
+                ForEach(0..<firstWeekday, id: \.self) { i in
+                    Color.clear.frame(height: 40).id("empty-\(i)")
+                }
+                ForEach(Array(keys.enumerated()), id: \.element) { i, key in
+                    dayCell(day: i + 1, key: key, count: dates[key]?.count ?? 0)
+                }
+            }
+        }
+        .card(padding: 16, radius: 24)
+    }
 
-                // Day cells (single ForEach, unique IDs)
-                ForEach(cells) { cell in
-                    if cell.day == 0 {
-                        Color.clear.frame(height: 44)
-                    } else {
-                        dayCellView(day: cell.day, hasStudy: cell.hasStudy, isToday: cell.isToday, isFuture: cell.isFuture)
+    private func monthButton(_ symbol: String, label: String, disabled: Bool, action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            Image(systemName: symbol)
+                .font(.subheadline.weight(.semibold))
+                .foregroundStyle(.white.opacity(disabled ? 0.25 : 0.9))
+                .frame(width: 36, height: 36)
+                .background(Theme.surface, in: Circle())
+        }
+        .disabled(disabled)
+        .accessibilityLabel(label)
+    }
+
+    private func shiftMonth(_ value: Int) {
+        withAnimation(.easeInOut(duration: 0.2)) {
+            displayedMonth = Calendar.current.date(byAdding: .month, value: value, to: displayedMonth) ?? displayedMonth
+        }
+    }
+
+    private func dayCell(day: Int, key: String, count: Int) -> some View {
+        let isToday = key == vm.today
+        let isFuture = DayKey.distance(from: vm.today, to: key) > 0
+        let isSelected = key == selectedDay
+        // Heat: one word → gold, several (Pro) → deeper gold.
+        let heat: Color = count > 1 ? Theme.goldDeep : Theme.gold
+
+        return Button {
+            withAnimation(.spring(duration: 0.25)) { selectedDay = key }
+        } label: {
+            Text("\(day)")
+                .font(.subheadline.weight(count > 0 ? .bold : .regular))
+                .foregroundStyle(count > 0 ? Theme.onGold : (isFuture ? Color.white.opacity(0.25) : Theme.textSecondary))
+                .frame(width: 38, height: 38)
+                .background {
+                    if count > 0 {
+                        Circle().fill(heat)
                     }
                 }
-            }
+                .overlay {
+                    if isSelected {
+                        Circle().strokeBorder(.white, lineWidth: 2)
+                    } else if isToday {
+                        Circle().strokeBorder(.white.opacity(0.5), style: StrokeStyle(lineWidth: 1.5, dash: [3, 3]))
+                    }
+                }
+                .frame(height: 40)
         }
-        .padding()
-        .background(.ultraThinMaterial)
-        .clipShape(RoundedRectangle(cornerRadius: 24))
+        .buttonStyle(PressableStyle())
+        .disabled(isFuture)
+        .accessibilityLabel("\(day) 日\(isToday ? "，今天" : "")，\(count > 0 ? "学习了 \(count) 个词" : "未学习")")
     }
 
-    private func dayCellView(day: Int, hasStudy: Bool, isToday: Bool, isFuture: Bool) -> some View {
-        VStack(spacing: 3) {
-            ZStack {
-                if hasStudy {
-                    Circle()
-                        .fill(Color.green.opacity(0.3))
+    // MARK: - Day detail
+
+    private var dayDetail: some View {
+        let records = (vm.studyDates[selectedDay] ?? []).uniqueWords()
+        return VStack(alignment: .leading, spacing: 12) {
+            HStack {
+                Text(formatDateHeader(selectedDay))
+                    .font(.headline)
+                    .foregroundStyle(.white)
+                Spacer()
+                if !records.isEmpty {
+                    Label("\(records.count) 个词", systemImage: "checkmark.circle.fill")
+                        .font(.caption.weight(.semibold))
+                        .foregroundStyle(Theme.correct)
                 }
-                if isToday {
-                    Circle()
-                        .stroke(Color.white.opacity(0.6), lineWidth: 2)
-                }
-                Text("\(day)")
-                    .font(.subheadline.weight(hasStudy ? .bold : .regular))
-                    .foregroundStyle(
-                        isFuture ? .white.opacity(0.15) :
-                        hasStudy ? .white : .white.opacity(0.6)
-                    )
             }
-            .frame(width: 34, height: 34)
-
-            // Check-in indicator
-            if hasStudy {
-                Image(systemName: "checkmark.circle.fill")
-                    .font(.system(size: 8))
-                    .foregroundStyle(.green)
-            } else {
-                Color.clear.frame(width: 8, height: 8)
-            }
-        }
-        .frame(height: 44)
-    }
-
-    // MARK: - History
-
-    private var historySection: some View {
-        let grouped = Dictionary(grouping: vm.state.studyRecords, by: { $0.date })
-        let sortedDates = grouped.keys.sorted(by: >)
-
-        return VStack(alignment: .leading, spacing: 14) {
-            Text("学习记录")
-                .font(.headline)
-                .foregroundStyle(.white)
-
-            if sortedDates.isEmpty {
-                Text("还没有学习记录")
+            if records.isEmpty {
+                Text(selectedDay == vm.today ? "今天还没有学习，去背今天的一词吧" : "这一天没有学习记录")
                     .font(.subheadline)
-                    .foregroundStyle(.white.opacity(0.4))
+                    .foregroundStyle(Theme.textTertiary)
                     .frame(maxWidth: .infinity)
-                    .padding(.vertical, 20)
+                    .padding(.vertical, 16)
             } else {
-                ForEach(sortedDates.prefix(15), id: \.self) { date in
-                    let records = grouped[date]!
-                    VStack(alignment: .leading, spacing: 8) {
-                        HStack {
-                            Image(systemName: "checkmark.circle.fill")
-                                .foregroundStyle(.green)
-                                .font(.caption)
-                            Text(formatDateHeader(date))
-                                .font(.subheadline.weight(.medium))
-                                .foregroundStyle(.white.opacity(0.8))
-                            Spacer()
-                            Text("\(records.count)个单词")
-                                .font(.caption)
-                                .foregroundStyle(.white.opacity(0.4))
+                ForEach(records) { record in
+                    HStack(spacing: 12) {
+                        WordThumbnail(word: record.word, size: 48)
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text(record.word)
+                                .font(Theme.wordFont(20))
+                                .foregroundStyle(.white)
+                            Text(record.meaning)
+                                .font(.footnote)
+                                .foregroundStyle(Theme.textSecondary)
+                                .lineLimit(2)
                         }
-
-                        FlowLayout(spacing: 6) {
-                            ForEach(records) { record in
-                                Text(record.word)
-                                    .font(.caption)
-                                    .foregroundStyle(.white.opacity(0.7))
-                                    .padding(.horizontal, 10)
-                                    .padding(.vertical, 5)
-                                    .background(.white.opacity(0.08))
-                                    .clipShape(Capsule())
-                            }
-                        }
+                        Spacer()
+                        SpeakButton(text: record.word, size: 34)
                     }
-                    .padding(.horizontal, 12)
-                    .padding(.vertical, 10)
-                    .background(.white.opacity(0.05))
-                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                    .card(padding: 12, radius: 16)
                 }
             }
         }
-        .padding()
-        .background(.ultraThinMaterial)
-        .clipShape(RoundedRectangle(cornerRadius: 24))
+        .card()
     }
 
-    // MARK: - Helpers
-
-    private func monthTitle(year: Int, month: Int) -> String {
-        "\(year)年\(month)月"
-    }
-
-    private func isFutureDate(year: Int, month: Int, day: Int, todayComps: DateComponents) -> Bool {
-        let ty = todayComps.year!
-        let tm = todayComps.month!
-        let td = todayComps.day!
-        if year != ty { return year > ty }
-        if month != tm { return month > tm }
-        return day > td
-    }
-
-    private func formatDateHeader(_ dateStr: String) -> String {
-        let cal = Calendar.current
+    private func formatDateHeader(_ key: String) -> String {
+        if key == vm.today { return "今天" }
+        if key == DayKey.adding(-1, to: vm.today) { return "昨天" }
+        guard let date = DayKey.date(from: key) else { return key }
         let f = DateFormatter()
-        f.dateFormat = "yyyy-MM-dd"
-        guard let date = f.date(from: dateStr) else { return dateStr }
-        let todayStr = f.string(from: Date())
-        if dateStr == todayStr { return "今天" }
-        let yesterdayStr = f.string(from: cal.date(byAdding: .day, value: -1, to: Date())!)
-        if dateStr == yesterdayStr { return "昨天" }
         f.dateFormat = "M月d日"
         return f.string(from: date)
     }
@@ -264,27 +204,18 @@ struct CalendarPageView: View {
                 .font(.caption)
                 .foregroundStyle(color)
             Text("\(value)")
-                .font(.title2.bold())
+                .font(Theme.number(.title2))
                 .foregroundStyle(.white)
             Text(label)
                 .font(.caption2)
-                .foregroundStyle(.white.opacity(0.5))
+                .foregroundStyle(Theme.textSecondary)
         }
         .frame(maxWidth: .infinity)
         .padding(.vertical, 12)
-        .background(.ultraThinMaterial)
-        .clipShape(RoundedRectangle(cornerRadius: 16))
+        .background(Theme.surface, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+        .overlay(RoundedRectangle(cornerRadius: 18, style: .continuous).strokeBorder(Theme.stroke))
+        .accessibilityElement(children: .combine)
     }
-}
-
-// MARK: - CalendarCell
-
-private struct CalendarCell: Identifiable {
-    let id: Int
-    let day: Int
-    let hasStudy: Bool
-    let isToday: Bool
-    let isFuture: Bool
 }
 
 // MARK: - FlowLayout

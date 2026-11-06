@@ -11,12 +11,12 @@
       "localizations" : [
         {
           "description" : "解锁无限背单词，不再受每日一词的限制",
-          "displayName" : "一词千金 Pro",
+          "displayName" : "小象单词 Pro",
           "locale" : "zh_CN"
         }
       ],
       "productID" : "com.yiciqianjin.app.pro",
-      "referenceName" : "一词千金 Pro 永久解锁",
+      "referenceName" : "小象单词 Pro 永久解锁",
       "type" : "NonConsumable"
     }
   ],

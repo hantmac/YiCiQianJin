@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <!-- 小象单词 mascot: a baby elephant holding a golden word card with its trunk. -->
+  <defs>
+    <linearGradient id="skin" gradientUnits="userSpaceOnUse" x1="0" y1="240" x2="0" y2="720">
+      <stop offset="0" stop-color="#F4F6FF"/>
+      <stop offset="1" stop-color="#C9D1FA"/>
+    </linearGradient>
+    <linearGradient id="ear" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#E3E8FF"/>
+      <stop offset="1" stop-color="#B4BEF2"/>
+    </linearGradient>
+    <linearGradient id="inner" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFC9DE"/>
+      <stop offset="1" stop-color="#F59BBE"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFE08A"/>
+      <stop offset="1" stop-color="#F5A524"/>
+    </linearGradient>
+    <linearGradient id="trunk" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#DCE2FD"/>
+      <stop offset="1" stop-color="#BFC8F6"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="18"/>
+      <feOffset dy="16" result="b"/>
+      <feFlood flood-color="#1B1050" flood-opacity="0.28"/>
+      <feComposite in2="b" operator="in"/>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <g filter="url(#shadow)">
+
+  <!-- ears -->
+  <g>
+    <ellipse cx="270" cy="470" rx="205" ry="215" fill="url(#ear)"/>
+    <ellipse cx="290" cy="485" rx="135" ry="150" fill="url(#inner)"/>
+    <ellipse cx="754" cy="470" rx="205" ry="215" fill="url(#ear)"/>
+    <ellipse cx="734" cy="485" rx="135" ry="150" fill="url(#inner)"/>
+  </g>
+
+  <!-- head -->
+  <ellipse cx="512" cy="480" rx="255" ry="240" fill="url(#skin)"/>
+
+  <!-- hair tuft -->
+  <path d="M488 252 C478 214 494 196 512 190 M512 248 C512 210 522 192 540 186 M536 254 C544 222 562 210 580 210"
+        fill="none" stroke="#B4BEF2" stroke-width="16" stroke-linecap="round"/>
+
+  <!-- golden word card, held up by the trunk tip -->
+  <g transform="rotate(-12 840 588)">
+    <rect x="756" y="504" width="168" height="168" rx="34" fill="url(#gold)"/>
+    <rect x="756" y="504" width="168" height="168" rx="34" fill="none" stroke="#FFF3C4" stroke-opacity="0.75" stroke-width="6"/>
+    <text x="840" y="630" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif"
+          font-weight="700" font-size="124" fill="#4A2900">A</text>
+  </g>
+
+  <!-- trunk: down from the face, curling up to the right; darker rim separates it from the face -->
+  <path d="M512 540 C512 668 532 770 632 770 C708 770 760 728 770 666"
+        fill="none" stroke="#A7B1EE" stroke-width="104" stroke-linecap="round"/>
+  <path d="M512 540 C512 668 532 770 632 770 C708 770 760 728 770 666"
+        fill="none" stroke="url(#trunk)" stroke-width="86" stroke-linecap="round"/>
+  <path d="M488 650 Q514 662 540 650 M498 704 Q524 718 552 704"
+        fill="none" stroke="#A9B3EC" stroke-width="10" stroke-linecap="round"/>
+  <!-- blend the trunk root into the face so it grows out of it -->
+  <ellipse cx="512" cy="540" rx="62" ry="46" fill="url(#skin)"/>
+
+  <!-- eyes -->
+  <ellipse cx="428" cy="452" rx="32" ry="40" fill="#232A5C"/>
+  <ellipse cx="596" cy="452" rx="32" ry="40" fill="#232A5C"/>
+  <circle cx="440" cy="438" r="12" fill="#FFFFFF"/>
+  <circle cx="608" cy="438" r="12" fill="#FFFFFF"/>
+  <circle cx="420" cy="468" r="5" fill="#FFFFFF" opacity="0.8"/>
+  <circle cx="588" cy="468" r="5" fill="#FFFFFF" opacity="0.8"/>
+
+  <!-- cheeks -->
+  <ellipse cx="362" cy="540" rx="42" ry="24" fill="#FF8FB8" opacity="0.55"/>
+  <ellipse cx="662" cy="540" rx="42" ry="24" fill="#FF8FB8" opacity="0.55"/>
+
+  <!-- smile under the trunk root -->
+  <path d="M440 592 Q456 610 472 598" fill="none" stroke="#232A5C" stroke-width="9" stroke-linecap="round"/>
+  </g>
+</svg>

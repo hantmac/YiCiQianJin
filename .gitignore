@@ -61,8 +61,18 @@ fastlane/Preview.html
 fastlane/screenshots/**/*.png
 fastlane/test_output
 
-# App Store Screenshots
-Screenshots/
+# Local screenshots and App Store marketing exports (not app resources)
+/Screenshots/
+/AppStoreScreenshots/
+/yiciqianjinPro_*.png
+
+# Keep YiCiQianJin/Assets.xcassets/, YiCiQianJin/Illustrations/ and
+# design/mascot.svg tracked: these are runtime resources or their source.
+
+# Local system files and Python-generated caches
+.DS_Store
+__pycache__/
+*.py[cod]
 
 # Build output
 build/

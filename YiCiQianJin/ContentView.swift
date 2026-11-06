@@ -2,137 +2,114 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var vm = StudyViewModel()
+    @Environment(\.scenePhase) private var scenePhase
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     var body: some View {
         ZStack {
-            LinearGradient(
-                colors: [Color(red: 0.4, green: 0.49, blue: 0.92),
-                         Color(red: 0.46, green: 0.29, blue: 0.64)],
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-            .ignoresSafeArea()
+            AppBackground()
 
-            Group {
-                switch vm.currentPage {
-                case .bookSelect:
-                    BookSelectView(vm: vm)
+            // A system NavigationStack hosts each page's toolbar, so iPhone Duo can lay
+            // Back/Close out vertically on the outer display.
+            NavigationStack {
+                page
+                    .id(vm.currentPage)
+                    .transition(reduceMotion ? .opacity : .asymmetric(
+                        insertion: .opacity.combined(with: .scale(scale: 0.97)),
+                        removal: .opacity
+                    ))
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background { AppBackground() }
+            }
 
-                case .home:
-                    HomeView(vm: vm)
-
-                case .study:
-                    if let word = vm.currentWord {
-                        StudyView(word: word) {
-                            vm.markWordStudied()
-                        }
-                    }
-
-                case .quiz:
-                    QuizView(
-                        wordsToQuiz: vm.yesterdayWords,
-                        onPass: { vm.quizPassed() },
-                        onFail: { vm.quizFailed($0) },
-                        onRecord: { vm.recordQuizResult(word: $0, correct: $1) }
-                    )
-
-                case .reviewFailed:
-                    if let record = vm.failedRecord {
-                        reviewFailedView(record: record)
-                    }
-
-                case .bookComplete:
-                    bookCompleteView
-
-                case .calendar:
-                    CalendarPageView(vm: vm)
-
-                case .premium:
-                    PremiumView(vm: vm)
+            if let toast = vm.toast {
+                VStack {
+                    Text(toast)
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundStyle(Theme.onGold)
+                        .padding(.horizontal, 18)
+                        .padding(.vertical, 10)
+                        .background(Theme.goldGradient, in: Capsule())
+                        .shadow(color: .black.opacity(0.2), radius: 10, y: 4)
+                        .padding(.top, 8)
+                    Spacer()
                 }
+                .transition(.move(edge: .top).combined(with: .opacity))
+                .accessibilityAddTraits(.updatesFrequently)
             }
 
-            if vm.showCheckIn {
-                CheckInSuccessView(
-                    streakDays: vm.streakDays,
-                    totalWords: vm.totalWords,
-                    onClose: { vm.closeCheckIn() }
-                )
+            if let celebration = vm.celebration {
+                CheckInSuccessView(celebration: celebration, stats: vm.stats, level: vm.level) {
+                    withAnimation(.easeInOut(duration: 0.25)) { vm.closeCelebration() }
+                }
+                .transition(.opacity)
+                .zIndex(10)
             }
+        }
+        .animation(.easeInOut(duration: 0.28), value: vm.currentPage)
+        .animation(.easeInOut(duration: 0.25), value: vm.celebration?.id)
+        .preferredColorScheme(.dark)
+        .onChange(of: scenePhase) { _, phase in
+            if phase == .active { vm.refreshDay() }
         }
     }
 
-    private func reviewFailedView(record: StudyRecord) -> some View {
-        VStack(spacing: 0) {
-            Spacer()
-            VStack(spacing: 20) {
-                Text("😤")
-                    .font(.system(size: 50))
-                Text("考试没通过，继续复习这个词")
-                    .font(.subheadline)
-                    .foregroundStyle(.white.opacity(0.5))
-                Text(record.word)
-                    .font(.system(size: 48, weight: .bold))
-                    .foregroundStyle(.white)
-                Text(record.meaning)
-                    .font(.title2)
-                    .foregroundStyle(.white)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(.white.opacity(0.1))
-                    .clipShape(RoundedRectangle(cornerRadius: 16))
-                Text("记住了再点下面的按钮，明天还会考你！")
-                    .font(.footnote)
-                    .foregroundStyle(.white.opacity(0.4))
-                Button {
-                    vm.reviewDone()
-                } label: {
-                    Text("这次真的记住了")
-                        .font(.headline)
-                        .foregroundStyle(.purple)
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 16)
-                        .background(.white)
-                        .clipShape(RoundedRectangle(cornerRadius: 16))
-                }
+    @ViewBuilder
+    private var page: some View {
+        switch vm.currentPage {
+        case .bookSelect:
+            BookSelectView(vm: vm)
+        case .home:
+            HomeView(vm: vm)
+        case .study:
+            if let word = vm.currentWord {
+                StudyView(vm: vm, word: word)
+                    .id(word.word) // fresh reveal/spelling state for each new word
+            } else {
+                HomeView(vm: vm)
             }
-            .padding(32)
-            .background(.ultraThinMaterial)
-            .clipShape(RoundedRectangle(cornerRadius: 24))
-            .padding(.horizontal)
-            Spacer()
+        case .exam:
+            QuizView(vm: vm, mode: .exam, records: vm.examWords)
+        case .review:
+            QuizView(vm: vm, mode: .review, records: Array(vm.dueReviews.prefix(StudyViewModel.reviewBatch)))
+        case .bookComplete:
+            bookCompleteView
+        case .calendar:
+            CalendarPageView(vm: vm)
+        case .premium:
+            PremiumView(vm: vm)
+        case .library:
+            WordLibraryView(vm: vm)
+        case .achievements:
+            AchievementsView(vm: vm)
+        case .settings:
+            SettingsView(vm: vm)
         }
     }
 
     private var bookCompleteView: some View {
         VStack(spacing: 0) {
             Spacer()
-            VStack(spacing: 20) {
-                Text("🎊")
-                    .font(.system(size: 60))
-                Text("恭喜你！")
+            VStack(spacing: 18) {
+                Image(systemName: "trophy.fill")
+                    .font(.system(size: 56))
+                    .foregroundStyle(Theme.goldGradient)
+                Text("整本词书已学完！")
                     .font(.title.bold())
                     .foregroundStyle(.white)
-                Text("你已经背完了这本单词书的所有单词！")
+                Text("「\(vm.currentBook?.name ?? "")」的每一个单词都已收入你的词库。\n温故复习会继续帮你巩固它们。")
                     .font(.subheadline)
-                    .foregroundStyle(.white.opacity(0.6))
-                Button {
-                    vm.currentPage = .bookSelect
-                } label: {
-                    Text("换一本单词书")
-                        .font(.headline)
-                        .foregroundStyle(.purple)
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 16)
-                        .background(.white)
-                        .clipShape(RoundedRectangle(cornerRadius: 16))
-                }
+                    .foregroundStyle(Theme.textSecondary)
+                    .multilineTextAlignment(.center)
+                Button("挑战下一本词书") { vm.go(.bookSelect) }
+                    .buttonStyle(GoldButtonStyle())
+                    .padding(.top, 6)
             }
-            .padding(32)
-            .background(.ultraThinMaterial)
-            .clipShape(RoundedRectangle(cornerRadius: 24))
+            .card(padding: 28, radius: 28)
             .padding(.horizontal)
+            .readableWidth(520)
             Spacer()
         }
+        .pageChrome("") { vm.go(.home) }
     }
 }

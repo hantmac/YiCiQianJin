@@ -6,31 +6,23 @@ struct PremiumView: View {
     private var store: StoreManager { vm.storeManager }
 
     var body: some View {
-        VStack(spacing: 0) {
-            HStack {
-                Button {
-                    vm.currentPage = .home
-                } label: {
-                    Label("返回", systemImage: "chevron.left")
-                        .foregroundStyle(.white.opacity(0.6))
-                }
-                Spacer()
-            }
-            .padding()
-
-            Spacer()
-
+        // Scrolls on short displays (e.g. iPhone Duo outer display), centered otherwise.
+        GeometryReader { proxy in
+          ScrollView {
             VStack(spacing: 20) {
-                Text("👑")
-                    .font(.system(size: 60))
+                Image(systemName: "crown.fill")
+                    .font(.system(size: 52))
+                    .foregroundStyle(Theme.goldGradient)
+                    .symbolEffect(.bounce, value: vm.state.isPremium)
 
-                Text("一词千金 Pro")
+                Text("小象单词 Pro")
                     .font(.title.bold())
                     .foregroundStyle(.white)
 
                 Text("解锁无限背单词，不再受每日一词的限制")
                     .font(.subheadline)
-                    .foregroundStyle(.white.opacity(0.6))
+                    .foregroundStyle(Theme.textSecondary)
+                    .multilineTextAlignment(.center)
 
                 featuresCard
                 priceSection
@@ -38,12 +30,15 @@ struct PremiumView: View {
                 actionSection
             }
             .padding(24)
-            .background(.ultraThinMaterial)
-            .clipShape(RoundedRectangle(cornerRadius: 24))
-            .padding(.horizontal)
-
-            Spacer()
+            .background(Theme.surfaceStrong, in: RoundedRectangle(cornerRadius: 28, style: .continuous))
+            .overlay(RoundedRectangle(cornerRadius: 28, style: .continuous).strokeBorder(Theme.gold.opacity(0.3)))
+            .padding()
+            .readableWidth(520)
+            .frame(minHeight: proxy.size.height)
+          }
+          .scrollBounceBehavior(.basedOnSize)
         }
+        .pageChrome("") { vm.go(.home) }
         .task {
             if store.product == nil && !store.isLoadingProducts {
                 await store.loadProducts()
@@ -54,22 +49,15 @@ struct PremiumView: View {
     private var featuresCard: some View {
         VStack(alignment: .leading, spacing: 16) {
             featureRow("每天背无限个单词")
-            featureRow("解锁全部单词书")
-            featureRow("考试不通过也能继续背新词")
+            featureRow("昨日考试可选，不再卡住新词")
             featureRow("支持开发者买杯咖啡")
         }
-        .padding()
-        .background(.white.opacity(0.05))
-        .clipShape(RoundedRectangle(cornerRadius: 16))
+        .card(padding: 16, radius: 16)
     }
 
     @ViewBuilder
     private var priceSection: some View {
         VStack(spacing: 4) {
-            Text("原价 ¥998/年")
-                .font(.caption)
-                .foregroundStyle(.white.opacity(0.4))
-                .strikethrough()
             if let product = store.product {
                 HStack(alignment: .firstTextBaseline, spacing: 2) {
                     Text(product.displayPrice)
@@ -77,7 +65,7 @@ struct PremiumView: View {
                         .foregroundStyle(.white)
                     Text("/永久")
                         .font(.subheadline)
-                        .foregroundStyle(.white.opacity(0.6))
+                        .foregroundStyle(Theme.textSecondary)
                 }
             } else if store.isLoadingProducts {
                 ProgressView()
@@ -86,19 +74,19 @@ struct PremiumView: View {
             } else {
                 Text("商品信息加载失败")
                     .font(.subheadline)
-                    .foregroundStyle(.white.opacity(0.6))
+                    .foregroundStyle(Theme.textSecondary)
                     .padding(.vertical, 4)
                 Button {
                     Task { await store.loadProducts() }
                 } label: {
                     Text("点击重试")
                         .font(.caption)
-                        .foregroundStyle(.yellow)
+                        .foregroundStyle(Theme.gold)
                 }
             }
             Text("（反人类价格，配反人类APP）")
                 .font(.caption2)
-                .foregroundStyle(.white.opacity(0.4))
+                .foregroundStyle(Theme.textTertiary)
         }
     }
 
@@ -107,7 +95,7 @@ struct PremiumView: View {
         if let error = store.errorMessage {
             Text(error)
                 .font(.caption)
-                .foregroundStyle(.red.opacity(0.8))
+                .foregroundStyle(Theme.wrong)
                 .multilineTextAlignment(.center)
         }
     }
@@ -115,13 +103,11 @@ struct PremiumView: View {
     @ViewBuilder
     private var actionSection: some View {
         if vm.state.isPremium {
-            Text("已是尊贵的 Pro 用户 👑")
+            Label("已是尊贵的 Pro 用户", systemImage: "checkmark.seal.fill")
                 .font(.headline)
-                .foregroundStyle(.green)
-                .padding()
-                .frame(maxWidth: .infinity)
-                .background(.green.opacity(0.15))
-                .clipShape(RoundedRectangle(cornerRadius: 16))
+                .foregroundStyle(Theme.correct)
+                .frame(maxWidth: .infinity, minHeight: 54)
+                .background(Theme.correct.opacity(0.15), in: RoundedRectangle(cornerRadius: 18, style: .continuous))
         } else {
             VStack(spacing: 12) {
                 Button {
@@ -129,19 +115,12 @@ struct PremiumView: View {
                 } label: {
                     HStack {
                         if store.isLoading {
-                            ProgressView().tint(.white)
+                            ProgressView().tint(Theme.onGold)
                         }
                         Text(store.isLoading ? "购买中..." : "立即升级")
                     }
-                    .font(.headline)
-                    .foregroundStyle(.white)
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 16)
-                    .background(
-                        LinearGradient(colors: [.yellow, .orange], startPoint: .leading, endPoint: .trailing)
-                    )
-                    .clipShape(RoundedRectangle(cornerRadius: 16))
                 }
+                .buttonStyle(GoldButtonStyle())
                 .disabled(store.isLoading || store.product == nil)
 
                 Button {
@@ -152,7 +131,7 @@ struct PremiumView: View {
                 } label: {
                     Text("恢复购买")
                         .font(.subheadline)
-                        .foregroundStyle(.white.opacity(0.6))
+                        .foregroundStyle(Theme.textSecondary)
                 }
                 .disabled(store.isLoading)
             }
@@ -162,7 +141,7 @@ struct PremiumView: View {
     private func featureRow(_ text: String) -> some View {
         HStack(spacing: 12) {
             Image(systemName: "checkmark.circle.fill")
-                .foregroundStyle(.green)
+                .foregroundStyle(Theme.gold)
             Text(text)
                 .foregroundStyle(.white)
         }
