@@ -111,8 +111,9 @@ final class LearningFlowUITests: XCTestCase {
         sleep(1)
         snap(app, "06-check-in")
 
+        // Nothing is due yet (the new word's first review is in 5 minutes), so the flow ends at home.
         tap(app, "收下千金")
-        XCTAssertTrue(app.staticTexts["今日一词已收入词库"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["今天学完了"].waitForExistence(timeout: 5))
         snap(app, "07-home-done")
         // Free users can't start another new word today.
         XCTAssertFalse(app.buttons["开始今日学习"].exists)
@@ -120,11 +121,12 @@ final class LearningFlowUITests: XCTestCase {
 
     func testLegacyUserTakesExamThenLearns() {
         let app = launch(state: legacyPendingState())
-        XCTAssertTrue(app.buttons["开始考试"].waitForExistence(timeout: 5))
-        XCTAssertTrue(app.staticTexts["已连续 12 天，今天学完就是第 13 天"].exists, "legacy streak should survive migration")
+        XCTAssertTrue(app.buttons["开始学习"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.descendants(matching: .any)["连续学习 12 天"].exists, "legacy streak should survive migration")
         snap(app, "10-home-exam-pending")
 
-        tap(app, "开始考试")
+        // One button runs the whole day: exam → new word → review.
+        tap(app, "开始学习")
         sleep(1)
         snap(app, "11-exam-question")
         answerCurrentQuestion(app)
@@ -138,29 +140,34 @@ final class LearningFlowUITests: XCTestCase {
 
         toStudy.tap()
         XCTAssertTrue(app.buttons["揭晓释义"].waitForExistence(timeout: 5), "exam completion should unlock today's word")
+        tap(app, "揭晓释义")
+        app.buttons.matching(NSPredicate(format: "label BEGINSWITH '收入词库'")).firstMatch.tap()
+        // Older words are due, so the check-in hands over to review.
+        tap(app, "收下千金，去复习")
+        XCTAssertTrue(app.buttons["退出温故复习"].waitForExistence(timeout: 5))
+        snap(app, "14-flow-review")
     }
 
     func testReviewSessionAndSecondaryPages() {
         let app = launch(state: legacyPendingState())
-        XCTAssertTrue(app.buttons["开始考试"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.buttons["开始学习"].waitForExistence(timeout: 5))
 
-        // Review is available alongside the pending exam.
-        app.buttons.matching(NSPredicate(format: "label BEGINSWITH '温故复习'")).firstMatch.tap()
+        // Review is also reachable from the library while the exam is pending.
+        openTab(app, "词库")
+        tap(app, "去复习")
         XCTAssertTrue(app.buttons["退出温故复习"].waitForExistence(timeout: 5))
         answerCurrentQuestion(app)
         XCTAssertTrue(app.buttons["下一题"].waitForExistence(timeout: 5))
         snap(app, "20-review-feedback")
         tap(app, "退出温故复习")
 
-        app.swipeUp()
-        app.buttons.matching(NSPredicate(format: "label BEGINSWITH '我的词库'")).firstMatch.tap()
-        XCTAssertTrue(app.staticTexts["我的词库"].waitForExistence(timeout: 5))
+        openTab(app, "词库")
+        XCTAssertTrue(app.staticTexts["词库"].waitForExistence(timeout: 5))
         snap(app, "21-library")
         tap(app, "易错词")
         snap(app, "22-library-mistakes")
-        tap(app, "返回")
 
-        app.swipeUp()
+        openTab(app, "我的")
         app.buttons.matching(NSPredicate(format: "label BEGINSWITH '等级与成就'")).firstMatch.tap()
         XCTAssertTrue(app.staticTexts["等级与成就"].waitForExistence(timeout: 5))
         snap(app, "23-achievements")
@@ -168,22 +175,26 @@ final class LearningFlowUITests: XCTestCase {
         snap(app, "24-achievements-badges")
         tap(app, "返回")
 
-        app.swipeUp()
         app.buttons.matching(NSPredicate(format: "label BEGINSWITH '学习日历'")).firstMatch.tap()
         XCTAssertTrue(app.staticTexts["学习日历"].waitForExistence(timeout: 5))
         snap(app, "25-calendar")
         tap(app, "返回")
 
-        app.swipeDown()
-        tap(app, "设置")
+        tapPrefix(app, "设置")
         XCTAssertTrue(app.staticTexts["学习提醒"].waitForExistence(timeout: 5))
         snap(app, "26-settings")
         tap(app, "返回")
 
-        app.swipeUp()
-        tap(app, "更换词书")
+        tapPrefix(app, "更换词书")
         XCTAssertTrue(app.staticTexts["选择词书"].waitForExistence(timeout: 5))
         snap(app, "27-book-select")
+    }
+
+    private func openTab(_ app: XCUIApplication, _ name: String) {
+        let tab = app.tabBars.buttons[name].firstMatch
+        let button = tab.waitForExistence(timeout: 3) ? tab : app.buttons[name].firstMatch
+        XCTAssertTrue(button.waitForExistence(timeout: 3), "tab \(name) not found")
+        button.tap()
     }
 
     private func tapPrefix(_ app: XCUIApplication, _ prefix: String) {
@@ -200,7 +211,9 @@ final class LearningFlowUITests: XCTestCase {
 
     func testMemoryCollectionAndGames() {
         let app = launch(state: legacyPendingState())
-        XCTAssertTrue(app.buttons["开始考试"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.buttons["开始学习"].waitForExistence(timeout: 5))
+        openTab(app, "发现")
+        snap(app, "29-discover")
 
         // Legacy schedules migrate onto the Ebbinghaus nodes and show up on the curve page.
         tapPrefix(app, "记忆曲线")
@@ -220,9 +233,8 @@ final class LearningFlowUITests: XCTestCase {
         XCTAssertTrue(app.staticTexts["插画图鉴"].waitForExistence(timeout: 5))
         snap(app, "32-collection")
         tap(app, "返回")
+        app.swipeUp()
 
-        tapPrefix(app, "小游戏")
-        XCTAssertTrue(app.staticTexts["小游戏"].waitForExistence(timeout: 5))
         tapPrefix(app, "60 秒闪电战")
         XCTAssertTrue(app.buttons["退出闪电战"].waitForExistence(timeout: 5))
         sleep(3) // 3-2-1 countdown
@@ -233,6 +245,6 @@ final class LearningFlowUITests: XCTestCase {
         XCTAssertTrue(app.staticTexts["先点单词，再点它的意思"].waitForExistence(timeout: 5))
         snap(app, "34-match")
         tap(app, "退出词义配对")
-        XCTAssertTrue(app.staticTexts["小游戏"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["小游戏"].waitForExistence(timeout: 5), "games return to the discover tab")
     }
 }

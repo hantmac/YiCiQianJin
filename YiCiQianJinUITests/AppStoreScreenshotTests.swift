@@ -109,7 +109,7 @@ final class AppStoreScreenshotTests: XCTestCase {
         app.launch()
         defer { XCUIDevice.shared.orientation = .portrait }
 
-        tapButton(app, beginsWith: "开始今日学习")
+        tapButton(app, beginsWith: "开始学习")
         tapButton(app, beginsWith: "揭晓释义")
         XCTAssertTrue(app.staticTexts["studyWord"].waitForExistence(timeout: 5))
         XCTAssertEqual(app.staticTexts["studyWord"].label, "harbour")
@@ -117,24 +117,25 @@ final class AppStoreScreenshotTests: XCTestCase {
         snap("1-study")
 
         tapButton(app, beginsWith: "收入词库")
-        XCTAssertTrue(app.buttons["收下千金"].waitForExistence(timeout: 5))
+        let collect = app.buttons.matching(NSPredicate(format: "label BEGINSWITH '收下千金'")).firstMatch
+        XCTAssertTrue(collect.waitForExistence(timeout: 5))
         sleep(2)
         snap("5-check-in")
-        app.buttons["收下千金"].tap()
+        // Due words exist, so the check-in continues straight into review.
+        collect.tap()
 
-        XCTAssertTrue(app.staticTexts["今日一词已收入词库"].waitForExistence(timeout: 5))
-        sleep(1)
-        snap("3-home")
-
-        tapButton(app, beginsWith: "我的词库")
-        XCTAssertTrue(app.staticTexts["我的词库"].waitForExistence(timeout: 5))
-        sleep(2)
-        snap("4-library")
-        app.buttons["返回"].firstMatch.tap()
-
-        tapButton(app, beginsWith: "温故复习")
         XCTAssertTrue(app.staticTexts["看图，选出画的是哪个单词"].waitForExistence(timeout: 5))
         sleep(2)
         snap("2-picture-quiz")
+        app.buttons["退出温故复习"].tap()
+
+        XCTAssertTrue(app.staticTexts["今日学习"].waitForExistence(timeout: 5))
+        sleep(1)
+        snap("3-home")
+
+        app.tabBars.buttons["词库"].firstMatch.tap()
+        XCTAssertTrue(app.staticTexts["词库"].waitForExistence(timeout: 5))
+        sleep(2)
+        snap("4-library")
     }
 }

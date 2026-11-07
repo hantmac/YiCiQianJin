@@ -75,7 +75,9 @@ struct WordLibraryView: View {
                 .scrollDismissesKeyboard(.immediately)
             }
         }
-        .pageChrome("我的词库") { vm.go(.home) }
+        .navigationTitle("词库")
+        .navigationBarTitleDisplayMode(.inline) // the summary card is the page header
+        .toolbarBackground(.hidden, for: .navigationBar)
         .sheet(item: $selected) { record in
             WordMemorySheet(vm: vm, record: record)
         }

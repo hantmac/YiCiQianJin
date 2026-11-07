@@ -14,7 +14,7 @@ struct MatchGameView: View {
             .toolbarBackground(.hidden, for: .navigationBar)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button { vm.go(.games) } label: {
+                    Button { vm.go(.discover) } label: {
                         Label("退出词义配对", systemImage: "xmark")
                     }
                 }

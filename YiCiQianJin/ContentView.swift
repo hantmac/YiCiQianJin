@@ -9,18 +9,24 @@ struct ContentView: View {
         ZStack {
             AppBackground()
 
-            // A system NavigationStack hosts each page's toolbar, so iPhone Duo can lay
-            // Back/Close out vertically on the outer display.
-            NavigationStack {
-                page
-                    .id(vm.currentPage)
-                    .transition(reduceMotion ? .opacity : .asymmetric(
-                        insertion: .opacity.combined(with: .scale(scale: 0.97)),
-                        removal: .opacity
-                    ))
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .background { AppBackground() }
+            Group {
+                if vm.currentPage == .home {
+                    tabs
+                } else {
+                    // A system NavigationStack hosts each page's toolbar, so iPhone Duo can lay
+                    // Back/Close out vertically on the outer display.
+                    NavigationStack {
+                        page
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                            .background { AppBackground() }
+                    }
+                }
             }
+            .id(vm.currentPage)
+            .transition(reduceMotion ? .opacity : .asymmetric(
+                insertion: .opacity.combined(with: .scale(scale: 0.97)),
+                removal: .opacity
+            ))
 
             if let toast = vm.toast {
                 VStack {
@@ -39,7 +45,8 @@ struct ContentView: View {
             }
 
             if let celebration = vm.celebration {
-                CheckInSuccessView(celebration: celebration, stats: vm.stats, level: vm.level) {
+                CheckInSuccessView(celebration: celebration, stats: vm.stats, level: vm.level,
+                                   actionTitle: vm.celebrationActionTitle) {
                     withAnimation(.easeInOut(duration: 0.25)) { vm.closeCelebration() }
                 }
                 .transition(.opacity)
@@ -61,13 +68,41 @@ struct ContentView: View {
         }
     }
 
+    /// 背单词 / 词库 / 发现 / 我的. Learning flows and secondary pages cover the tab bar.
+    private var tabs: some View {
+        // tabItem/tag rather than `Tab` keeps iOS 17 support.
+        TabView(selection: $vm.tab) {
+            tabRoot { HomeView(vm: vm) }
+                .tabItem { Label("背单词", systemImage: "book.pages") }
+                .tag(AppTab.learn)
+            tabRoot { WordLibraryView(vm: vm) }
+                .tabItem { Label("词库", systemImage: "books.vertical") }
+                .tag(AppTab.library)
+            tabRoot { DiscoverView(vm: vm) }
+                .tabItem { Label("发现", systemImage: "sparkles") }
+                .tag(AppTab.discover)
+            tabRoot { MeView(vm: vm) }
+                .tabItem { Label("我的", systemImage: "person.crop.circle") }
+                .tag(AppTab.me)
+        }
+        .tint(Theme.gold)
+    }
+
+    private func tabRoot<Content: View>(@ViewBuilder _ content: () -> Content) -> some View {
+        NavigationStack {
+            content()
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background { AppBackground() }
+        }
+    }
+
     @ViewBuilder
     private var page: some View {
         switch vm.currentPage {
         case .bookSelect:
             BookSelectView(vm: vm)
-        case .home:
-            HomeView(vm: vm)
+        case .home, .library, .discover, .me:
+            EmptyView() // shown by `tabs`
         case .study:
             if let word = vm.currentWord {
                 StudyView(vm: vm, word: word)
@@ -85,8 +120,6 @@ struct ContentView: View {
             CalendarPageView(vm: vm)
         case .premium:
             PremiumView(vm: vm)
-        case .library:
-            WordLibraryView(vm: vm)
         case .achievements:
             AchievementsView(vm: vm)
         case .settings:
@@ -95,8 +128,6 @@ struct ContentView: View {
             MemoryCurveView(vm: vm)
         case .collection:
             CollectionView(vm: vm)
-        case .games:
-            GamesView(vm: vm)
         case .blitz:
             BlitzGameView(vm: vm)
         case .match:

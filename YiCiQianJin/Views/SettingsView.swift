@@ -81,11 +81,6 @@ struct SettingsView: View {
                         }
                     }
 
-                    section("词书与会员") {
-                        navRow("更换词书", detail: vm.currentBook?.name, symbol: "book.closed.fill") { vm.go(.bookSelect) }
-                        navRow(vm.state.isPremium ? "Pro 会员" : "升级 Pro", detail: vm.state.isPremium ? "已解锁" : "无限学习新词", symbol: "crown.fill") { vm.go(.premium) }
-                    }
-
                     Text("小象单词 \(Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "")")
                         .font(.caption)
                         .foregroundStyle(Theme.textTertiary)

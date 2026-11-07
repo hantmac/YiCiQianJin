@@ -14,7 +14,7 @@ struct BlitzGameView: View {
             .toolbarBackground(.hidden, for: .navigationBar)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button { vm.go(.games) } label: {
+                    Button { vm.go(.discover) } label: {
                         Label("退出闪电战", systemImage: "xmark")
                     }
                 }

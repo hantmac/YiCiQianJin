@@ -629,7 +629,10 @@ struct QuizView: View {
         switch mode {
         case .exam:
             let prefix = failed.isEmpty ? "" : "记住了，"
-            return prefix + (vm.canLearnNewWord ? "学习今日新词" : "回到首页")
+            // Mirrors StudyViewModel.continueFlow, which runs once the exam is marked done.
+            let next = (vm.canLearnNewWord && !vm.hasStudiedToday) ? "学习今日新词"
+                : (vm.dueReviews.isEmpty ? "回到首页" : "继续温故复习")
+            return prefix + next
         case .review:
             return "完成复习"
         }

@@ -5,6 +5,7 @@ struct CheckInSuccessView: View {
     let celebration: Celebration
     let stats: LearningStats
     let level: Level
+    var actionTitle = "收下千金"
     let onClose: () -> Void
 
     @State private var appeared = false
@@ -95,7 +96,7 @@ struct CheckInSuccessView: View {
                 .card(padding: 14, radius: 16)
             }
 
-            Button("收下千金", action: onClose)
+            Button(actionTitle, action: onClose)
                 .buttonStyle(GoldButtonStyle())
         }
         .padding(24)

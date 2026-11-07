@@ -26,11 +26,16 @@
 - `MemoryNodeTrack`、`RetentionBar`、`MemorySparkline`、`WordMemorySheet`、`MemoryFormat`：`Views/MemoryComponents.swift`。
 - `GameSummaryView`：`Views/GamesView.swift`，所有游戏结算页共用。
 
+## 导航
+- 底部 4 个 Tab：背单词 / 词库 / 发现 / 我的（用户确认）。学习流程（考试、新词、复习、游戏）和二级页面盖住 Tab 栏，返回时回到原来的 Tab。（Agent 推断）
+- 发现：记忆曲线、插画图鉴、小游戏。我的：等级与千金、日历、成就、词书、Pro、设置。（用户确认）
+- 今天的学习按「昨日考试 → 今日新词 → 温故复习」自动连着走，一步结束直接进下一步，不回首页。（用户确认）
+
 ## 样板页面
-- `YiCiQianJin/Views/HomeView.swift`：主卡（含三步进度）+ 记忆曲线卡 + 2×2 入口 + 词书 + 等级行。
+- `YiCiQianJin/Views/HomeView.swift`：只有今日词数、模糊插画、连胜和一个开始按钮（用户确认）。
 - `YiCiQianJin/Views/MemoryCurveView.swift`：图表卡片的写法。
 
 ## 不要做
 - 不用白色半透明玻璃叠紫色渐变。
-- 首页不再加独立的任务卡或大等级卡；新入口进 2×2 宫格。
+- 背单词首页不加任何卡片、入口或统计；新功能放进「发现」或「我的」。（用户确认）
 - 金色不用于装饰性图标底色；朗读按钮是深色圆底金色图标。

@@ -56,9 +56,11 @@
 		A10000010000000000000051 /* MemoryComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000020000000000000051 /* MemoryComponents.swift */; };
 		A10000010000000000000052 /* MemoryCurveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000020000000000000052 /* MemoryCurveView.swift */; };
 		A10000010000000000000053 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000020000000000000053 /* CollectionView.swift */; };
-		A10000010000000000000054 /* GamesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000020000000000000054 /* GamesView.swift */; };
+		A10000010000000000000054 /* GameSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000020000000000000054 /* GameSummaryView.swift */; };
 		A10000010000000000000055 /* BlitzGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000020000000000000055 /* BlitzGameView.swift */; };
 		A10000010000000000000056 /* MatchGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000020000000000000056 /* MatchGameView.swift */; };
+		A10000010000000000000057 /* DiscoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000020000000000000057 /* DiscoverView.swift */; };
+		A10000010000000000000058 /* MeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000020000000000000058 /* MeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,9 +133,11 @@
 		A10000020000000000000051 /* MemoryComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryComponents.swift; sourceTree = "<group>"; };
 		A10000020000000000000052 /* MemoryCurveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCurveView.swift; sourceTree = "<group>"; };
 		A10000020000000000000053 /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
-		A10000020000000000000054 /* GamesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesView.swift; sourceTree = "<group>"; };
+		A10000020000000000000054 /* GameSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSummaryView.swift; sourceTree = "<group>"; };
 		A10000020000000000000055 /* BlitzGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlitzGameView.swift; sourceTree = "<group>"; };
 		A10000020000000000000056 /* MatchGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchGameView.swift; sourceTree = "<group>"; };
+		A10000020000000000000057 /* DiscoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverView.swift; sourceTree = "<group>"; };
+		A10000020000000000000058 /* MeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -247,9 +251,11 @@
 			children = (
 				A10000020000000000000039 /* AdaptiveLayout.swift */,
 				A10000020000000000000010 /* HomeView.swift */,
+				A10000020000000000000058 /* MeView.swift */,
+				A10000020000000000000057 /* DiscoverView.swift */,
 				A10000020000000000000056 /* MatchGameView.swift */,
 				A10000020000000000000055 /* BlitzGameView.swift */,
-				A10000020000000000000054 /* GamesView.swift */,
+				A10000020000000000000054 /* GameSummaryView.swift */,
 				A10000020000000000000053 /* CollectionView.swift */,
 				A10000020000000000000052 /* MemoryCurveView.swift */,
 				A10000020000000000000051 /* MemoryComponents.swift */,
@@ -445,9 +451,11 @@
 				A10000010000000000000008 /* WordData.swift in Sources */,
 				A10000010000000000000009 /* StudyViewModel.swift in Sources */,
 				A10000010000000000000010 /* HomeView.swift in Sources */,
+				A10000010000000000000058 /* MeView.swift in Sources */,
+				A10000010000000000000057 /* DiscoverView.swift in Sources */,
 				A10000010000000000000056 /* MatchGameView.swift in Sources */,
 				A10000010000000000000055 /* BlitzGameView.swift in Sources */,
-				A10000010000000000000054 /* GamesView.swift in Sources */,
+				A10000010000000000000054 /* GameSummaryView.swift in Sources */,
 				A10000010000000000000053 /* CollectionView.swift in Sources */,
 				A10000010000000000000052 /* MemoryCurveView.swift in Sources */,
 				A10000010000000000000051 /* MemoryComponents.swift in Sources */,

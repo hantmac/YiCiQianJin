@@ -2,9 +2,27 @@ import Foundation
 import SwiftUI
 
 enum AppPage: Equatable {
-    case home, bookSelect, study, exam, review, bookComplete
+    /// The tab bar; which tab shows is `StudyViewModel.tab`.
+    case home
+    case bookSelect, study, exam, review, bookComplete
     case calendar, premium, library, achievements, settings
-    case memory, collection, games, blitz, match
+    case memory, collection, discover, me, blitz, match
+}
+
+enum AppTab: Hashable {
+    case learn, library, discover, me
+}
+
+/// Today's learning, in the order the flow runs it.
+struct TodayPlan: Equatable {
+    var exam = 0
+    var newWords = 0
+    var review = 0
+
+    var total: Int { exam + newWords + review }
+
+    /// Rough minutes: ~8 s per question, ~1 min per new word.
+    var minutes: Int { max(1, Int((Double(exam + review) * 8 / 60 + Double(newWords)).rounded(.up))) }
 }
 
 /// A reward moment shown as an overlay (daily check-in, level up, new achievements).
@@ -38,11 +56,14 @@ class StudyViewModel {
 
     // Navigation & transient UI
     var currentPage: AppPage = .home
+    var tab: AppTab = .learn
     var celebration: Celebration?
     var toast: String?
 
     /// XP when the current exam/review session started, used to detect level-ups.
     private var sessionStartXP = 0
+    /// Step to open once the check-in overlay is closed.
+    private var pendingStep: AppPage?
 
     let storeManager = StoreManager()
 
@@ -71,11 +92,11 @@ class StudyViewModel {
         #if DEBUG
         // Screenshots / UI tests can open a page directly: -UITestPage memory
         if let page = UserDefaults.standard.string(forKey: "UITestPage") {
-            let pages: [String: AppPage] = ["memory": .memory, "collection": .collection, "games": .games,
+            let pages: [String: AppPage] = ["memory": .memory, "collection": .collection, "discover": .discover, "me": .me,
                                             "blitz": .blitz, "match": .match, "library": .library,
                                             "achievements": .achievements, "calendar": .calendar,
                                             "settings": .settings, "study": .study, "review": .review]
-            if let target = pages[page] { currentPage = target }
+            if let target = pages[page] { go(target) }
         }
         #endif
 
@@ -229,7 +250,61 @@ class StudyViewModel {
     // MARK: - Navigation
 
     func go(_ page: AppPage) {
-        currentPage = page
+        // Tab roots live inside the tab bar.
+        switch page {
+        case .library: tab = .library; currentPage = .home
+        case .discover: tab = .discover; currentPage = .home
+        case .me: tab = .me; currentPage = .home
+        default: currentPage = page
+        }
+    }
+
+    // MARK: - Today's flow
+
+    /// Exam → new word → review. Each step opens the next one when it ends.
+    var todayPlan: TodayPlan {
+        TodayPlan(exam: examPending ? examWords.count : 0,
+                  newWords: (canLearnNewWord && !hasStudiedToday) ? 1 : 0,
+                  review: min(dueReviews.count, Self.reviewBatch))
+    }
+
+    /// The next unfinished step of today's flow, nil when everything is done.
+    var nextStep: AppPage? {
+        if examPending { return .exam }
+        if canLearnNewWord && !hasStudiedToday { return .study }
+        if !dueReviews.isEmpty { return .review }
+        return nil
+    }
+
+    /// Label for a button that opens `nextStep`.
+    var nextStepTitle: String? {
+        switch nextStep {
+        case .exam: return "昨日考试 \(examWords.count) 词"
+        case .study: return "学习今日新词"
+        case .review: return "温故复习 \(min(dueReviews.count, Self.reviewBatch)) 词"
+        default: return nil
+        }
+    }
+
+    /// Home's one button.
+    func startToday() {
+        switch nextStep {
+        case .exam: startExam()
+        case .study: startStudy()
+        case .review: startReview()
+        default: break
+        }
+    }
+
+    /// Ends a step: opens the next one, or returns to the learn tab.
+    private func continueFlow() {
+        tab = .learn
+        switch nextStep {
+        case .exam: startExam()
+        case .study: currentPage = isBookComplete ? .bookComplete : .study
+        case .review: startReview()
+        default: currentPage = .home
+        }
     }
 
     func selectBook(_ bookId: String) {
@@ -238,6 +313,7 @@ class StudyViewModel {
         }
         state.selectedBookId = bookId
         state.currentWordIndex = state.bookProgress[bookId] ?? 0
+        tab = .learn
         currentPage = .home
     }
 
@@ -282,8 +358,11 @@ class StudyViewModel {
         let achievements = collectNewAchievements()
         let newLevel = levelUp(from: xpBefore)
         if firstToday || !achievements.isEmpty || newLevel != nil {
-            // Show home underneath so the next word isn't visible behind the overlay.
+            // Show home underneath so the next word isn't visible behind the overlay;
+            // the flow continues once the overlay closes.
+            tab = .learn
             currentPage = isBookComplete ? .bookComplete : .home
+            pendingStep = isBookComplete ? nil : nextStep
             celebration = Celebration(kind: .checkIn, xpGained: stats.xp - xpBefore,
                                       newAchievements: achievements, newLevel: newLevel)
         } else {
@@ -319,15 +398,12 @@ class StudyViewModel {
         state.todayQuizPassed = true
         state.todayDate = today
         showMilestoneIfNeeded()
-        if canLearnNewWord {
-            currentPage = isBookComplete ? .bookComplete : .study
-        } else {
-            currentPage = .home
-        }
+        continueFlow()
     }
 
     func finishReview() {
         showMilestoneIfNeeded()
+        tab = .learn
         currentPage = .home
     }
 
@@ -351,11 +427,29 @@ class StudyViewModel {
 
     func finishGame() {
         showMilestoneIfNeeded()
-        currentPage = .games
+        go(.discover)
     }
 
     func closeCelebration() {
         celebration = nil
+        if let step = pendingStep {
+            pendingStep = nil
+            switch step {
+            case .exam: startExam()
+            case .review: startReview()
+            case .study: currentPage = .study
+            default: break
+            }
+        }
+    }
+
+    /// Button title on the check-in overlay.
+    var celebrationActionTitle: String {
+        switch pendingStep {
+        case .review: return "收下千金，去复习"
+        case .exam: return "收下千金，去考试"
+        default: return "收下千金"
+        }
     }
 
     // MARK: - Rewards
