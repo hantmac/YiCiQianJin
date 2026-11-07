@@ -23,6 +23,7 @@ struct WordLibraryView: View {
     @Environment(\.horizontalSizeClass) private var sizeClass
     @State private var filter: Filter = .all
     @State private var query = ""
+    @State private var selected: StudyRecord?
 
     private var entries: [Entry] {
         let mistakes = vm.mistakeCounts
@@ -35,11 +36,10 @@ struct WordLibraryView: View {
     }
 
     private func filtered(_ all: [Entry]) -> [Entry] {
-        let today = vm.today
         let byFilter: [Entry]
         switch filter {
         case .all: byFilter = all
-        case .due: byFilter = all.filter { $0.record.date != today && SpacedRepetition.isDue($0.state, today: today) }
+        case .due: byFilter = all.filter { SpacedRepetition.isDue($0.state, at: vm.now) }
         case .mistakes: byFilter = all.filter { $0.mistakes > 0 }.sorted { $0.mistakes > $1.mistakes }
         case .mastered: byFilter = all.filter { $0.state.stage >= SpacedRepetition.masteredStage }
         }
@@ -76,6 +76,9 @@ struct WordLibraryView: View {
             }
         }
         .pageChrome("我的词库") { vm.go(.home) }
+        .sheet(item: $selected) { record in
+            WordMemorySheet(vm: vm, record: record)
+        }
     }
 
     private func summary(_ all: [Entry]) -> some View {
@@ -106,7 +109,7 @@ struct WordLibraryView: View {
         VStack(spacing: 2) {
             Text(value)
                 .font(Theme.number(.title3))
-                .foregroundStyle(.white)
+                .foregroundStyle(Theme.textPrimary)
             Text(label)
                 .font(.caption)
                 .foregroundStyle(Theme.textSecondary)
@@ -120,7 +123,7 @@ struct WordLibraryView: View {
             Image(systemName: "magnifyingglass")
                 .foregroundStyle(Theme.textTertiary)
             TextField("", text: $query, prompt: Text("搜索单词或释义").foregroundStyle(Theme.textTertiary))
-                .foregroundStyle(.white)
+                .foregroundStyle(Theme.textPrimary)
                 .autocorrectionDisabled()
                 .textInputAutocapitalization(.never)
             if !query.isEmpty {
@@ -143,7 +146,7 @@ struct WordLibraryView: View {
                 } label: {
                     Text(item.rawValue)
                         .font(.subheadline.weight(.semibold))
-                        .foregroundStyle(filter == item ? Theme.onGold : .white)
+                        .foregroundStyle(filter == item ? Theme.onGold : Theme.textPrimary)
                         .padding(.horizontal, 14)
                         .frame(height: 34)
                         .background(filter == item ? AnyShapeStyle(Theme.goldGradient) : AnyShapeStyle(Theme.surface), in: Capsule())
@@ -157,13 +160,13 @@ struct WordLibraryView: View {
 
     private func row(_ entry: Entry) -> some View {
         let mastery = SpacedRepetition.mastery(of: entry.state.stage)
-        return HStack(spacing: 12) {
+        return Button { selected = entry.record } label: { HStack(spacing: 12) {
             WordThumbnail(word: entry.record.word, size: 60)
             VStack(alignment: .leading, spacing: 4) {
                 HStack(alignment: .firstTextBaseline, spacing: 8) {
                     Text(entry.record.word)
                         .font(Theme.wordFont(20))
-                        .foregroundStyle(.white)
+                        .foregroundStyle(Theme.textPrimary)
                     if !entry.phonetic.isEmpty {
                         Text(entry.phonetic)
                             .font(.caption)
@@ -191,17 +194,24 @@ struct WordLibraryView: View {
                 }
             }
             Spacer(minLength: 0)
-            SpeakButton(text: entry.record.word, size: 36)
+            Text(MemoryFormat.percent(SpacedRepetition.retention(entry.state, at: vm.now)))
+                .font(Theme.number(.subheadline))
+                .foregroundStyle(RetentionBar.color(SpacedRepetition.retention(entry.state, at: vm.now)))
+                .accessibilityLabel("记忆保持率 \(MemoryFormat.percent(SpacedRepetition.retention(entry.state, at: vm.now)))")
         }
         .card(padding: 14, radius: 18)
+        .contentShape(Rectangle())
+        }
+        .buttonStyle(PressableStyle())
         .accessibilityElement(children: .combine)
+        .accessibilityHint("查看记忆曲线")
     }
 
     private func masteryDots(_ stage: Int) -> some View {
         HStack(spacing: 3) {
             ForEach(0..<SpacedRepetition.masteredStage, id: \.self) { i in
                 Circle()
-                    .fill(i < stage ? Theme.gold : Color.white.opacity(0.2))
+                    .fill(i < stage ? Theme.gold : Theme.track)
                     .frame(width: 6, height: 6)
             }
         }
@@ -209,10 +219,9 @@ struct WordLibraryView: View {
     }
 
     private func nextReviewText(_ entry: Entry) -> String {
-        let days = DayKey.distance(from: vm.today, to: entry.state.due)
-        if days <= 0 { return entry.record.date == vm.today ? "明天复习" : "今天复习" }
-        if days == 1 { return "明天复习" }
-        return "\(days) 天后复习"
+        guard !SpacedRepetition.isDue(entry.state, at: vm.now) else { return "该复习了" }
+        let relative = MemoryFormat.relative(entry.state.dueAt, from: vm.now)
+        return relative + (relative.last?.isNumber == true ? " 复习" : "复习")
     }
 
     private func emptyState(hasWords: Bool) -> some View {
@@ -221,7 +230,7 @@ struct WordLibraryView: View {
             Mascot(size: 96)
             Text(emptyTitle(hasWords: hasWords))
                 .font(.headline)
-                .foregroundStyle(.white)
+                .foregroundStyle(Theme.textPrimary)
             if !hasWords {
                 Button("去学今天的单词") { vm.startStudy() }
                     .buttonStyle(GoldButtonStyle())

@@ -12,12 +12,20 @@ struct LearningStats: Equatable {
     var reviewCorrect = 0
     var masteredWords = 0
     var correctedMistakes = 0
+    var gamesPlayed = 0
+    var bestBlitz = 0
+    var gameXP = 0
+    /// Learned words with an illustration (图鉴 cards).
+    var collectedCards = 0
 
     enum Reward {
         static let newWord = 10
         static let examCorrect = 5
         static let reviewCorrect = 3
         static let perfectExam = 10
+        static let gameCorrect = 1
+        /// Games pay out for at most this many correct answers per day.
+        static let gameDailyCap = 30
     }
 
     init() {}
@@ -42,10 +50,18 @@ struct LearningStats: Equatable {
             .filter { !$0.isEmpty && $0.allSatisfy(\.correct) }
             .count
 
+        gamesPlayed = state.gameRecords.count
+        bestBlitz = GameRules.best(.blitz, in: state.gameRecords) ?? 0
+        gameXP = Dictionary(grouping: state.gameRecords, by: \.date).values
+            .map { min($0.reduce(0) { $0 + $1.correct }, Reward.gameDailyCap) * Reward.gameCorrect }
+            .reduce(0, +)
+        collectedCards = unique.filter { WordAtlas.hasImage($0.word) }.count
+
         xp = totalWords * Reward.newWord
             + uniqueCorrect(exam) * Reward.examCorrect
             + reviewCorrect * Reward.reviewCorrect
             + perfectExamDays * Reward.perfectExam
+            + gameXP
 
         masteredWords = unique.filter {
             SpacedRepetition.state(for: $0, in: state.reviewStates).stage >= SpacedRepetition.masteredStage
@@ -152,8 +168,11 @@ struct Achievement: Identifiable, Equatable {
         Achievement(id: "perfect_exam", title: "金榜题名", detail: "昨日考试全部答对", symbol: "rosette", target: 1) { $0.perfectExamDays },
         Achievement(id: "streak_7", title: "七日之功", detail: "连续学习 7 天", symbol: "flame.circle.fill", target: 7) { $0.longestStreak },
         Achievement(id: "comeback", title: "知错能改", detail: "把答错过的单词重新答对", symbol: "arrow.uturn.up.circle.fill", target: 1) { $0.correctedMistakes },
+        Achievement(id: "first_game", title: "寓学于乐", detail: "玩一局小游戏", symbol: "gamecontroller.fill", target: 1) { $0.gamesPlayed },
         Achievement(id: "review_20", title: "温故知新", detail: "复习时答对 20 次", symbol: "arrow.triangle.2.circlepath", target: 20) { $0.reviewCorrect },
         Achievement(id: "words_50", title: "半百词囊", detail: "累计学会 50 个单词", symbol: "bag.fill", target: 50) { $0.totalWords },
+        Achievement(id: "collect_30", title: "图鉴收藏家", detail: "图鉴收集 30 张插画卡", symbol: "photo.stack.fill", target: 30) { $0.collectedCards },
+        Achievement(id: "blitz_200", title: "闪电手", detail: "闪电战单局 200 分", symbol: "bolt.fill", target: 200) { $0.bestBlitz },
         Achievement(id: "mastered_10", title: "融会贯通", detail: "10 个单词达到「已掌握」", symbol: "brain.head.profile", target: 10) { $0.masteredWords },
         Achievement(id: "streak_30", title: "月度坚持", detail: "连续学习 30 天", symbol: "calendar.badge.checkmark", target: 30) { $0.longestStreak },
         Achievement(id: "words_100", title: "百词斩获", detail: "累计学会 100 个单词", symbol: "crown.fill", target: 100) { $0.totalWords },

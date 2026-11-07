@@ -62,7 +62,8 @@ final class AppStateMigrationTests: XCTestCase {
         var state = AppState()
         state.selectedBookId = "ielts"
         state.bookProgress = ["ielts": 3, "cet4": 9]
-        state.reviewStates = ["ielts|word": ReviewState(stage: 2, due: "2026-03-05")]
+        state.reviewStates = ["ielts|word": ReviewState(stage: 2, dueAt: Date(timeIntervalSinceReferenceDate: 800_000_000), lastReviewedAt: nil, lapses: 1)]
+        state.gameRecords = [GameRecord(date: "2026-03-01", kind: .blitz, score: 120, correct: 9, total: 11)]
         state.reminderEnabled = true
         state.reminderHour = 7
         state.quizResults = [QuizResult(word: "word", correct: false, date: "2026-03-01", source: .review, bookId: "ielts")]
@@ -72,40 +73,127 @@ final class AppStateMigrationTests: XCTestCase {
         XCTAssertTrue(decoded.reminderEnabled)
         XCTAssertEqual(decoded.reminderHour, 7)
         XCTAssertEqual(decoded.quizResults, state.quizResults)
+        XCTAssertEqual(decoded.gameRecords, state.gameRecords)
     }
 }
 
 final class SpacedRepetitionTests: XCTestCase {
-    func testInitialIsDueNextDay() {
-        let s = SpacedRepetition.initial(learnedOn: "2026-03-01")
-        XCTAssertEqual(s, ReviewState(stage: 0, due: "2026-03-02"))
-        XCTAssertFalse(SpacedRepetition.isDue(s, today: "2026-03-01"))
-        XCTAssertTrue(SpacedRepetition.isDue(s, today: "2026-03-02"))
-        XCTAssertTrue(SpacedRepetition.isDue(s, today: "2026-03-09"))
+    private let cal = Calendar.current
+    private func at(_ day: String, _ hour: Int = 9, _ minute: Int = 0) -> Date {
+        cal.date(bySettingHour: hour, minute: minute, second: 0, of: DayKey.date(from: day)!)!
+    }
+    private func startOf(_ day: String) -> Date { cal.startOfDay(for: DayKey.date(from: day)!) }
+    private func review(_ s: ReviewState, _ grade: ReviewGrade, _ date: Date) -> ReviewState {
+        SpacedRepetition.next(after: s, grade: grade, at: date)
     }
 
-    func testCorrectAnswersExtendInterval() {
-        var s = SpacedRepetition.initial(learnedOn: "2026-03-01")
-        s = SpacedRepetition.next(after: s, correct: true, on: "2026-03-02")
-        XCTAssertEqual(s, ReviewState(stage: 1, due: "2026-03-04"))
-        s = SpacedRepetition.next(after: s, correct: true, on: "2026-03-04")
-        XCTAssertEqual(s, ReviewState(stage: 2, due: "2026-03-08"))
+    func testNewWordFollowsSameDayNodes() {
+        let learned = at("2026-03-01", 20)
+        var s = SpacedRepetition.initial(learnedAt: learned)
+        XCTAssertEqual(s.stage, 0)
+        XCTAssertEqual(s.dueAt, learned.addingTimeInterval(5 * 60))
+        XCTAssertFalse(SpacedRepetition.isDue(s, at: learned.addingTimeInterval(60)))
+
+        var t = s.dueAt
+        s = review(s, .remembered, t)
+        XCTAssertEqual(s.stage, 1)
+        XCTAssertEqual(s.dueAt, t.addingTimeInterval(30 * 60))
+
+        t = s.dueAt
+        s = review(s, .remembered, t)
+        XCTAssertEqual(s.stage, 2)
+        XCTAssertEqual(s.dueAt, t.addingTimeInterval(12 * 3600))
+
+        // Day-long gaps land at the start of the target day.
+        t = s.dueAt
+        s = review(s, .remembered, t)
+        XCTAssertEqual(s.stage, 3)
+        XCTAssertEqual(s.dueAt, cal.date(byAdding: .day, value: 1, to: cal.startOfDay(for: t)))
     }
 
-    func testWrongAnswerResets() {
-        let s = SpacedRepetition.next(after: ReviewState(stage: 4, due: "2026-03-10"), correct: false, on: "2026-03-10")
-        XCTAssertEqual(s, ReviewState(stage: 0, due: "2026-03-11"))
+    func testOverdueReviewEarnsCredit() {
+        // Skipped the same-day reviews; answered right the next morning (13 h later).
+        let s = SpacedRepetition.initial(learnedAt: at("2026-03-01", 20))
+        let next = review(s, .remembered, at("2026-03-02", 9))
+        XCTAssertEqual(next.stage, 3)
+        XCTAssertEqual(next.dueAt, startOf("2026-03-03"))
+    }
+
+    func testDayNodes() {
+        var s = ReviewState(stage: 3, dueAt: startOf("2026-03-02"), lastReviewedAt: startOf("2026-03-01"))
+        s = review(s, .remembered, at("2026-03-02"))
+        XCTAssertEqual(s.stage, 4)
+        XCTAssertEqual(s.due, "2026-03-04")
+        s = review(s, .remembered, at("2026-03-04"))
+        XCTAssertEqual(s.stage, 5)
+        XCTAssertEqual(s.due, "2026-03-08")
+    }
+
+    func testFuzzyRepeatsTheGap() {
+        let s = ReviewState(stage: 5, dueAt: startOf("2026-03-08"), lastReviewedAt: startOf("2026-03-04"))
+        let next = review(s, .fuzzy, at("2026-03-08"))
+        XCTAssertEqual(next.stage, 5)
+        XCTAssertEqual(next.due, "2026-03-12")
+    }
+
+    func testForgotDropsTwoStagesAndRelearnsWithinADay() {
+        let s = ReviewState(stage: 7, dueAt: startOf("2026-03-10"), lastReviewedAt: startOf("2026-02-23"))
+        let next = review(s, .forgot, at("2026-03-10"))
+        XCTAssertEqual(next.stage, 5)
+        XCTAssertEqual(next.lapses, 1)
+        XCTAssertEqual(next.due, "2026-03-11")
+        // Remembered the next day: back on track with the long gap, not 2 days.
+        let after = review(next, .remembered, at("2026-03-11"))
+        XCTAssertEqual(after.stage, 6)
+        XCTAssertEqual(after.due, "2026-03-18")
+    }
+
+    func testForgotNewWordStaysAtFiveMinutes() {
+        let t = at("2026-03-01", 20, 5)
+        let s = review(SpacedRepetition.initial(learnedAt: at("2026-03-01", 20)), .forgot, t)
+        XCTAssertEqual(s.stage, 0)
+        XCTAssertEqual(s.dueAt, t.addingTimeInterval(300))
     }
 
     func testCorrectBeforeDueDoesNotFastTrack() {
-        let s = ReviewState(stage: 1, due: "2026-03-04")
-        XCTAssertEqual(SpacedRepetition.next(after: s, correct: true, on: "2026-03-02"), s)
+        let s = ReviewState(stage: 4, dueAt: startOf("2026-03-04"), lastReviewedAt: startOf("2026-03-02"))
+        XCTAssertEqual(review(s, .remembered, at("2026-03-03")), s)
+        XCTAssertEqual(review(s, .fuzzy, at("2026-03-03")), s)
     }
 
     func testStageIsCapped() {
-        let last = SpacedRepetition.intervals.count - 1
-        let s = SpacedRepetition.next(after: ReviewState(stage: last, due: "2026-03-01"), correct: true, on: "2026-03-01")
-        XCTAssertEqual(s.stage, last)
+        let last = SpacedRepetition.maxStage
+        let s = ReviewState(stage: last, dueAt: startOf("2026-03-01"), lastReviewedAt: startOf("2026-01-01"))
+        XCTAssertEqual(review(s, .remembered, at("2026-03-01")).stage, last)
+    }
+
+    func testRetentionIsEightyPercentWhenDue() {
+        let learned = at("2026-03-01", 20)
+        let s = SpacedRepetition.initial(learnedAt: learned)
+        XCTAssertEqual(SpacedRepetition.retention(s, at: learned), 1, accuracy: 0.0001)
+        XCTAssertEqual(SpacedRepetition.retention(s, at: s.dueAt), 0.8, accuracy: 0.0001)
+        XCTAssertLessThan(SpacedRepetition.retention(s, at: s.dueAt.addingTimeInterval(600)), 0.8)
+        // Ebbinghaus: roughly a third left after one day without review.
+        XCTAssertEqual(SpacedRepetition.ebbinghausRetention(minutes: 1440), 0.3, accuracy: 0.05)
+    }
+
+    func testLegacyStateMigratesToDayNodes() throws {
+        let json = #"{"stage":1,"due":"2026-03-04"}"#
+        let s = try JSONDecoder().decode(ReviewState.self, from: Data(json.utf8))
+        XCTAssertEqual(s.stage, 4) // old 2-day gap = new 2-day node
+        XCTAssertEqual(s.dueAt, startOf("2026-03-04"))
+        XCTAssertEqual(s.lapses, 0)
+        // Round trip keeps the new format.
+        let again = try JSONDecoder().decode(ReviewState.self, from: JSONEncoder().encode(s))
+        XCTAssertEqual(again, s)
+    }
+
+    func testLegacyDefaultIsDueNextDay() {
+        let s = SpacedRepetition.legacyDefault(learnedOn: "2026-03-01")
+        XCTAssertEqual(s.stage, SpacedRepetition.firstDayStage)
+        XCTAssertEqual(s.due, "2026-03-02")
+        XCTAssertFalse(SpacedRepetition.isDue(s, at: at("2026-03-01", 23)))
+        XCTAssertTrue(SpacedRepetition.isDue(s, at: at("2026-03-02", 0, 1)))
     }
 
     func testUniqueWordsKeepsEarliest() {
@@ -166,8 +254,36 @@ final class LearningStatsTests: XCTestCase {
     func testMasteredWords() {
         var state = AppState()
         state.studyRecords = [makeRecord("a", "2026-03-01"), makeRecord("b", "2026-03-01")]
-        state.reviewStates = ["cet4|a": ReviewState(stage: SpacedRepetition.masteredStage, due: "2026-04-01")]
+        state.reviewStates = ["cet4|a": ReviewState(stage: SpacedRepetition.masteredStage, dueAt: Date())]
         XCTAssertEqual(LearningStats(state: state, today: "2026-03-02").masteredWords, 1)
+    }
+}
+
+final class GameTests: XCTestCase {
+    func testGameXPIsCappedPerDay() {
+        var state = AppState()
+        state.gameRecords = [
+            GameRecord(date: "2026-03-01", kind: .blitz, score: 300, correct: 25, total: 28),
+            GameRecord(date: "2026-03-01", kind: .match, score: 40, correct: 15, total: 15),
+            GameRecord(date: "2026-03-02", kind: .match, score: 35, correct: 15, total: 15),
+        ]
+        let stats = LearningStats(state: state, today: "2026-03-02")
+        XCTAssertEqual(stats.gameXP, LearningStats.Reward.gameDailyCap + 15)
+        XCTAssertEqual(stats.bestBlitz, 300)
+        XCTAssertEqual(stats.gamesPlayed, 3)
+        XCTAssertEqual(GameRules.best(.match, in: state.gameRecords), 35)
+    }
+
+    func testBlitzPointsGrowWithCombo() {
+        XCTAssertEqual(GameRules.blitzPoints(combo: 1), 10)
+        XCTAssertEqual(GameRules.blitzPoints(combo: 3), 14)
+        XCTAssertEqual(GameRules.blitzPoints(combo: 50), 20)
+    }
+
+    func testShortMeaning() {
+        XCTAssertEqual(GameRules.shortMeaning("取消， 撤销； 删去"), "取消，撤销")
+        XCTAssertEqual(GameRules.shortMeaning("水壶"), "水壶")
+        XCTAssertEqual(GameRules.shortMeaning("伸展，延续，伸长，拉长，倾注全力"), "伸展")
     }
 }
 

@@ -191,7 +191,7 @@ struct ExampleSentences: View {
                             .foregroundStyle(Theme.gold)
                         Text(highlighted(example.en))
                             .font(.callout)
-                            .foregroundStyle(.white)
+                            .foregroundStyle(Theme.textPrimary)
                             .fixedSize(horizontal: false, vertical: true)
                         Text(example.zh)
                             .font(.footnote)
@@ -204,7 +204,7 @@ struct ExampleSentences: View {
                     } label: {
                         Image(systemName: "speaker.wave.2")
                             .font(.footnote.weight(.semibold))
-                            .foregroundStyle(.white)
+                            .foregroundStyle(Theme.textPrimary)
                             .frame(width: 32, height: 32)
                             .background(Theme.surface, in: Circle())
                     }

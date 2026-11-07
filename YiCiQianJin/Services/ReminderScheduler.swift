@@ -5,6 +5,15 @@ import UserNotifications
 /// repeating trigger, so today's reminder can be skipped once the user has already studied.
 enum ReminderScheduler {
     private static let prefix = "yiciqianjin.reminder."
+    private static let reviewPrefix = "yiciqianjin.review."
+
+    /// One notification for words that fall due at about the same time.
+    struct ReviewAlert: Equatable {
+        var fireDate: Date
+        var words: [String]
+        /// Earliest due time merged into this alert.
+        var firstDue: Date?
+    }
     private static let daysAhead = 7
 
     static func requestAuthorization() async -> Bool {
@@ -43,6 +52,43 @@ enum ReminderScheduler {
             let trigger = UNCalendarNotificationTrigger(dateMatching: comps, repeats: false)
             try? await center.add(UNNotificationRequest(identifier: prefix + "\(offset)", content: content, trigger: trigger))
         }
+    }
+
+    static func cancelReviewAlerts() async {
+        let center = UNUserNotificationCenter.current()
+        let ids = await center.pendingNotificationRequests().map(\.identifier).filter { $0.hasPrefix(reviewPrefix) }
+        center.removePendingNotificationRequests(withIdentifiers: ids)
+    }
+
+    static func rescheduleReviewAlerts(_ alerts: [ReviewAlert]) async {
+        await cancelReviewAlerts()
+        guard await isAuthorized() else { return }
+        let center = UNUserNotificationCenter.current()
+        let cal = Calendar.current
+        for (i, alert) in alerts.enumerated() where alert.fireDate > Date() {
+            let content = UNMutableNotificationContent()
+            content.title = "单词到复习时间了"
+            content.body = reviewMessage(alert.words)
+            content.sound = .default
+            let comps = cal.dateComponents([.year, .month, .day, .hour, .minute, .second], from: alert.fireDate)
+            let trigger = UNCalendarNotificationTrigger(dateMatching: comps, repeats: false)
+            try? await center.add(UNNotificationRequest(identifier: reviewPrefix + "\(i)", content: content, trigger: trigger))
+        }
+    }
+
+    static func reviewMessage(_ words: [String]) -> String {
+        guard let first = words.first else { return "" }
+        let subject = words.count > 1 ? "\(first) 等 \(words.count) 个词" : first
+        return "\(subject) 快要忘了，现在复习一遍，记得更久。"
+    }
+
+    /// Moves alerts that would land between 23:00 and 08:00 to 08:00.
+    static func outsideQuietHours(_ date: Date) -> Date {
+        let cal = Calendar.current
+        let hour = cal.component(.hour, from: date)
+        guard hour >= 23 || hour < 8 else { return date }
+        let day = hour >= 23 ? (cal.date(byAdding: .day, value: 1, to: date) ?? date) : date
+        return cal.date(bySettingHour: 8, minute: 0, second: 0, of: day) ?? date
     }
 
     private static func message(dayOffset: Int, streak: Int) -> String {

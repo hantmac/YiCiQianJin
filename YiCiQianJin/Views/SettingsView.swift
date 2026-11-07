@@ -15,6 +15,19 @@ struct SettingsView: View {
         }
     }
 
+    private var reviewAlertsEnabled: Binding<Bool> {
+        Binding {
+            vm.state.reviewAlertsEnabled
+        } set: { enabled in
+            togglingReminder = true
+            Task { @MainActor in
+                let ok = await vm.setReviewAlerts(enabled: enabled)
+                permissionDenied = enabled && !ok
+                togglingReminder = false
+            }
+        }
+    }
+
     private var reminderEnabled: Binding<Bool> {
         Binding {
             vm.state.reminderEnabled
@@ -42,6 +55,10 @@ struct SettingsView: View {
                                 rowLabel("提醒时间", detail: nil, symbol: "clock.fill")
                             }
                         }
+                        Toggle(isOn: reviewAlertsEnabled) {
+                            rowLabel("复习提醒", detail: "单词到了艾宾浩斯复习节点时提醒你，23:00–8:00 不打扰", symbol: "brain.head.profile")
+                        }
+                        .disabled(togglingReminder)
                         if permissionDenied {
                             VStack(alignment: .leading, spacing: 8) {
                                 Text("通知权限未开启，请在系统设置中允许「小象单词」发送通知。")
@@ -110,7 +127,7 @@ struct SettingsView: View {
             VStack(alignment: .leading, spacing: 2) {
                 Text(title)
                     .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Theme.textPrimary)
                 if let detail {
                     Text(detail)
                         .font(.caption)

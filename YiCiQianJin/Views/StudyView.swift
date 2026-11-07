@@ -122,7 +122,7 @@ struct StudyView: View {
         VStack(spacing: 14) {
             Text(word.word)
                 .font(Theme.wordFont(46))
-                .foregroundStyle(.white)
+                .foregroundStyle(Theme.textPrimary)
                 .multilineTextAlignment(.center)
                 .minimumScaleFactor(0.5)
                 .lineLimit(2)
@@ -143,7 +143,7 @@ struct StudyView: View {
                 } label: {
                     Image(systemName: "tortoise.fill")
                         .font(.subheadline)
-                        .foregroundStyle(.white)
+                        .foregroundStyle(Theme.textPrimary)
                         .frame(width: 36, height: 36)
                         .background(Theme.surface, in: Circle())
                 }
@@ -167,7 +167,7 @@ struct StudyView: View {
         if revealed {
             Text(word.meaning)
                 .font(.title3.weight(.semibold))
-                .foregroundStyle(.white)
+                .foregroundStyle(Theme.textPrimary)
                 .multilineTextAlignment(.center)
                 .frame(maxWidth: .infinity, minHeight: 88)
                 .padding(.horizontal, 12)
@@ -183,7 +183,7 @@ struct StudyView: View {
                         .foregroundStyle(Theme.gold)
                     Text("先在心里想想它的意思")
                         .font(.subheadline.weight(.semibold))
-                        .foregroundStyle(.white)
+                        .foregroundStyle(Theme.textPrimary)
                     Text("点击揭晓释义")
                         .font(.caption)
                         .foregroundStyle(Theme.textTertiary)
@@ -210,7 +210,7 @@ struct StudyView: View {
             HStack {
                 Text("默写一遍，记得更牢")
                     .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Theme.textPrimary)
                 Spacer()
                 Text("输入时单词会被遮住")
                     .font(.caption)
@@ -230,7 +230,7 @@ struct StudyView: View {
                         .accessibilityIdentifier("spellField")
                         .accessibilityLabel("默写单词")
                         .font(.title3.weight(.semibold))
-                        .foregroundStyle(.white)
+                        .foregroundStyle(Theme.textPrimary)
                         .autocorrectionDisabled()
                         .textInputAutocapitalization(.never)
                         .submitLabel(.done)
@@ -284,7 +284,7 @@ struct StudyView: View {
                 Button("揭晓释义", action: reveal)
                     .buttonStyle(GlassButtonStyle(height: 54))
             }
-            Text("明天会先考你这个词，学完就别忘啦")
+            Text("5 分钟后第一次复习，明天还会考你这个词")
                 .font(.caption)
                 .foregroundStyle(Theme.textTertiary)
         }

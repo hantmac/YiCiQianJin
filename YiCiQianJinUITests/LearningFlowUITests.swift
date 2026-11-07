@@ -161,7 +161,7 @@ final class LearningFlowUITests: XCTestCase {
         tap(app, "返回")
 
         app.swipeUp()
-        app.buttons.matching(NSPredicate(format: "label BEGINSWITH '成就徽章'")).firstMatch.tap()
+        app.buttons.matching(NSPredicate(format: "label BEGINSWITH '等级与成就'")).firstMatch.tap()
         XCTAssertTrue(app.staticTexts["等级与成就"].waitForExistence(timeout: 5))
         snap(app, "23-achievements")
         app.swipeUp()
@@ -184,5 +184,55 @@ final class LearningFlowUITests: XCTestCase {
         tap(app, "更换词书")
         XCTAssertTrue(app.staticTexts["选择词书"].waitForExistence(timeout: 5))
         snap(app, "27-book-select")
+    }
+
+    private func tapPrefix(_ app: XCUIApplication, _ prefix: String) {
+        let button = app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", prefix)).firstMatch
+        var swipes = 0
+        while !(button.exists && button.isHittable) && swipes < 4 {
+            if button.waitForExistence(timeout: 1) && button.isHittable { break }
+            app.swipeUp()
+            swipes += 1
+        }
+        XCTAssertTrue(button.exists, "button \(prefix) not found")
+        button.tap()
+    }
+
+    func testMemoryCollectionAndGames() {
+        let app = launch(state: legacyPendingState())
+        XCTAssertTrue(app.buttons["开始考试"].waitForExistence(timeout: 5))
+
+        // Legacy schedules migrate onto the Ebbinghaus nodes and show up on the curve page.
+        tapPrefix(app, "记忆曲线")
+        XCTAssertTrue(app.staticTexts["为什么要按时复习"].waitForExistence(timeout: 5))
+        snap(app, "30-memory")
+        app.swipeUp()
+        let weak = app.buttons.matching(NSPredicate(format: "label CONTAINS '记忆保持率'")).firstMatch
+        if weak.waitForExistence(timeout: 3) {
+            weak.tap()
+            XCTAssertTrue(app.staticTexts["复习节点"].waitForExistence(timeout: 5))
+            snap(app, "31-word-memory")
+            tap(app, "完成")
+        }
+        tap(app, "返回")
+
+        tapPrefix(app, "插画图鉴")
+        XCTAssertTrue(app.staticTexts["插画图鉴"].waitForExistence(timeout: 5))
+        snap(app, "32-collection")
+        tap(app, "返回")
+
+        tapPrefix(app, "小游戏")
+        XCTAssertTrue(app.staticTexts["小游戏"].waitForExistence(timeout: 5))
+        tapPrefix(app, "60 秒闪电战")
+        XCTAssertTrue(app.buttons["退出闪电战"].waitForExistence(timeout: 5))
+        sleep(3) // 3-2-1 countdown
+        snap(app, "33-blitz")
+        tap(app, "退出闪电战")
+
+        tapPrefix(app, "词义配对")
+        XCTAssertTrue(app.staticTexts["先点单词，再点它的意思"].waitForExistence(timeout: 5))
+        snap(app, "34-match")
+        tap(app, "退出词义配对")
+        XCTAssertTrue(app.staticTexts["小游戏"].waitForExistence(timeout: 5))
     }
 }

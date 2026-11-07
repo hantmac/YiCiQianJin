@@ -15,7 +15,7 @@ struct BookSelectView: View {
                             Mascot(size: 96)
                             Text("小象单词")
                                 .font(.largeTitle.bold())
-                                .foregroundStyle(.white)
+                                .foregroundStyle(Theme.textPrimary)
                             Text("你好，我是小象！每天陪你记一个词，配一幅画，第二天考考你。\n先选一本适合你的词书吧。")
                                 .font(.subheadline)
                                 .foregroundStyle(Theme.textSecondary)
@@ -68,7 +68,7 @@ struct BookSelectView: View {
                     HStack(spacing: 8) {
                         Text(book.name)
                             .font(.headline)
-                            .foregroundStyle(.white)
+                            .foregroundStyle(Theme.textPrimary)
                         if isCurrent {
                             Text("学习中")
                                 .font(.caption2.weight(.bold))

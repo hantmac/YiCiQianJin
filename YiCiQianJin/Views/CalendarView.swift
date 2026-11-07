@@ -66,7 +66,7 @@ struct CalendarPageView: View {
                 VStack(spacing: 2) {
                     Text(verbatim: "\(comps.year ?? 0)年\(comps.month ?? 0)月")
                         .font(.headline)
-                        .foregroundStyle(.white)
+                        .foregroundStyle(Theme.textPrimary)
                     Text("本月打卡 \(studiedThisMonth) 天")
                         .font(.caption)
                         .foregroundStyle(Theme.textSecondary)
@@ -152,7 +152,7 @@ struct CalendarPageView: View {
             HStack {
                 Text(formatDateHeader(selectedDay))
                     .font(.headline)
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Theme.textPrimary)
                 Spacer()
                 if !records.isEmpty {
                     Label("\(records.count) 个词", systemImage: "checkmark.circle.fill")
@@ -173,7 +173,7 @@ struct CalendarPageView: View {
                         VStack(alignment: .leading, spacing: 2) {
                             Text(record.word)
                                 .font(Theme.wordFont(20))
-                                .foregroundStyle(.white)
+                                .foregroundStyle(Theme.textPrimary)
                             Text(record.meaning)
                                 .font(.footnote)
                                 .foregroundStyle(Theme.textSecondary)
@@ -205,7 +205,7 @@ struct CalendarPageView: View {
                 .foregroundStyle(color)
             Text("\(value)")
                 .font(Theme.number(.title2))
-                .foregroundStyle(.white)
+                .foregroundStyle(Theme.textPrimary)
             Text(label)
                 .font(.caption2)
                 .foregroundStyle(Theme.textSecondary)

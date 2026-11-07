@@ -1,41 +1,54 @@
 import SwiftUI
 
-/// Shared visual language: the original indigo→violet brand gradient, with gold
-/// (the 「千金」 in the name) reserved for primary actions and rewards.
+/// Shared visual language: a gilt dictionary read at night. Deep ink-blue paper, warm gold
+/// reserved for primary actions and rewards (the 「千金」 in the name), English headwords in serif.
 enum Theme {
-    static let bgTop = Color(red: 0.36, green: 0.42, blue: 0.90)
-    static let bgBottom = Color(red: 0.36, green: 0.22, blue: 0.58)
+    static let bgTop = Color(red: 0.063, green: 0.086, blue: 0.149)
+    static let bgBottom = Color(red: 0.035, green: 0.047, blue: 0.090)
 
-    static let gold = Color(red: 1.0, green: 0.82, blue: 0.36)
-    static let goldDeep = Color(red: 0.97, green: 0.62, blue: 0.18)
+    static let gold = Color(red: 0.93, green: 0.78, blue: 0.50)
+    static let goldDeep = Color(red: 0.83, green: 0.62, blue: 0.30)
     /// Text on gold surfaces (dark brown keeps WCAG contrast on the light gold).
-    static let onGold = Color(red: 0.29, green: 0.16, blue: 0.0)
+    static let onGold = Color(red: 0.17, green: 0.11, blue: 0.03)
 
-    static let correct = Color(red: 0.36, green: 0.89, blue: 0.64)
-    static let wrong = Color(red: 1.0, green: 0.50, blue: 0.50)
-    static let flame = Color(red: 1.0, green: 0.62, blue: 0.26)
+    static let correct = Color(red: 0.49, green: 0.82, blue: 0.64)
+    static let wrong = Color(red: 0.95, green: 0.53, blue: 0.48)
+    static let flame = Color(red: 0.96, green: 0.63, blue: 0.33)
+    /// Silver tier in the collection and secondary data in charts.
+    static let silver = Color(red: 0.72, green: 0.78, blue: 0.88)
 
-    static let textSecondary = Color.white.opacity(0.78)
-    static let textTertiary = Color.white.opacity(0.6)
-    static let surface = Color.white.opacity(0.12)
-    static let surfaceStrong = Color.white.opacity(0.18)
-    static let stroke = Color.white.opacity(0.16)
+    /// Warm white, like paper under a reading lamp.
+    static let textPrimary = Color(red: 0.96, green: 0.94, blue: 0.90)
+    static let textSecondary = textPrimary.opacity(0.70)
+    static let textTertiary = textPrimary.opacity(0.52)
+    static let surface = Color.white.opacity(0.06)
+    static let surfaceStrong = Color.white.opacity(0.09)
+    static let stroke = Color.white.opacity(0.08)
+    static let track = Color.white.opacity(0.10)
 
-    static let goldGradient = LinearGradient(colors: [gold, goldDeep], startPoint: .topLeading, endPoint: .bottomTrailing)
+    static let goldGradient = LinearGradient(
+        colors: [Color(red: 0.95, green: 0.83, blue: 0.57), Color(red: 0.85, green: 0.65, blue: 0.35)],
+        startPoint: .top, endPoint: .bottom)
 
-    static let radius: CGFloat = 22
+    static let radius: CGFloat = 20
     static let smallRadius: CGFloat = 14
 
     /// The English word itself is set in a serif, like a dictionary headword.
     static func wordFont(_ size: CGFloat) -> Font { .system(size: size, weight: .bold, design: .serif) }
-    static func number(_ style: Font.TextStyle) -> Font { .system(style, design: .rounded).weight(.bold) }
+    /// Display numbers share the headword serif.
+    static func number(_ style: Font.TextStyle) -> Font { .system(style, design: .serif).weight(.semibold) }
+    /// Small gold label above a title.
+    static let eyebrow: Font = .caption.weight(.semibold)
 }
 
 struct AppBackground: View {
     var body: some View {
         ZStack {
-            LinearGradient(colors: [Theme.bgTop, Theme.bgBottom], startPoint: .topLeading, endPoint: .bottomTrailing)
-            RadialGradient(colors: [Theme.gold.opacity(0.22), .clear], center: .topTrailing, startRadius: 10, endRadius: 360)
+            LinearGradient(colors: [Theme.bgTop, Theme.bgBottom], startPoint: .top, endPoint: .bottom)
+            // A lamp-like warm glow from the top corner.
+            RadialGradient(colors: [Theme.gold.opacity(0.13), .clear], center: .topTrailing, startRadius: 0, endRadius: 420)
+            RadialGradient(colors: [Color(red: 0.25, green: 0.35, blue: 0.75).opacity(0.14), .clear],
+                           center: .topLeading, startRadius: 0, endRadius: 380)
         }
         .ignoresSafeArea()
     }
@@ -73,21 +86,25 @@ struct GoldButtonStyle: ButtonStyle {
             .font(.headline)
             .foregroundStyle(Theme.onGold)
             .frame(maxWidth: .infinity, minHeight: 54)
-            .background(Theme.goldGradient, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
-            .shadow(color: Theme.goldDeep.opacity(isEnabled ? 0.35 : 0), radius: 12, y: 6)
-            .opacity(isEnabled ? 1 : 0.45)
+            .background(Theme.goldGradient, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+            // Foil edge: a thin highlight along the top.
+            .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous)
+                .strokeBorder(LinearGradient(colors: [.white.opacity(0.45), .clear], startPoint: .top, endPoint: .center), lineWidth: 1))
+            .shadow(color: Theme.goldDeep.opacity(isEnabled ? 0.28 : 0), radius: 14, y: 6)
+            .opacity(isEnabled ? 1 : 0.4)
             .scaleEffect(configuration.isPressed ? 0.97 : 1)
             .animation(.spring(duration: 0.2), value: configuration.isPressed)
     }
 }
 
+/// Quiet secondary action.
 struct GlassButtonStyle: ButtonStyle {
     var height: CGFloat = 50
 
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .font(.subheadline.weight(.semibold))
-            .foregroundStyle(.white)
+            .foregroundStyle(Theme.textPrimary)
             .frame(maxWidth: .infinity, minHeight: height)
             .background(configuration.isPressed ? Theme.surfaceStrong : Theme.surface,
                         in: RoundedRectangle(cornerRadius: 16, style: .continuous))
@@ -116,7 +133,7 @@ struct ProgressRing: View {
 
     var body: some View {
         ZStack {
-            Circle().stroke(Color.white.opacity(0.15), lineWidth: lineWidth)
+            Circle().stroke(Theme.track, lineWidth: lineWidth)
             Circle()
                 .trim(from: 0, to: min(max(progress, 0), 1))
                 .stroke(tint, style: StrokeStyle(lineWidth: lineWidth, lineCap: .round))
@@ -133,7 +150,7 @@ struct CapsuleBar: View {
     var body: some View {
         GeometryReader { geo in
             ZStack(alignment: .leading) {
-                Capsule().fill(Color.white.opacity(0.15))
+                Capsule().fill(Theme.track)
                 Capsule().fill(tint)
                     .frame(width: max(height, geo.size.width * min(max(progress, 0), 1)))
             }
@@ -153,10 +170,11 @@ struct SpeakButton: View {
             Pronouncer.shared.speak(text)
         } label: {
             Image(systemName: "speaker.wave.2.fill")
-                .font(.system(size: size * 0.42, weight: .semibold))
-                .foregroundStyle(Theme.onGold)
+                .font(.system(size: size * 0.4, weight: .semibold))
+                .foregroundStyle(Theme.gold)
                 .frame(width: size, height: size)
-                .background(Theme.goldGradient, in: Circle())
+                .background(Theme.surfaceStrong, in: Circle())
+                .overlay(Circle().strokeBorder(Theme.stroke))
         }
         .buttonStyle(PressableStyle())
         .accessibilityLabel("朗读 \(text)")
@@ -186,7 +204,7 @@ struct CoinLabel: View {
             Image(systemName: "yensign.circle.fill")
                 .foregroundStyle(Theme.gold)
             Text("\(amount)")
-                .foregroundStyle(.white)
+                .foregroundStyle(Theme.textPrimary)
                 .contentTransition(.numericText())
         }
         .font(font)
@@ -212,14 +230,14 @@ extension WordBook {
 
     var tint: Color {
         switch id {
-        case "primary": return Color(red: 0.45, green: 0.85, blue: 0.45)
-        case "middle": return Color(red: 0.55, green: 0.80, blue: 0.30)
-        case "gaokao": return Color(red: 0.95, green: 0.70, blue: 0.30)
-        case "cet4": return Color(red: 0.35, green: 0.70, blue: 1.0)
-        case "cet6": return Color(red: 1.0, green: 0.62, blue: 0.30)
-        case "kaoyan": return Color(red: 1.0, green: 0.45, blue: 0.50)
-        case "ielts": return Color(red: 0.35, green: 0.85, blue: 0.85)
-        default: return Color(red: 0.70, green: 0.60, blue: 1.0)
+        case "primary": return Color(red: 0.55, green: 0.82, blue: 0.60)
+        case "middle": return Color(red: 0.66, green: 0.80, blue: 0.48)
+        case "gaokao": return Color(red: 0.93, green: 0.74, blue: 0.47)
+        case "cet4": return Color(red: 0.52, green: 0.72, blue: 0.96)
+        case "cet6": return Color(red: 0.95, green: 0.66, blue: 0.45)
+        case "kaoyan": return Color(red: 0.94, green: 0.56, blue: 0.58)
+        case "ielts": return Color(red: 0.50, green: 0.83, blue: 0.82)
+        default: return Color(red: 0.70, green: 0.64, blue: 0.95)
         }
     }
 }

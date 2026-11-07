@@ -27,6 +27,9 @@ struct QuizView: View {
     @State private var failed: [StudyRecord] = []
     @State private var showSummary = false
     @State private var feedbackTick = 0
+    /// Schedule before the current answer, so "有点模糊" can regrade it.
+    @State private var previousState: ReviewState?
+    @State private var usedHint = false
     @FocusState private var inputFocused: Bool
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
@@ -117,7 +120,7 @@ struct QuizView: View {
                 CapsuleBar(progress: Double(index + (answered ? 1 : 0)) / Double(max(questions.count, 1)), height: 10)
                 Text("\(index + 1)/\(questions.count)")
                     .font(Theme.number(.subheadline))
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Theme.textPrimary)
                     .monospacedDigit()
             }
             HStack {
@@ -194,7 +197,7 @@ struct QuizView: View {
             VStack(spacing: 12) {
                 Text(q.record.word)
                     .font(Theme.wordFont(40))
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Theme.textPrimary)
                     .minimumScaleFactor(0.5)
                     .lineLimit(2)
                     .multilineTextAlignment(.center)
@@ -231,7 +234,7 @@ struct QuizView: View {
     private func meaningText(_ meaning: String) -> some View {
         Text(meaning)
             .font(.title2.weight(.bold))
-            .foregroundStyle(.white)
+            .foregroundStyle(Theme.textPrimary)
             .multilineTextAlignment(.center)
     }
 
@@ -249,12 +252,12 @@ struct QuizView: View {
                     HStack(spacing: 12) {
                         Text(verbatim: String(UnicodeScalar(UInt8(65 + i))))
                             .font(.subheadline.weight(.bold))
-                            .foregroundStyle(state == .idle ? .white : Theme.onGold)
+                            .foregroundStyle((state == .correct || state == .wrong) ? Theme.onGold : Theme.textPrimary)
                             .frame(width: 30, height: 30)
                             .background(state.badge, in: Circle())
                         Text(option)
                             .font(q.kind == .chooseMeaning ? .body : Theme.wordFont(20))
-                            .foregroundStyle(.white)
+                            .foregroundStyle(Theme.textPrimary)
                             .multilineTextAlignment(.leading)
                         Spacer(minLength: 0)
                         if let icon = state.icon {
@@ -334,7 +337,7 @@ struct QuizView: View {
         func cellView(_ cell: (id: Int, text: String, isBlank: Bool, isFilled: Bool), width: CGFloat) -> some View {
             Text(cell.text == " " ? "" : cell.text)
                 .font(.system(size: width * 0.8, weight: .bold, design: .monospaced))
-                .foregroundStyle(cell.isBlank ? color : .white)
+                .foregroundStyle(cell.isBlank ? color : Theme.textPrimary)
                 .frame(width: cell.text == " " ? width * 0.4 : width, height: width * 1.45)
                 .background {
                     if cell.isBlank {
@@ -409,7 +412,7 @@ struct QuizView: View {
             TextField("", text: $input, prompt: Text("输入英文单词").foregroundStyle(Theme.textTertiary))
                 .focused($inputFocused)
                 .font(.title3.weight(.semibold))
-                .foregroundStyle(answered ? (lastCorrect ? Theme.correct : Theme.wrong) : .white)
+                .foregroundStyle(answered ? (lastCorrect ? Theme.correct : Theme.wrong) : Theme.textPrimary)
                 .autocorrectionDisabled()
                 .textInputAutocapitalization(.never)
                 .submitLabel(.done)
@@ -427,10 +430,13 @@ struct QuizView: View {
                     var prefix = 0
                     while prefix < min(typed.count, target.count),
                           typed[prefix].lowercased() == target[prefix].lowercased() { prefix += 1 }
-                    if prefix < target.count { input = String(target[0...prefix]) }
+                    if prefix < target.count {
+                        input = String(target[0...prefix])
+                        usedHint = true
+                    }
                 }
                 .font(.subheadline.weight(.semibold))
-                .foregroundStyle(.white)
+                .foregroundStyle(Theme.textPrimary)
                 .frame(width: 60, height: 54)
                 .background(Theme.surface, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
             }
@@ -457,11 +463,14 @@ struct QuizView: View {
             VStack(alignment: .leading, spacing: 4) {
                 Text(lastCorrect ? feedbackPraise : "没关系，记住它")
                     .font(.headline)
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Theme.textPrimary)
                 Text("\(q.record.word) · \(q.record.meaning)")
                     .font(.subheadline)
                     .foregroundStyle(Theme.textSecondary)
                     .fixedSize(horizontal: false, vertical: true)
+                Label("下次复习 · \(MemoryFormat.relative(vm.reviewState(for: q.record).dueAt, from: Date()))", systemImage: "clock")
+                    .font(.caption)
+                    .foregroundStyle(Theme.textTertiary)
             }
             Spacer(minLength: 0)
             SpeakButton(text: q.record.word, size: 34)
@@ -477,8 +486,16 @@ struct QuizView: View {
     private func footer(_ q: QuizQuestion) -> some View {
         Group {
             if answered {
-                Button(index < questions.count - 1 ? "下一题" : "查看结果", action: next)
-                    .buttonStyle(GoldButtonStyle())
+                HStack(spacing: 10) {
+                    // Third grade between "remembered" and "forgot": the user decides.
+                    if lastCorrect && !usedHint {
+                        Button("有点模糊") { markFuzzy(q) }
+                            .buttonStyle(GlassButtonStyle(height: 54))
+                            .frame(maxWidth: 140)
+                    }
+                    Button(index < questions.count - 1 ? "下一题" : "查看结果", action: next)
+                        .buttonStyle(GoldButtonStyle())
+                }
             } else if q.kind == .spell {
                 Button("确认答案") { submitSpelling(q) }
                     .buttonStyle(GoldButtonStyle())
@@ -492,7 +509,9 @@ struct QuizView: View {
     // MARK: - Flow
 
     private func submit(_ q: QuizQuestion, correct: Bool) {
-        vm.recordAnswer(q.record, correct: correct, source: mode.source)
+        // A spelling finished with hints counts as fuzzy, not remembered.
+        previousState = vm.recordAnswer(q.record, correct: correct, source: mode.source,
+                                        grade: correct && usedHint ? .fuzzy : nil)
         lastCorrect = correct
         if correct {
             correctCount += 1
@@ -507,6 +526,11 @@ struct QuizView: View {
         if vm.state.autoPronounce && q.kind != .chooseMeaning { Pronouncer.shared.speak(q.record.word) }
     }
 
+    private func markFuzzy(_ q: QuizQuestion) {
+        if let previousState { vm.regrade(q.record, from: previousState, grade: .fuzzy) }
+        next()
+    }
+
     private func next() {
         guard index < questions.count - 1 else {
             withAnimation(.spring(duration: 0.4)) { showSummary = true }
@@ -518,6 +542,8 @@ struct QuizView: View {
             selectedOption = nil
             input = ""
             usedTiles = []
+            usedHint = false
+            previousState = nil
         }
     }
 
@@ -543,7 +569,7 @@ struct QuizView: View {
                     VStack(spacing: 0) {
                         Text("\(correctCount)/\(questions.count)")
                             .font(Theme.number(.largeTitle))
-                            .foregroundStyle(.white)
+                            .foregroundStyle(Theme.textPrimary)
                         Text("答对")
                             .font(.caption)
                             .foregroundStyle(Theme.textSecondary)
@@ -554,7 +580,7 @@ struct QuizView: View {
 
                 Text(summaryTitle)
                     .font(.title2.bold())
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Theme.textPrimary)
 
                 HStack(spacing: 12) {
                     summaryStat(value: "+\(earned)", label: "获得千金", symbol: "yensign.circle.fill", tint: Theme.gold)
@@ -565,8 +591,8 @@ struct QuizView: View {
                     VStack(alignment: .leading, spacing: 10) {
                         Text("这些词再看一眼")
                             .font(.headline)
-                            .foregroundStyle(.white)
-                        Text("它们会安排在明天再次复习")
+                            .foregroundStyle(Theme.textPrimary)
+                        Text("它们退回了 2 个记忆节点，一天之内会再出现在复习里")
                             .font(.caption)
                             .foregroundStyle(Theme.textTertiary)
                         ForEach(failed.uniqueWords()) { record in
@@ -575,7 +601,7 @@ struct QuizView: View {
                                 VStack(alignment: .leading, spacing: 2) {
                                     Text(record.word)
                                         .font(Theme.wordFont(22))
-                                        .foregroundStyle(.white)
+                                        .foregroundStyle(Theme.textPrimary)
                                     Text(record.meaning)
                                         .font(.footnote)
                                         .foregroundStyle(Theme.textSecondary)
@@ -614,7 +640,7 @@ struct QuizView: View {
             Image(systemName: symbol).foregroundStyle(tint)
             Text(value)
                 .font(Theme.number(.title2))
-                .foregroundStyle(.white)
+                .foregroundStyle(Theme.textPrimary)
             Text(label)
                 .font(.caption)
                 .foregroundStyle(Theme.textSecondary)

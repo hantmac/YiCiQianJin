@@ -1,12 +1,5 @@
 import Foundation
 
-struct ReviewState: Codable, Equatable {
-    /// Memory stage; higher means a longer interval before the next review.
-    var stage: Int
-    /// Day key on which the word becomes due.
-    var due: String
-}
-
 struct AppState: Codable {
     var selectedBookId: String?
     var isPremium: Bool = false
@@ -28,6 +21,11 @@ struct AppState: Codable {
     var reminderMinute: Int = 0
     var autoPronounce: Bool = true
 
+    // Added in 1.3.
+    /// Notify when words reach their review time (needs notification permission).
+    var reviewAlertsEnabled: Bool = false
+    var gameRecords: [GameRecord] = []
+
     init() {}
 
     private enum CodingKeys: String, CodingKey {
@@ -35,6 +33,7 @@ struct AppState: Codable {
         case todayQuizPassed, todayDate, quizResults
         case bookProgress, reviewStates, seenAchievements, achievementsInitialized
         case reminderEnabled, reminderHour, reminderMinute, autoPronounce
+        case reviewAlertsEnabled, gameRecords
     }
 
     /// Tolerant decoding: data written by older versions lacks the newer keys,
@@ -57,6 +56,8 @@ struct AppState: Codable {
         reminderHour = try c.decodeIfPresent(Int.self, forKey: .reminderHour) ?? 20
         reminderMinute = try c.decodeIfPresent(Int.self, forKey: .reminderMinute) ?? 0
         autoPronounce = try c.decodeIfPresent(Bool.self, forKey: .autoPronounce) ?? true
+        reviewAlertsEnabled = try c.decodeIfPresent(Bool.self, forKey: .reviewAlertsEnabled) ?? false
+        gameRecords = try c.decodeIfPresent([GameRecord].self, forKey: .gameRecords) ?? []
 
         // Older versions only tracked the index of the selected book.
         if let book = selectedBookId, bookProgress[book] == nil {

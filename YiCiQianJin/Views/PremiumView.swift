@@ -17,7 +17,7 @@ struct PremiumView: View {
 
                 Text("小象单词 Pro")
                     .font(.title.bold())
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Theme.textPrimary)
 
                 Text("解锁无限背单词，不再受每日一词的限制")
                     .font(.subheadline)
@@ -62,7 +62,7 @@ struct PremiumView: View {
                 HStack(alignment: .firstTextBaseline, spacing: 2) {
                     Text(product.displayPrice)
                         .font(.system(size: 40, weight: .bold))
-                        .foregroundStyle(.white)
+                        .foregroundStyle(Theme.textPrimary)
                     Text("/永久")
                         .font(.subheadline)
                         .foregroundStyle(Theme.textSecondary)
@@ -143,7 +143,7 @@ struct PremiumView: View {
             Image(systemName: "checkmark.circle.fill")
                 .foregroundStyle(Theme.gold)
             Text(text)
-                .foregroundStyle(.white)
+                .foregroundStyle(Theme.textPrimary)
         }
     }
 }

@@ -30,7 +30,7 @@ struct ContentView: View {
                         .padding(.horizontal, 18)
                         .padding(.vertical, 10)
                         .background(Theme.goldGradient, in: Capsule())
-                        .shadow(color: .black.opacity(0.2), radius: 10, y: 4)
+                        .shadow(color: .black.opacity(0.35), radius: 12, y: 4)
                         .padding(.top, 8)
                     Spacer()
                 }
@@ -51,6 +51,13 @@ struct ContentView: View {
         .preferredColorScheme(.dark)
         .onChange(of: scenePhase) { _, phase in
             if phase == .active { vm.refreshDay() }
+        }
+        .task {
+            // Review due times are minutes apart on the first day; keep due lists current.
+            while !Task.isCancelled {
+                try? await Task.sleep(for: .seconds(20))
+                vm.tick()
+            }
         }
     }
 
@@ -84,6 +91,16 @@ struct ContentView: View {
             AchievementsView(vm: vm)
         case .settings:
             SettingsView(vm: vm)
+        case .memory:
+            MemoryCurveView(vm: vm)
+        case .collection:
+            CollectionView(vm: vm)
+        case .games:
+            GamesView(vm: vm)
+        case .blitz:
+            BlitzGameView(vm: vm)
+        case .match:
+            MatchGameView(vm: vm)
         }
     }
 
@@ -96,7 +113,7 @@ struct ContentView: View {
                     .foregroundStyle(Theme.goldGradient)
                 Text("整本词书已学完！")
                     .font(.title.bold())
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Theme.textPrimary)
                 Text("「\(vm.currentBook?.name ?? "")」的每一个单词都已收入你的词库。\n温故复习会继续帮你巩固它们。")
                     .font(.subheadline)
                     .foregroundStyle(Theme.textSecondary)

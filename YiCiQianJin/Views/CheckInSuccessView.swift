@@ -22,7 +22,7 @@ struct CheckInSuccessView: View {
 
     var body: some View {
         ZStack {
-            Color.black.opacity(0.55)
+            Color.black.opacity(0.6)
                 .ignoresSafeArea()
                 .onTapGesture(perform: onClose)
                 .accessibilityHidden(true)
@@ -63,7 +63,7 @@ struct CheckInSuccessView: View {
                             .foregroundStyle(Theme.gold)
                         Text("恭喜成为「\(newLevel.title)」")
                             .font(.headline)
-                            .foregroundStyle(.white)
+                            .foregroundStyle(Theme.textPrimary)
                     }
                     Spacer()
                 }
@@ -83,7 +83,7 @@ struct CheckInSuccessView: View {
                             VStack(alignment: .leading, spacing: 2) {
                                 Text(achievement.title)
                                     .font(.subheadline.weight(.bold))
-                                    .foregroundStyle(.white)
+                                    .foregroundStyle(Theme.textPrimary)
                                 Text(achievement.detail)
                                     .font(.caption)
                                     .foregroundStyle(Theme.textSecondary)
@@ -100,8 +100,8 @@ struct CheckInSuccessView: View {
         }
         .padding(24)
         .background(
-            LinearGradient(colors: [Color(red: 0.42, green: 0.32, blue: 0.86), Color(red: 0.30, green: 0.18, blue: 0.55)],
-                           startPoint: .topLeading, endPoint: .bottomTrailing),
+            LinearGradient(colors: [Color(red: 0.11, green: 0.14, blue: 0.23), Color(red: 0.07, green: 0.09, blue: 0.15)],
+                           startPoint: .top, endPoint: .bottom),
             in: RoundedRectangle(cornerRadius: 30, style: .continuous)
         )
         .overlay(RoundedRectangle(cornerRadius: 30, style: .continuous).strokeBorder(Theme.gold.opacity(0.35)))
@@ -126,7 +126,7 @@ struct CheckInSuccessView: View {
                         .foregroundStyle(LinearGradient(colors: [Theme.gold, Theme.flame], startPoint: .top, endPoint: .bottom))
                         .symbolEffect(.bounce, value: appeared)
                     Text("连续 \(stats.currentStreak) 天")
-                        .foregroundStyle(.white)
+                        .foregroundStyle(Theme.textPrimary)
                 }
                 .font(Theme.number(.largeTitle))
                 .accessibilityElement(children: .combine)
@@ -139,7 +139,7 @@ struct CheckInSuccessView: View {
                         .accessibilityLabel("获得 \(celebration.xpGained) 金")
                     Label("\(stats.totalWords) 词", systemImage: "books.vertical.fill")
                         .font(.headline)
-                        .foregroundStyle(.white)
+                        .foregroundStyle(Theme.textPrimary)
                 }
                 .padding(.top, 4)
             }
@@ -151,7 +151,7 @@ struct CheckInSuccessView: View {
                     .symbolEffect(.bounce, value: appeared)
                 Text("新的里程碑")
                     .font(.title.bold())
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Theme.textPrimary)
                 Text("本次获得 \(celebration.xpGained) 金")
                     .font(.subheadline)
                     .foregroundStyle(Theme.textSecondary)
@@ -164,7 +164,7 @@ struct CheckInSuccessView: View {
             HStack {
                 Text("Lv.\(level.index + 1) \(level.title)")
                     .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Theme.textPrimary)
                 Spacer()
                 if let next = level.nextXP {
                     Text("\(stats.xp)/\(next)")
@@ -195,7 +195,7 @@ struct ConfettiView: View {
     private let pieces: [Piece] = (0..<70).map { _ in
         Piece(x: .random(in: 0...1), delay: .random(in: 0...0.6), speed: .random(in: 0.35...0.7),
               drift: .random(in: -40...40), spin: .random(in: 2...7), size: .random(in: 6...11),
-              color: [Theme.gold, Theme.goldDeep, Theme.correct, .white, Color(red: 1, green: 0.5, blue: 0.7)].randomElement()!)
+              color: [Theme.gold, Theme.goldDeep, Theme.gold, Theme.textPrimary, Theme.silver].randomElement()!)
     }
     @State private var start = Date()
 
