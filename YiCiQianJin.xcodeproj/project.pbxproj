@@ -61,6 +61,7 @@
 		A10000010000000000000056 /* MatchGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000020000000000000056 /* MatchGameView.swift */; };
 		A10000010000000000000057 /* DiscoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000020000000000000057 /* DiscoverView.swift */; };
 		A10000010000000000000058 /* MeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000020000000000000058 /* MeView.swift */; };
+		A10000010000000000000059 /* GameSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000020000000000000059 /* GameSound.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,6 +139,7 @@
 		A10000020000000000000056 /* MatchGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchGameView.swift; sourceTree = "<group>"; };
 		A10000020000000000000057 /* DiscoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverView.swift; sourceTree = "<group>"; };
 		A10000020000000000000058 /* MeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeView.swift; sourceTree = "<group>"; };
+		A10000020000000000000059 /* GameSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSound.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -277,6 +279,7 @@
 			isa = PBXGroup;
 			children = (
 				A10000020000000000000032 /* Pronouncer.swift */,
+				A10000020000000000000059 /* GameSound.swift */,
 				A10000020000000000000033 /* ReminderScheduler.swift */,
 			);
 			path = Services;
@@ -474,6 +477,7 @@
 				A10000010000000000000050 /* Game.swift in Sources */,
 				A10000010000000000000031 /* QuizQuestion.swift in Sources */,
 				A10000010000000000000032 /* Pronouncer.swift in Sources */,
+				A10000010000000000000059 /* GameSound.swift in Sources */,
 				A10000010000000000000033 /* ReminderScheduler.swift in Sources */,
 				A10000010000000000000034 /* Theme.swift in Sources */,
 				A10000010000000000000035 /* AchievementsView.swift in Sources */,

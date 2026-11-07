@@ -44,6 +44,7 @@ class StudyViewModel {
 
     var state: AppState {
         didSet {
+            GameSound.shared.enabled = state.gameSounds
             save()
             stats = LearningStats(state: state, today: today)
         }
@@ -75,6 +76,7 @@ class StudyViewModel {
             self.state = AppState()
         }
         stats = LearningStats(state: state, today: today)
+        GameSound.shared.enabled = state.gameSounds
 
         // Existing users shouldn't get a burst of "new" achievements on upgrade.
         if !state.achievementsInitialized {
@@ -423,6 +425,25 @@ class StudyViewModel {
         let before = stats.xp
         state.gameRecords.append(GameRecord(date: today, kind: kind, score: score, correct: correct, total: total))
         return stats.xp - before
+    }
+
+    /// Brings words missed in a game forward: due now, one node back so a correct answer
+    /// returns them to where they were instead of fast-tracking them.
+    func addToReview(_ records: [StudyRecord]) {
+        let current = Date()
+        for record in records.uniqueWords() {
+            let s = reviewState(for: record)
+            state.reviewStates[record.wordKey] = ReviewState(stage: max(0, s.stage - 1), dueAt: min(s.dueAt, current),
+                                                            lastReviewedAt: s.lastReviewedAt, lapses: s.lapses)
+        }
+        now = current
+        syncReminders()
+    }
+
+    /// From a game's summary straight into review; the game's milestones show first.
+    func reviewAfterGame() {
+        showMilestoneIfNeeded()
+        startReview()
     }
 
     func finishGame() {

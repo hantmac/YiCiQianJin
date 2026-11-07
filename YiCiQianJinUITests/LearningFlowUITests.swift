@@ -9,12 +9,12 @@ final class LearningFlowUITests: XCTestCase {
 
     // MARK: - Helpers
 
-    private func launch(state: String?) -> XCUIApplication {
+    private func launch(state: String?, extra: [String] = []) -> XCUIApplication {
         let app = XCUIApplication()
         // Values in the argument domain override the persisted state for this launch only.
         let json = state ?? "{}"
         let hex = Data(json.utf8).map { String(format: "%02x", $0) }.joined()
-        app.launchArguments = ["-yiciqianjin_state", "<\(hex)>", "-AppleLanguages", "(zh-Hans)"]
+        app.launchArguments = ["-yiciqianjin_state", "<\(hex)>", "-AppleLanguages", "(zh-Hans)"] + extra
         app.launch()
         return app
     }
@@ -242,9 +242,45 @@ final class LearningFlowUITests: XCTestCase {
         tap(app, "退出闪电战")
 
         tapPrefix(app, "词义配对")
-        XCTAssertTrue(app.staticTexts["先点单词，再点它的意思"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["点一个单词，再点它的意思"].waitForExistence(timeout: 5))
         snap(app, "34-match")
         tap(app, "退出词义配对")
         XCTAssertTrue(app.staticTexts["小游戏"].waitForExistence(timeout: 5), "games return to the discover tab")
+    }
+
+    func testBlitzRoundEndsWithRankAndAddsMissedWordsToReview() {
+        let app = launch(state: legacyPendingState(), extra: ["-UITestBlitzSeconds", "14", "-UITestPage", "blitz"])
+        XCTAssertTrue(app.buttons["退出闪电战"].waitForExistence(timeout: 5))
+        sleep(3) // 3-2-1
+        // Tap the first option of each question; some will be wrong.
+        var shots = 0
+        let summary = app.staticTexts["闪电战结束"]
+        while !summary.exists {
+            let options = app.buttons.allElementsBoundByIndex.filter {
+                $0.isHittable && $0.isEnabled && !["退出闪电战", "再听一遍"].contains($0.label)
+            }
+            options.last?.tap()
+            if shots < 2 { sleep(1); snap(app, "40-blitz-\(shots)"); shots += 1 }
+            usleep(400_000)
+            if summary.waitForExistence(timeout: 0.1) { break }
+        }
+        sleep(2)
+        snap(app, "41-blitz-summary")
+        let add = app.buttons.matching(NSPredicate(format: "label BEGINSWITH '把 '")).firstMatch
+        if add.waitForExistence(timeout: 2) {
+            app.swipeUp()
+            add.tap()
+            let toReview = app.buttons.matching(NSPredicate(format: "label BEGINSWITH '去复习'")).firstMatch
+            XCTAssertTrue(toReview.waitForExistence(timeout: 3), "missed words should be offered for review")
+            snap(app, "42-blitz-added")
+            toReview.tap()
+            XCTAssertTrue(app.buttons["退出温故复习"].waitForExistence(timeout: 5))
+        }
+    }
+
+    func testMatchShowsRoundStars() {
+        let app = launch(state: legacyPendingState(), extra: ["-UITestPage", "match"])
+        XCTAssertTrue(app.staticTexts["点一个单词，再点它的意思"].waitForExistence(timeout: 5))
+        snap(app, "43-match")
     }
 }

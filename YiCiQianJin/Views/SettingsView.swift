@@ -75,9 +75,12 @@ struct SettingsView: View {
                         }
                     }
 
-                    section("发音") {
+                    section("声音") {
                         Toggle(isOn: $vm.state.autoPronounce) {
                             rowLabel("自动朗读", detail: "看到新词和答题后自动播放发音", symbol: "speaker.wave.2.fill")
+                        }
+                        Toggle(isOn: $vm.state.gameSounds) {
+                            rowLabel("游戏音效", detail: "小游戏里的答题音效，手机静音时不响", symbol: "music.note")
                         }
                     }
 

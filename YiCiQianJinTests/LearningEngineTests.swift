@@ -280,6 +280,39 @@ final class GameTests: XCTestCase {
         XCTAssertEqual(GameRules.blitzPoints(combo: 50), 20)
     }
 
+    func testRanksAndStars() {
+        XCTAssertEqual(GameRules.blitzRank(score: 0), .c)
+        XCTAssertEqual(GameRules.blitzRank(score: 130), .b)
+        XCTAssertEqual(GameRules.blitzRank(score: 220), .a)
+        XCTAssertEqual(GameRules.blitzRank(score: 500), .s)
+        XCTAssertEqual(GameRules.matchStars(seconds: 12, mistakes: 0), 3)
+        XCTAssertEqual(GameRules.matchStars(seconds: 12, mistakes: 1), 2)
+        XCTAssertEqual(GameRules.matchStars(seconds: 30, mistakes: 0), 1)
+    }
+
+    func testSynthesizedSoundIsValidWav() {
+        let data = GameSound.Synth.wav([(880, 0, 0.1, 0.5)])
+        XCTAssertEqual(String(decoding: data.prefix(4), as: UTF8.self), "RIFF")
+        XCTAssertEqual(String(decoding: data[8..<12], as: UTF8.self), "WAVE")
+        XCTAssertGreaterThan(data.count, 44 + Int(0.1 * GameSound.Synth.rate) * 2)
+    }
+
+    @MainActor
+    func testAddToReviewMakesWordsDueOneNodeBack() {
+        let vm = StudyViewModel()
+        let record = makeRecord("zzqxgame", "2026-03-01")
+        vm.state.studyRecords.append(record)
+        vm.state.reviewStates[record.wordKey] = ReviewState(stage: 6, dueAt: Date().addingTimeInterval(5 * 86_400),
+                                                           lastReviewedAt: Date().addingTimeInterval(-86_400))
+        vm.addToReview([record])
+        let s = vm.reviewState(for: record)
+        XCTAssertEqual(s.stage, 5)
+        XCTAssertTrue(SpacedRepetition.isDue(s, at: Date()))
+        XCTAssertTrue(vm.dueReviews.contains { $0.wordKey == record.wordKey })
+        vm.state.studyRecords.removeAll { $0.wordKey == record.wordKey }
+        vm.state.reviewStates[record.wordKey] = nil
+    }
+
     func testShortMeaning() {
         XCTAssertEqual(GameRules.shortMeaning("取消， 撤销； 删去"), "取消，撤销")
         XCTAssertEqual(GameRules.shortMeaning("水壶"), "水壶")

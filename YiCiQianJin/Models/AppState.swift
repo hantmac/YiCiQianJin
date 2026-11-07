@@ -25,6 +25,7 @@ struct AppState: Codable {
     /// Notify when words reach their review time (needs notification permission).
     var reviewAlertsEnabled: Bool = false
     var gameRecords: [GameRecord] = []
+    var gameSounds: Bool = true
 
     init() {}
 
@@ -33,7 +34,7 @@ struct AppState: Codable {
         case todayQuizPassed, todayDate, quizResults
         case bookProgress, reviewStates, seenAchievements, achievementsInitialized
         case reminderEnabled, reminderHour, reminderMinute, autoPronounce
-        case reviewAlertsEnabled, gameRecords
+        case reviewAlertsEnabled, gameRecords, gameSounds
     }
 
     /// Tolerant decoding: data written by older versions lacks the newer keys,
@@ -58,6 +59,7 @@ struct AppState: Codable {
         autoPronounce = try c.decodeIfPresent(Bool.self, forKey: .autoPronounce) ?? true
         reviewAlertsEnabled = try c.decodeIfPresent(Bool.self, forKey: .reviewAlertsEnabled) ?? false
         gameRecords = try c.decodeIfPresent([GameRecord].self, forKey: .gameRecords) ?? []
+        gameSounds = try c.decodeIfPresent(Bool.self, forKey: .gameSounds) ?? true
 
         // Older versions only tracked the index of the selected book.
         if let book = selectedBookId, bookProgress[book] == nil {

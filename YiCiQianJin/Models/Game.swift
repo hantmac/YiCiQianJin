@@ -43,12 +43,50 @@ enum GameRules {
     static let blitzSeconds = 60
     /// Seconds lost for a wrong blitz answer.
     static let blitzPenalty = 3
+    /// Every this many answers in a row adds `blitzBonusSeconds`.
+    static let blitzBonusEvery = 5
+    static let blitzBonusSeconds = 2
+    /// Every this many answers in a row starts a 金色时刻 (double points).
+    static let feverEvery = 10
+    static let feverSeconds = 5.0
+    /// Questions before pictures and listening join the mix.
+    static let blitzWarmup = 3
     static let matchPairsPerRound = 5
     static let matchRounds = 3
 
     /// Blitz points for a correct answer at the given combo (1-based).
     static func blitzPoints(combo: Int) -> Int {
         10 + 2 * min(max(combo - 1, 0), 5)
+    }
+
+    enum Rank: String, CaseIterable {
+        case s = "S", a = "A", b = "B", c = "C"
+
+        var title: String {
+            switch self {
+            case .s: return "词汇大师"
+            case .a: return "反应神速"
+            case .b: return "稳步提升"
+            case .c: return "再接再厉"
+            }
+        }
+    }
+
+    static func blitzRank(score: Int) -> Rank {
+        switch score {
+        case 320...: return .s
+        case 220...: return .a
+        case 130...: return .b
+        default: return .c
+        }
+    }
+
+    /// 1–3 stars for a match round of `pairs` pairs.
+    static func matchStars(seconds: Double, mistakes: Int, pairs: Int = matchPairsPerRound) -> Int {
+        let perPair = seconds / Double(max(pairs, 1))
+        if mistakes == 0 && perPair <= 2.6 { return 3 }
+        if mistakes <= 1 && perPair <= 4.5 { return 2 }
+        return 1
     }
 
     static func best(_ kind: GameKind, in records: [GameRecord]) -> Int? {

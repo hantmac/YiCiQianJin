@@ -24,7 +24,9 @@
 ## 可用组件
 - `card()`、`GoldButtonStyle`、`GlassButtonStyle`、`PressableStyle`、`CapsuleBar`、`ProgressRing`、`SpeakButton`、`CoinLabel`：`Theme.swift`。
 - `MemoryNodeTrack`、`RetentionBar`、`MemorySparkline`、`WordMemorySheet`、`MemoryFormat`：`Views/MemoryComponents.swift`。
-- `GameSummaryView`：`Views/GamesView.swift`，所有游戏结算页共用。
+- `GameSummaryView`、`StarRow`：`Views/GameSummaryView.swift`，所有游戏结算页共用（评级章或星级 + 错词加入复习）。
+- `GameSound`：`Services/GameSound.swift`，游戏音效统一从这里播放，跟随静音键和设置里的「游戏音效」开关。（用户确认）
+- 游戏答错的词不自动改复习安排，只在结算页由用户选择加入复习。（用户确认）
 
 ## 导航
 - 底部 4 个 Tab：背单词 / 词库 / 发现 / 我的（用户确认）。学习流程（考试、新词、复习、游戏）和二级页面盖住 Tab 栏，返回时回到原来的 Tab。（Agent 推断）
